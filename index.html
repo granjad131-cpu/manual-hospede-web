@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Hóspede - Safira</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #ffffff;
+            color: #11181C;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Header com controle de idioma */
+        .language-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            padding: 6px 12px;
+            border: 1px solid #E5E7EB;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background-color: #0a7ea4;
+            color: white;
+            border-color: #0a7ea4;
+        }
+
+        .lang-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 16px;
+            left: 20px;
+            right: 20px;
+            color: white;
+        }
+
+        .hero-badge {
+            font-size: 11px;
+            font-weight: 600;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        /* Shortcuts Grid */
+        .shortcuts {
+            padding: 16px 20px 4px;
+        }
+
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .shortcut-tile {
+            background: #f5f5f5;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 14px;
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .shortcut-tile:hover {
+            opacity: 0.85;
+            transform: scale(0.97);
+        }
+
+        .shortcut-tile.primary {
+            background: rgba(10, 126, 164, 0.07);
+            border-color: rgba(10, 126, 164, 0.18);
+        }
+
+        .shortcut-tile.success {
+            background: rgba(34, 197, 94, 0.07);
+            border-color: rgba(34, 197, 94, 0.18);
+        }
+
+        .shortcut-tile.warning {
+            background: rgba(245, 158, 11, 0.07);
+            border-color: rgba(245, 158, 11, 0.18);
+        }
+
+        .shortcut-tile.error {
+            background: rgba(239, 68, 68, 0.07);
+            border-color: rgba(239, 68, 68, 0.18);
+        }
+
+        .shortcut-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .shortcut-tile.primary .shortcut-icon {
+            background: rgba(10, 126, 164, 0.13);
+            color: #0a7ea4;
+        }
+
+        .shortcut-tile.success .shortcut-icon {
+            background: rgba(34, 197, 94, 0.13);
+            color: #22C55E;
+        }
+
+        .shortcut-tile.warning .shortcut-icon {
+            background: rgba(245, 158, 11, 0.13);
+            color: #F59E0B;
+        }
+
+        .shortcut-tile.error .shortcut-icon {
+            background: rgba(239, 68, 68, 0.13);
+            color: #EF4444;
+        }
+
+        .shortcut-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: inherit;
+        }
+
+        .shortcut-sub {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        /* Info Cards */
+        .cards {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(10, 126, 164, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #0a7ea4;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #11181C;
+        }
+
+        .card-body {
+            font-size: 14px;
+            color: #11181C;
+            line-height: 1.6;
+        }
+
+        .card-body p {
+            margin-bottom: 8px;
+        }
+
+        .card-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card-note {
+            font-size: 13px;
+            color: #687076;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* WiFi Card */
+        .wifi-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .wifi-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wifi-label {
+            font-size: 12px;
+            color: #687076;
+            margin-bottom: 4px;
+        }
+
+        .wifi-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #11181C;
+            font-family: 'Menlo', monospace;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 20px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: rgba(10, 126, 164, 0.1);
+            color: #0a7ea4;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .btn.success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22C55E;
+        }
+
+        /* Video List */
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .video-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-top: 1px solid #E5E7EB;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .video-item:hover {
+            opacity: 0.7;
+        }
+
+        .video-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(10, 126, 164, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a7ea4;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .video-info {
+            flex: 1;
+        }
+
+        .video-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #11181C;
+        }
+
+        .video-desc {
+            font-size: 12px;
+            color: #687076;
+            margin-top: 2px;
+        }
+
+        .video-arrow {
+            color: #687076;
+            font-size: 14px;
+        }
+
+        /* Instagram Section */
+        .instagram-card {
+            background: linear-gradient(135deg, #0a7ea4 0%, #0a7ea4 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .instagram-card:hover {
+            opacity: 0.85;
+        }
+
+        .instagram-header {
+            background: rgba(0, 0, 0, 0.08);
+            padding: 20px 16px 16px;
+        }
+
+        .instagram-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .instagram-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .instagram-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .instagram-body {
+            padding: 16px;
+        }
+
+        .instagram-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: #687076;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .shortcuts-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-title {
+                font-size: 24px;
+            }
+
+            .cards {
+                padding: 16px;
+                gap: 16px;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #151718;
+                color: #ECEDEE;
+            }
+
+            .language-bar {
+                background-color: #1e2022;
+                border-bottom-color: #334155;
+            }
+
+            .lang-btn {
+                background: #1e2022;
+                border-color: #334155;
+                color: #ECEDEE;
+            }
+
+            .lang-btn:hover {
+                background-color: #2a2d30;
+            }
+
+            .shortcut-tile {
+                background: #1e2022;
+                border-color: #334155;
+                color: #ECEDEE;
+            }
+
+            .info-card {
+                background: #1e2022;
+                border-color: #334155;
+            }
+
+            .card-body,
+            .card-title,
+            .wifi-value,
+            .video-title {
+                color: #ECEDEE;
+            }
+
+            .wifi-label,
+            .card-note,
+            .video-desc,
+            .video-arrow {
+                color: #9BA1A6;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Language Bar -->
+        <div class="language-bar">
+            <span style="font-weight: 600; color: #0a7ea4;">Manual do Hóspede</span>
+            <div class="language-buttons">
+                <button class="lang-btn active" onclick="setLanguage('pt')">🇧🇷 PT</button>
+                <button class="lang-btn" onclick="setLanguage('en')">🇺🇸 EN</button>
+                <button class="lang-btn" onclick="setLanguage('es')">🇪🇸 ES</button>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1541508881151070432/original/ab68e24a-ad71-40de-9cfb-868ea301f67b.jpeg" alt="Safira">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-badge">Bem-vindo</div>
+                <div class="hero-title">Safira</div>
+                <div class="hero-subtitle">Praia da Solidão — Florianópolis/SC</div>
+            </div>
+        </div>
+
+        <!-- Shortcuts Grid -->
+        <div class="shortcuts">
+            <div class="shortcuts-grid">
+                <div class="shortcut-tile primary" onclick="alert('WiFi: Toque para mais informações')">
+                    <div class="shortcut-icon">📡</div>
+                    <div>
+                        <div class="shortcut-label">WiFi</div>
+                        <div class="shortcut-sub">Conectar</div>
+                    </div>
+                </div>
+
+                <div class="shortcut-tile primary" onclick="alert('Código: 2352')">
+                    <div class="shortcut-icon">🔐</div>
+                    <div>
+                        <div class="shortcut-label">Acesso</div>
+                        <div class="shortcut-sub">2352</div>
+                    </div>
+                </div>
+
+                <div class="shortcut-tile success" onclick="openWhatsApp()">
+                    <div class="shortcut-icon">💬</div>
+                    <div>
+                        <div class="shortcut-label">WhatsApp</div>
+                        <div class="shortcut-sub">Contato</div>
+                    </div>
+                </div>
+
+                <div class="shortcut-tile warning" onclick="alert('Regras da acomodação')">
+                    <div class="shortcut-icon">📋</div>
+                    <div>
+                        <div class="shortcut-label">Regras</div>
+                        <div class="shortcut-sub">Importante</div>
+                    </div>
+                </div>
+
+                <div class="shortcut-tile primary" onclick="alert('Pontos de interesse próximos')">
+                    <div class="shortcut-icon">🗺️</div>
+                    <div>
+                        <div class="shortcut-label">Arredores</div>
+                        <div class="shortcut-sub">Explorar</div>
+                    </div>
+                </div>
+
+                <div class="shortcut-tile error" onclick="alert('Contatos de emergência')">
+                    <div class="shortcut-icon">🚨</div>
+                    <div>
+                        <div class="shortcut-label">Emergência</div>
+                        <div class="shortcut-sub">Contatos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="cards">
+            <!-- Welcome Card -->
+            <div class="info-card">
+                <div class="card-header">
+                    <div class="card-icon">🍃</div>
+                    <div class="card-title">Bem-vindo!</div>
+                </div>
+                <div class="card-body">
+                    <p>Ficamos felizes em recebê-lo na Safira. Este manual contém informações essenciais para sua estadia confortável e segura.</p>
+                    <p class="card-note">Leia atentamente as instruções e não hesite em nos contatar em caso de dúvidas.</p>
+                </div>
+            </div>
+
+            <!-- WiFi Card -->
+            <div class="info-card">
+                <div class="card-header">
+                    <div class="card-icon">📡</div>
+                    <div class="card-title">WiFi</div>
+                </div>
+                <div class="wifi-info">
+                    <div class="wifi-field">
+                        <div class="wifi-label">Rede</div>
+                        <div class="wifi-value">NossoMarSuites</div>
+                    </div>
+                    <div class="wifi-field">
+                        <div class="wifi-label">Senha</div>
+                        <div class="wifi-value">Safira@2024</div>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn" onclick="copyToClipboard('NossoMarSuites')">📋 Copiar Rede</button>
+                        <button class="btn" onclick="copyToClipboard('Safira@2024')">📋 Copiar Senha</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connectivity Card -->
+            <div class="info-card">
+                <div class="card-header">
+                    <div class="card-icon">📶</div>
+                    <div class="card-title">Conectividade</div>
+                </div>
+                <div class="card-body">
+                    <p>Temos conexão de internet de alta velocidade. Em caso de problemas de conexão, reinicie o roteador ou entre em contato conosco pelo WhatsApp.</p>
+                </div>
+            </div>
+
+            <!-- Videos Card -->
+            <div class="info-card">
+                <div class="card-header">
+                    <div class="card-icon">🎥</div>
+                    <div class="card-title">Vídeos de Chegada</div>
+                </div>
+                <div class="card-body">
+                    <p>Assista aos vídeos para conhecer melhor a acomodação:</p>
+                </div>
+                <div class="video-list">
+                    <div class="video-item" onclick="openVideo('https://drive.google.com/file/d/1example/preview')">
+                        <div class="video-icon">▶️</div>
+                        <div class="video-info">
+                            <div class="video-title">Tour pela Suíte</div>
+                            <div class="video-desc">Conheça os ambientes</div>
+                        </div>
+                        <div class="video-arrow">›</div>
+                    </div>
+                    <div class="video-item" onclick="openVideo('https://drive.google.com/file/d/1example/preview')">
+                        <div class="video-icon">▶️</div>
+                        <div class="video-info">
+                            <div class="video-title">Como Usar a SPA</div>
+                            <div class="video-desc">Instruções passo a passo</div>
+                        </div>
+                        <div class="video-arrow">›</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Card -->
+            <div class="info-card">
+                <div class="card-header">
+                    <div class="card-icon">🏡</div>
+                    <div class="card-title">Sobre a Acomodação</div>
+                </div>
+                <div class="card-body">
+                    <p>A Safira é uma suíte luxuosa com vista para o mar, equipada com todos os confortos para sua estadia. Aproveite a SPA, a cozinha completa e o ambiente aconchegante.</p>
+                </div>
+            </div>
+
+            <!-- Address Card -->
+            <div class="info-card">
+                <div class="card-header">
+                    <div class="card-icon">📍</div>
+                    <div class="card-title">Endereço</div>
+                </div>
+                <div class="card-body">
+                    <p style="font-weight: 600; margin-bottom: 12px;">Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595</p>
+                    <div class="button-group">
+                        <button class="btn" onclick="copyToClipboard('Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595')">📋 Copiar Endereço</button>
+                        <button class="btn" onclick="openMaps()">🗺️ Abrir Mapa</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram Card -->
+            <div class="instagram-card" onclick="openInstagram()">
+                <div class="instagram-header">
+                    <div class="instagram-top">
+                        <div class="instagram-icon">📷</div>
+                        <div class="instagram-title">Instagram</div>
+                    </div>
+                    <div style="font-size: 13px; opacity: 0.9;">@nossomarsuites</div>
+                </div>
+                <div class="instagram-body">
+                    <div class="instagram-text">Siga-nos no Instagram para fotos, dicas e atualizações sobre nossas acomodações!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Manual do Hóspede © 2024 — Nosso Mar Suítes</p>
+            <p style="margin-top: 8px; opacity: 0.7;">Desenvolvido com ❤️ para sua comodidade</p>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Copiado para a área de transferência!');
+            }).catch(err => {
+                alert('Erro ao copiar: ' + err);
+            });
+        }
+
+        function openWhatsApp() {
+            window.open('https://wa.me/554888089128?text=Olá! Sou hóspede da Safira e preciso de ajuda.', '_blank');
+        }
+
+        function openMaps() {
+            window.open('https://maps.google.com/?q=Servidão+Niberto+Borges+140A+Praia+da+Solidão+Florianópolis+88067-595', '_blank');
+        }
+
+        function openInstagram() {
+            window.open('https://www.instagram.com/nossomarsuites', '_blank');
+        }
+
+        function openVideo(url) {
+            window.open(url, '_blank');
+        }
+
+        function setLanguage(lang) {
+            alert('Idioma alterado para: ' + (lang === 'pt' ? 'Português' : lang === 'en' ? 'English' : 'Español'));
+            // Aqui você pode implementar a lógica de tradução
+        }
+    </script>
+</body>
+</html>
