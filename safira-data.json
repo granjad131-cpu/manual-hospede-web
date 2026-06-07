@@ -1,0 +1,183 @@
+{
+  "property": {
+    "id": "safira",
+    "name": "Safira",
+    "shortName": "Safira",
+    "region": "Praia da Solidão — Florianópolis/SC",
+    "address": "Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595",
+    "coverImage": "https://a0.muscache.com/im/pictures/hosting/Hosting-1541508881151070432/original/ab68e24a-ad71-40de-9cfb-868ea301f67b.jpeg",
+    "lockCode": "2352",
+    "accessMode": "mini_safe",
+    "wifi": [
+      {
+        "ssid": "SAFIRA",
+        "password": "23589723",
+        "primary": true
+      }
+    ],
+    "hostContact": {
+      "whatsapp": "+554888089128",
+      "phone": "+554888089128",
+      "instagram": "nossomarsuites"
+    },
+    "videos": [
+      {
+        "title": "Vídeo de chegada — noturno",
+        "description": "Localização da vaga, caminho até a acomodação e instruções de acesso (filmado à noite)."
+      },
+      {
+        "title": "Vídeo da porta",
+        "description": "Como abrir a fechadura digital."
+      },
+      {
+        "title": "Vídeo do chuveiro elétrico",
+        "description": "Instruções de uso do chuveiro elétrico."
+      }
+    ],
+    "structure": [
+      {
+        "title": "Suíte",
+        "icon": "bed.double.fill",
+        "items": [
+          "Ar-condicionado",
+          "Smart TV",
+          "Cama queen",
+          "Roupas de cama completas",
+          "Toalhas de banho",
+          "Sabonetes e espuma de banho",
+          "Banheira interna"
+        ]
+      },
+      {
+        "title": "Cozinha completa",
+        "icon": "fork.knife",
+        "items": [
+          "Cozinha completa integrada ao quarto (conceito aberto)",
+          "Churrasqueira",
+          "Micro-ondas",
+          "Chaleira elétrica",
+          "Cafeteira elétrica",
+          "Liquidificador",
+          "Frigobar ou geladeira",
+          "Jogo de panelas completo",
+          "Sanduicheira",
+          "Itens básicos: sal, açúcar, café, temperos, óleo"
+        ]
+      },
+      {
+        "title": "Banheiro",
+        "icon": "shower.fill",
+        "items": [
+          "Banheiro amplo e espaçoso",
+          "Chuveiro elétrico — vídeo explicativo disponível na tela Início",
+          "Banheira de hidromassagem com vista para o mar"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "title": "Apenas hóspedes cadastrados",
+        "description": "A hospedagem é destinada apenas aos hóspedes cadastrados na reserva. Não é permitida a entrada de visitas."
+      },
+      {
+        "title": "Economia de energia",
+        "description": "Sempre que sair da cabana, desligue o ar-condicionado, TV e SPA. Além de evitar desperdícios, isso preserva o bom funcionamento dos equipamentos."
+      },
+      {
+        "title": "Uso simultâneo de equipamentos",
+        "description": "Evite usar muitos equipamentos ao mesmo tempo (ar-condicionado, SPA e chuveiro juntos), para evitar sobrecarga elétrica."
+      },
+      {
+        "title": "SPAS — desligar quando não estiver em uso",
+        "description": "Para preservar o equipamento, desligue a SPA quando não estiver em uso. Após atingir a temperatura desejada, você pode desligar e ligar novamente quando desejar utilizar."
+      },
+      {
+        "title": "Esvaziar SPA antes do check-out",
+        "description": "Pedimos que a SPA da suíte e a SPA externa sejam esvaziadas antes do check-out. A água utilizada pode ser reaproveitada de forma consciente, já que nossa região enfrenta períodos de escassez."
+      },
+      {
+        "title": "Reposição de toalhas",
+        "description": "A reposição de toalhas é disponibilizada gratuitamente a partir do 5º dia de hospedagem. Solicitações antes desse período têm custo adicional de R$ 25,00 por peça."
+      },
+      {
+        "title": "Proibido velas",
+        "description": "Não é permitido o uso de velas convencionais em nenhum ambiente, por segurança, já que os espaços possuem estrutura em madeira."
+      },
+      {
+        "title": "Proibido fumar dentro da suíte",
+        "description": "Não é permitido fumar dentro da suíte. Nas áreas externas o uso é livre."
+      },
+      {
+        "title": "Não aceitamos pets",
+        "description": "Não aceitamos pets. O espaço possui áreas elevadas, vidros e muito contato com a natureza, o que pode não ser seguro para os animais."
+      },
+      {
+        "title": "Trancar a suíte ao sair",
+        "description": "Sempre que sair da pousada, mantenha sua suíte trancada e leve a chave com você. A chave permanece sob responsabilidade do hóspede durante a estadia."
+      },
+      {
+        "title": "Cozinha organizada",
+        "description": "Mantenha a cozinha organizada, com louças lavadas, utensílios guardados e lixo devidamente armazenado, evitando insetos e bichinhos."
+      },
+      {
+        "title": "Portas e janelas ao entardecer",
+        "description": "Por estarmos em meio à natureza, recomendamos manter portas encostadas ao final da tarde e trazer repelente, especialmente pessoas alérgicas a insetos."
+      },
+      {
+        "title": "Descarte de lixo",
+        "description": "Não deixe lixo espalhado na cabana ou em áreas comuns. Disponibilizamos uma lixeira grande na entrada da garagem para descarte adequado, inclusive no check-out."
+      },
+      {
+        "title": "Silêncio noturno",
+        "description": "Respeitar silêncio das 22h às 08h."
+      },
+      {
+        "title": "Som alto proibido",
+        "description": "Não é permitido som em volume alto, em nenhum horário, respeitando o conforto dos hóspedes das cabanas vizinhas."
+      },
+      {
+        "title": "Vaso sanitário",
+        "description": "Pedimos a gentileza de não descartar papel higiénico no vaso sanitário."
+      },
+      {
+        "title": "Cuidado com itens (reposição)",
+        "description": "Os itens da acomodação são conferidos e entregues em excelente estado. Em caso de taças ou copos quebrados, será cobrada a reposição conforme a tabela desta tela, com pagamento via PIX."
+      }
+    ],
+    "courtesy": [
+      "Papel higiênico para início da hospedagem",
+      "Sabonete e espuma de banho",
+      "Café, açúcar, sal e óleo",
+      "Detergente e bucha de pia",
+      "Jogos de cama, cobertas, travesseiros e toalhas"
+    ],
+    "spaInstructions": [
+      "Modelo Esmeralda — aquecimento em aproximadamente 40 minutos em ambiente fechado.",
+      "Desligar o equipamento quando não estiver em uso.",
+      "Esvaziar antes do check-out.",
+      "Uso consciente da água — recurso escasso na região."
+    ],
+    "nature": [
+      "Traga o seu repelente — é uma região cercada por mata.",
+      "Mantenha portas e janelas fechadas ao entardecer.",
+      "Evite contato com animais locais (saguis, lagartos) e não os alimente."
+    ],
+    "emergencyContacts": [
+      {
+        "name": "Polícia Militar",
+        "phone": "190",
+        "isEmergency": true
+      },
+      {
+        "name": "SAMU",
+        "phone": "192",
+        "isEmergency": true
+      },
+      {
+        "name": "Bombeiros",
+        "phone": "193",
+        "isEmergency": true
+      }
+    ]
+  }
+}
