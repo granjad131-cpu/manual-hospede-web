@@ -1,0 +1,157 @@
+{
+  "property": {
+    "id": "safira",
+    "name": "Safira",
+    "region": "Praia da Solidão — Florianópolis/SC",
+    "address": "Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595",
+    "lockCode": "2352",
+    "wifi": [{"ssid": "SAFIRA", "password": "23589723"}]
+  },
+  "translations": {
+    "pt": {
+      "welcome": "Bem-vindo",
+      "home": "Início",
+      "house": "Casa",
+      "rules": "Regras",
+      "around": "Arredores",
+      "contact": "Contato",
+      "wifi": "Wi-Fi",
+      "access": "Acesso",
+      "whatsapp": "WhatsApp",
+      "emergency": "Emergência",
+      "welcome_title": "Bem-vindo à Safira!",
+      "welcome_body": "Ficamos felizes em recebê-lo! Aqui você encontrará todas as informações necessárias para aproveitar sua estadia ao máximo.",
+      "wifi_title": "Wi-Fi",
+      "wifi_network": "Rede",
+      "wifi_password": "Senha",
+      "wifi_copy": "Copiar Senha",
+      "address_title": "Endereço",
+      "address_copy": "Copiar Endereço",
+      "address_map": "Abrir Mapa",
+      "rules_title": "Regras da Casa",
+      "around_title": "Arredores",
+      "contact_title": "Contato",
+      "restaurants": "Restaurantes",
+      "markets": "Mercados",
+      "services": "Serviços",
+      "videos": "Vídeos"
+    },
+    "en": {
+      "welcome": "Welcome",
+      "home": "Home",
+      "house": "House",
+      "rules": "Rules",
+      "around": "Around",
+      "contact": "Contact",
+      "wifi": "Wi-Fi",
+      "access": "Access",
+      "whatsapp": "WhatsApp",
+      "emergency": "Emergency",
+      "welcome_title": "Welcome to Safira!",
+      "welcome_body": "We are happy to receive you! Here you will find all the information you need to make the most of your stay.",
+      "wifi_title": "Wi-Fi",
+      "wifi_network": "Network",
+      "wifi_password": "Password",
+      "wifi_copy": "Copy Password",
+      "address_title": "Address",
+      "address_copy": "Copy Address",
+      "address_map": "Open Map",
+      "rules_title": "House Rules",
+      "around_title": "Around",
+      "contact_title": "Contact",
+      "restaurants": "Restaurants",
+      "markets": "Markets",
+      "services": "Services",
+      "videos": "Videos"
+    },
+    "es": {
+      "welcome": "Bienvenido",
+      "home": "Inicio",
+      "house": "Casa",
+      "rules": "Reglas",
+      "around": "Alrededores",
+      "contact": "Contacto",
+      "wifi": "Wi-Fi",
+      "access": "Acceso",
+      "whatsapp": "WhatsApp",
+      "emergency": "Emergencia",
+      "welcome_title": "¡Bienvenido a Safira!",
+      "welcome_body": "¡Nos alegra recibirte! Aquí encontrarás toda la información que necesitas para aprovechar al máximo tu estadía.",
+      "wifi_title": "Wi-Fi",
+      "wifi_network": "Red",
+      "wifi_password": "Contraseña",
+      "wifi_copy": "Copiar Contraseña",
+      "address_title": "Dirección",
+      "address_copy": "Copiar Dirección",
+      "address_map": "Abrir Mapa",
+      "rules_title": "Reglas de la Casa",
+      "around_title": "Alrededores",
+      "contact_title": "Contacto",
+      "restaurants": "Restaurantes",
+      "markets": "Mercados",
+      "services": "Servicios",
+      "videos": "Videos"
+    }
+  },
+  "restaurants": [
+    {
+      "name": "Brava Pizzaria",
+      "category": "restaurante",
+      "description": "Pizzaria artesanal com forno à lenha",
+      "priceRange": "R$ 50-120",
+      "phone": "+554833800000",
+      "distance": "5 km"
+    },
+    {
+      "name": "Dale Cozinha Artesanal",
+      "category": "restaurante",
+      "description": "Cozinha autoral com pratos contemporâneos",
+      "priceRange": "R$ 90-180",
+      "distance": "6 km"
+    },
+    {
+      "name": "Aloha Pizzaria à Lenha",
+      "category": "delivery",
+      "description": "Pizzaria à lenha com entrega",
+      "phone": "+554898481233",
+      "distance": "Entrega"
+    }
+  ],
+  "markets": [
+    {
+      "name": "Mini Mercado Açores",
+      "description": "Mercadinho de bairro - pão, bebidas, frios",
+      "distance": "2 km",
+      "duration": "5 min",
+      "phone": "+554832377251"
+    },
+    {
+      "name": "Samer Supermercados",
+      "description": "Supermercado completo - carnes, hortifruti",
+      "distance": "3 km",
+      "duration": "7 min",
+      "phone": "+554832379936"
+    },
+    {
+      "name": "Hiper Select (Armação)",
+      "description": "Supermercado completo com hortifruti fresco",
+      "distance": "6 km",
+      "duration": "10 min",
+      "phone": "+554832379936"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Vídeo de chegada — noturno",
+      "description": "Localização da vaga, caminho até a acomodação"
+    },
+    {
+      "title": "Vídeo da porta",
+      "description": "Como abrir a fechadura digital"
+    },
+    {
+      "title": "Vídeo do chuveiro elétrico",
+      "description": "Instruções de uso do chuveiro elétrico"
+    }
+  ]
+}

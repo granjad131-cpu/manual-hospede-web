@@ -5,471 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manual do Hóspede - Safira</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            min-height: 100vh;
-        }
-
-        /* Header */
-        .header {
-            position: relative;
-            height: 280px;
-            background: linear-gradient(135deg, #0a7ea4 0%, #0d5f7f 100%);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
-            z-index: 1;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .header-badge {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.9;
-            margin-bottom: 8px;
-        }
-
-        .header-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .header-subtitle {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* Language/Theme Bar */
-        .lang-bar {
-            display: flex;
-            gap: 8px;
-            padding: 16px 20px;
-            background: #fafafa;
-            border-bottom: 1px solid #e5e5e5;
-            justify-content: flex-end;
-        }
-
-        .lang-btn {
-            padding: 6px 12px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .lang-btn.active {
-            background: #0a7ea4;
-            color: white;
-            border-color: #0a7ea4;
-        }
-
-        .lang-btn:hover {
-            border-color: #0a7ea4;
-        }
-
-        /* Shortcuts Grid */
-        .shortcuts {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            padding: 16px;
-            background: white;
-        }
-
-        .shortcut-tile {
-            padding: 16px;
-            border-radius: 12px;
-            border: 1px solid #e5e5e5;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .shortcut-tile:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .shortcut-tile.primary {
-            background: rgba(10, 126, 164, 0.08);
-            border-color: rgba(10, 126, 164, 0.3);
-        }
-
-        .shortcut-tile.success {
-            background: rgba(34, 197, 94, 0.08);
-            border-color: rgba(34, 197, 94, 0.3);
-        }
-
-        .shortcut-tile.warning {
-            background: rgba(245, 158, 11, 0.08);
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        .shortcut-tile.error {
-            background: rgba(239, 68, 68, 0.08);
-            border-color: rgba(239, 68, 68, 0.3);
-        }
-
-        .shortcut-icon {
-            font-size: 24px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .shortcut-label {
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .shortcut-sub {
-            font-size: 11px;
-            color: #666;
-            opacity: 0.7;
-        }
-
-        /* Content Sections */
-        .content {
-            padding: 20px;
-        }
-
-        .section {
-            margin-bottom: 24px;
-        }
-
-        .card {
-            background: white;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-
-        .card-header {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 12px;
-            align-items: flex-start;
-        }
-
-        .card-icon {
-            font-size: 20px;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .card-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .card-body {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .card-body p {
-            margin-bottom: 8px;
-        }
-
-        .list-item {
-            padding: 12px 0;
-            border-top: 1px solid #f0f0f0;
-            font-size: 14px;
-        }
-
-        .list-item:first-child {
-            border-top: none;
-            padding-top: 0;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: #0a7ea4;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .button:hover {
-            background: #0d5f7f;
-            transform: scale(0.98);
-        }
-
-        .button.secondary {
-            background: rgba(10, 126, 164, 0.1);
-            color: #0a7ea4;
-            border: 1px solid #0a7ea4;
-        }
-
-        .button.secondary:hover {
-            background: rgba(10, 126, 164, 0.2);
-        }
-
-        .button-group {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 12px;
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            gap: 0;
-            border-bottom: 2px solid #e5e5e5;
-            margin-bottom: 20px;
-            overflow-x: auto;
-        }
-
-        .tab {
-            padding: 12px 16px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            color: #999;
-            border-bottom: 3px solid transparent;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-
-        .tab.active {
-            color: #0a7ea4;
-            border-bottom-color: #0a7ea4;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 40px 20px;
-            text-align: center;
-            color: #999;
-            font-size: 12px;
-            border-top: 1px solid #e5e5e5;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .header {
-                height: 240px;
-            }
-
-            .header-title {
-                font-size: 24px;
-            }
-
-            .shortcuts {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 40px 20px;
-            color: #999;
-        }
-
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #e5e5e5;
-            border-top-color: #0a7ea4;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; background: white; min-height: 100vh; }
+        .header { position: relative; height: 280px; background: linear-gradient(135deg, #0a7ea4 0%, #0d5f7f 100%); color: white; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)); z-index: 1; }
+        .header-content { position: relative; z-index: 2; }
+        .header-badge { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; opacity: 0.9; margin-bottom: 8px; }
+        .header-title { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+        .header-subtitle { font-size: 14px; opacity: 0.9; }
+        .lang-bar { display: flex; gap: 8px; padding: 16px 20px; background: #fafafa; border-bottom: 1px solid #e5e5e5; justify-content: flex-end; }
+        .lang-btn { padding: 6px 12px; border: 1px solid #ddd; background: white; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.2s; }
+        .lang-btn.active { background: #0a7ea4; color: white; border-color: #0a7ea4; }
+        .shortcuts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px; background: white; }
+        .shortcut-tile { padding: 16px; border-radius: 12px; border: 1px solid #e5e5e5; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; }
+        .shortcut-tile:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .shortcut-tile.primary { background: rgba(10, 126, 164, 0.08); border-color: rgba(10, 126, 164, 0.3); }
+        .shortcut-tile.success { background: rgba(34, 197, 94, 0.08); border-color: rgba(34, 197, 94, 0.3); }
+        .shortcut-tile.warning { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.3); }
+        .shortcut-tile.error { background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.3); }
+        .shortcut-icon { font-size: 24px; }
+        .shortcut-label { font-size: 13px; font-weight: 600; }
+        .shortcut-sub { font-size: 11px; color: #666; opacity: 0.7; }
+        .content { padding: 20px; }
+        .tabs { display: flex; gap: 0; border-bottom: 2px solid #e5e5e5; margin-bottom: 20px; overflow-x: auto; }
+        .tab { padding: 12px 16px; border: none; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: #999; border-bottom: 3px solid transparent; white-space: nowrap; transition: all 0.2s; }
+        .tab.active { color: #0a7ea4; border-bottom-color: #0a7ea4; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .card { background: white; border: 1px solid #e5e5e5; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+        .card-header { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+        .card-icon { font-size: 20px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .card-title { font-size: 16px; font-weight: 600; color: #333; }
+        .card-body { color: #555; font-size: 14px; line-height: 1.6; }
+        .list-item { padding: 12px 0; border-top: 1px solid #f0f0f0; font-size: 14px; }
+        .list-item:first-child { border-top: none; padding-top: 0; }
+        .button { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; background: #0a7ea4; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; text-decoration: none; }
+        .button:hover { background: #0d5f7f; transform: scale(0.98); }
+        .button.secondary { background: rgba(10, 126, 164, 0.1); color: #0a7ea4; border: 1px solid #0a7ea4; }
+        .button-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+        .footer { padding: 40px 20px; text-align: center; color: #999; font-size: 12px; border-top: 1px solid #e5e5e5; }
+        @media (max-width: 600px) { .shortcuts { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="header-content">
-                <div class="header-badge">BEM-VINDO</div>
-                <div class="header-title" id="propertyName">Safira</div>
-                <div class="header-subtitle" id="propertyRegion">Praia da Solidão — Florianópolis/SC</div>
+                <div class="header-badge" data-key="welcome">BEM-VINDO</div>
+                <div class="header-title">Safira</div>
+                <div class="header-subtitle">Praia da Solidão — Florianópolis/SC</div>
             </div>
         </div>
 
-        <!-- Language Bar -->
         <div class="lang-bar">
             <button class="lang-btn active" onclick="setLanguage('pt')">🇧🇷 PT</button>
             <button class="lang-btn" onclick="setLanguage('en')">🇺🇸 EN</button>
             <button class="lang-btn" onclick="setLanguage('es')">🇪🇸 ES</button>
         </div>
 
-        <!-- Shortcuts -->
         <div class="shortcuts">
-            <a href="#casa" class="shortcut-tile primary">
+            <a href="#" onclick="showTab('inicio'); return false;" class="shortcut-tile primary">
                 <div class="shortcut-icon">📶</div>
-                <div class="shortcut-label">Wi-Fi</div>
-                <div class="shortcut-sub">Conectar</div>
+                <div class="shortcut-label" data-key="wifi">Wi-Fi</div>
+                <div class="shortcut-sub" data-key="wifi">Conectar</div>
             </a>
-            <a href="#casa" class="shortcut-tile primary">
+            <a href="#" onclick="showTab('casa'); return false;" class="shortcut-tile primary">
                 <div class="shortcut-icon">🔐</div>
-                <div class="shortcut-label">Acesso</div>
-                <div class="shortcut-sub" id="accessCode">2352</div>
+                <div class="shortcut-label" data-key="access">Acesso</div>
+                <div class="shortcut-sub">2352</div>
             </a>
-            <a href="#contato" class="shortcut-tile success">
+            <a href="#" onclick="showTab('contato'); return false;" class="shortcut-tile success">
                 <div class="shortcut-icon">💬</div>
-                <div class="shortcut-label">WhatsApp</div>
-                <div class="shortcut-sub">Contato</div>
+                <div class="shortcut-label" data-key="whatsapp">WhatsApp</div>
+                <div class="shortcut-sub" data-key="contact">Contato</div>
             </a>
-            <a href="#regras" class="shortcut-tile warning">
+            <a href="#" onclick="showTab('regras'); return false;" class="shortcut-tile warning">
                 <div class="shortcut-icon">📋</div>
-                <div class="shortcut-label">Regras</div>
-                <div class="shortcut-sub">Importante</div>
+                <div class="shortcut-label" data-key="rules">Regras</div>
+                <div class="shortcut-sub" data-key="rules">Importante</div>
             </a>
-            <a href="#arredores" class="shortcut-tile primary">
+            <a href="#" onclick="showTab('arredores'); return false;" class="shortcut-tile primary">
                 <div class="shortcut-icon">🗺️</div>
-                <div class="shortcut-label">Arredores</div>
-                <div class="shortcut-sub">Consultar</div>
+                <div class="shortcut-label" data-key="around">Arredores</div>
+                <div class="shortcut-sub" data-key="around">Consultar</div>
             </a>
-            <a href="#contato" class="shortcut-tile error">
+            <a href="#" onclick="showTab('contato'); return false;" class="shortcut-tile error">
                 <div class="shortcut-icon">🚨</div>
-                <div class="shortcut-label">Emergência</div>
-                <div class="shortcut-sub">Contatos</div>
+                <div class="shortcut-label" data-key="emergency">Emergência</div>
+                <div class="shortcut-sub" data-key="emergency">Contatos</div>
             </a>
         </div>
 
-        <!-- Content -->
         <div class="content">
-            <!-- Tabs -->
             <div class="tabs">
-                <button class="tab active" onclick="showTab('inicio')">Início</button>
-                <button class="tab" onclick="showTab('casa')">Casa</button>
-                <button class="tab" onclick="showTab('regras')">Regras</button>
-                <button class="tab" onclick="showTab('arredores')">Arredores</button>
-                <button class="tab" onclick="showTab('contato')">Contato</button>
+                <button class="tab active" onclick="showTab('inicio')" data-key="home">Início</button>
+                <button class="tab" onclick="showTab('casa')" data-key="house">Casa</button>
+                <button class="tab" onclick="showTab('regras')" data-key="rules">Regras</button>
+                <button class="tab" onclick="showTab('arredores')" data-key="around">Arredores</button>
+                <button class="tab" onclick="showTab('contato')" data-key="contact">Contato</button>
             </div>
 
             <!-- TAB: Início -->
             <div id="inicio" class="tab-content active">
-                <!-- Boas-vindas -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🍃</div>
-                        <div class="card-title">Bem-vindo à Safira</div>
+                        <div class="card-title" data-key="welcome_title">Bem-vindo à Safira!</div>
                     </div>
-                    <div class="card-body">
-                        <p>Ficamos felizes em recebê-lo! Aqui você encontrará todas as informações necessárias para aproveitar sua estadia ao máximo.</p>
-                        <p><em>Qualquer dúvida, entre em contato conosco via WhatsApp!</em></p>
-                    </div>
+                    <div class="card-body" data-key="welcome_body">Ficamos felizes em recebê-lo! Aqui você encontrará todas as informações necessárias para aproveitar sua estadia ao máximo.</div>
                 </div>
 
-                <!-- Wi-Fi -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">📶</div>
-                        <div class="card-title">Wi-Fi</div>
+                        <div class="card-title" data-key="wifi_title">Wi-Fi</div>
                     </div>
                     <div class="card-body">
                         <div class="list-item">
-                            <strong>Rede:</strong> SAFIRA<br>
-                            <strong>Senha:</strong> <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 4px;">23589723</code>
+                            <strong data-key="wifi_network">Rede</strong>: SAFIRA<br>
+                            <strong data-key="wifi_password">Senha</strong>: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 4px;">23589723</code>
                         </div>
                         <div class="button-group">
-                            <button class="button" onclick="copyToClipboard('23589723')">📋 Copiar Senha</button>
+                            <button class="button" onclick="copyToClipboard('23589723')" data-key="wifi_copy">📋 Copiar Senha</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Vídeos -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🎥</div>
-                        <div class="card-title">Vídeos Úteis</div>
+                        <div class="card-title" data-key="videos">Vídeos</div>
                     </div>
-                    <div class="card-body">
-                        <div class="list-item">▶️ <strong>Vídeo de chegada — noturno</strong><br><small>Localização da vaga, caminho até a acomodação e instruções de acesso</small></div>
-                        <div class="list-item">▶️ <strong>Vídeo da porta</strong><br><small>Como abrir a fechadura digital</small></div>
-                        <div class="list-item">▶️ <strong>Vídeo do chuveiro elétrico</strong><br><small>Instruções de uso do chuveiro elétrico</small></div>
-                    </div>
+                    <div class="card-body" id="videos-list"></div>
                 </div>
 
-                <!-- Endereço -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">📍</div>
-                        <div class="card-title">Endereço</div>
+                        <div class="card-title" data-key="address_title">Endereço</div>
                     </div>
                     <div class="card-body">
-                        <p id="propertyAddress">Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595</p>
+                        <p>Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595</p>
                         <div class="button-group">
-                            <button class="button" onclick="copyToClipboard(document.getElementById('propertyAddress').textContent)">📋 Copiar Endereço</button>
-                            <button class="button secondary" onclick="openMaps()">🗺️ Abrir Mapa</button>
+                            <button class="button" onclick="copyToClipboard('Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595')" data-key="address_copy">📋 Copiar Endereço</button>
+                            <button class="button secondary" onclick="openMaps()" data-key="address_map">🗺️ Abrir Mapa</button>
                         </div>
                     </div>
                 </div>
@@ -477,7 +157,6 @@
 
             <!-- TAB: Casa -->
             <div id="casa" class="tab-content">
-                <!-- Estrutura -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🛏️</div>
@@ -489,8 +168,7 @@
                         <div class="list-item">✓ Cama queen</div>
                         <div class="list-item">✓ Roupas de cama completas</div>
                         <div class="list-item">✓ Toalhas de banho</div>
-                        <div class="list-item">✓ Sabonetes e espuma de banho</div>
-                        <div class="list-item">✓ Banheira interna</div>
+                        <div class="list-item">✓ Banheira de hidromassagem com vista para o mar</div>
                     </div>
                 </div>
 
@@ -506,10 +184,8 @@
                         <div class="list-item">✓ Chaleira elétrica</div>
                         <div class="list-item">✓ Cafeteira elétrica</div>
                         <div class="list-item">✓ Liquidificador</div>
-                        <div class="list-item">✓ Frigobar ou geladeira</div>
+                        <div class="list-item">✓ Frigobar</div>
                         <div class="list-item">✓ Jogo de panelas completo</div>
-                        <div class="list-item">✓ Sanduicheira</div>
-                        <div class="list-item">✓ Itens básicos: sal, açúcar, café, temperos, óleo</div>
                     </div>
                 </div>
 
@@ -520,37 +196,21 @@
                     </div>
                     <div class="card-body">
                         <div class="list-item">✓ Banheiro amplo e espaçoso</div>
-                        <div class="list-item">✓ Chuveiro elétrico — vídeo explicativo disponível</div>
+                        <div class="list-item">✓ Chuveiro elétrico</div>
                         <div class="list-item">✓ Banheira de hidromassagem com vista para o mar</div>
                     </div>
                 </div>
 
-                <!-- SPA -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🛁</div>
                         <div class="card-title">SPA (Modelo Esmeralda)</div>
                     </div>
                     <div class="card-body">
-                        <div class="list-item">⏱️ Aquecimento em aproximadamente 40 minutos em ambiente fechado</div>
-                        <div class="list-item">🔌 Desligar o equipamento quando não estiver em uso</div>
+                        <div class="list-item">⏱️ Aquecimento em aproximadamente 40 minutos</div>
+                        <div class="list-item">🔌 Desligar quando não estiver em uso</div>
                         <div class="list-item">💧 Esvaziar antes do check-out</div>
-                        <div class="list-item">♻️ Uso consciente da água — recurso escasso na região</div>
-                    </div>
-                </div>
-
-                <!-- Cortesias -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🎁</div>
-                        <div class="card-title">Cortesias Incluídas</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-item">✓ Papel higiênico para início da hospedagem</div>
-                        <div class="list-item">✓ Sabonete e espuma de banho</div>
-                        <div class="list-item">✓ Café, açúcar, sal e óleo</div>
-                        <div class="list-item">✓ Detergente e bucha de pia</div>
-                        <div class="list-item">✓ Jogos de cama, cobertas, travesseiros e toalhas</div>
+                        <div class="list-item">♻️ Uso consciente da água</div>
                     </div>
                 </div>
             </div>
@@ -560,30 +220,27 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">📋</div>
-                        <div class="card-title">Regras da Casa</div>
+                        <div class="card-title" data-key="rules_title">Regras da Casa</div>
                     </div>
                     <div class="card-body">
-                        <div class="list-item"><strong>Apenas hóspedes cadastrados</strong><br>A hospedagem é destinada apenas aos hóspedes cadastrados na reserva. Não é permitida a entrada de visitas.</div>
-                        <div class="list-item"><strong>Economia de energia</strong><br>Sempre que sair da cabana, desligue o ar-condicionado, TV e SPA.</div>
-                        <div class="list-item"><strong>Uso simultâneo de equipamentos</strong><br>Evite usar muitos equipamentos ao mesmo tempo (ar-condicionado, SPA e chuveiro juntos).</div>
-                        <div class="list-item"><strong>SPAS — desligar quando não estiver em uso</strong><br>Para preservar o equipamento, desligue a SPA quando não estiver em uso.</div>
+                        <div class="list-item"><strong>Apenas hóspedes cadastrados</strong><br>A hospedagem é destinada apenas aos hóspedes cadastrados na reserva.</div>
+                        <div class="list-item"><strong>Economia de energia</strong><br>Sempre que sair, desligue o ar-condicionado, TV e SPA.</div>
+                        <div class="list-item"><strong>Uso simultâneo de equipamentos</strong><br>Evite usar muitos equipamentos ao mesmo tempo.</div>
+                        <div class="list-item"><strong>SPAS — desligar quando não estiver em uso</strong><br>Para preservar o equipamento, desligue a SPA.</div>
                         <div class="list-item"><strong>Esvaziar SPA antes do check-out</strong><br>Pedimos que a SPA seja esvaziada antes do check-out.</div>
-                        <div class="list-item"><strong>Reposição de toalhas</strong><br>Disponibilizada gratuitamente a partir do 5º dia. Antes disso: R$ 25,00 por peça.</div>
-                        <div class="list-item"><strong>Proibido velas</strong><br>Não é permitido o uso de velas convencionais por segurança.</div>
+                        <div class="list-item"><strong>Reposição de toalhas</strong><br>Disponibilizada gratuitamente a partir do 5º dia.</div>
+                        <div class="list-item"><strong>Proibido velas</strong><br>Não é permitido o uso de velas convencionais.</div>
                         <div class="list-item"><strong>Proibido fumar dentro da suíte</strong><br>Nas áreas externas o uso é livre.</div>
-                        <div class="list-item"><strong>Não aceitamos pets</strong><br>O espaço possui áreas elevadas, vidros e muito contato com a natureza.</div>
-                        <div class="list-item"><strong>Trancar a suíte ao sair</strong><br>Mantenha sua suíte trancada e leve a chave com você.</div>
-                        <div class="list-item"><strong>Cozinha organizada</strong><br>Mantenha louças lavadas, utensílios guardados e lixo devidamente armazenado.</div>
-                        <div class="list-item"><strong>Portas e janelas ao entardecer</strong><br>Recomendamos manter portas encostadas ao final da tarde. Traga repelente!</div>
-                        <div class="list-item"><strong>Descarte de lixo</strong><br>Não deixe lixo espalhado. Disponibilizamos lixeira na entrada da garagem.</div>
+                        <div class="list-item"><strong>Não aceitamos pets</strong><br>O espaço possui áreas elevadas e vidros.</div>
+                        <div class="list-item"><strong>Trancar a suíte ao sair</strong><br>Mantenha sua suíte trancada.</div>
+                        <div class="list-item"><strong>Cozinha organizada</strong><br>Mantenha louças lavadas e lixo armazenado.</div>
+                        <div class="list-item"><strong>Portas e janelas ao entardecer</strong><br>Recomendamos manter portas encostadas. Traga repelente!</div>
+                        <div class="list-item"><strong>Descarte de lixo</strong><br>Não deixe lixo espalhado.</div>
                         <div class="list-item"><strong>Silêncio noturno</strong><br>Respeitar silêncio das 22h às 08h.</div>
-                        <div class="list-item"><strong>Som alto proibido</strong><br>Não é permitido som em volume alto em nenhum horário.</div>
-                        <div class="list-item"><strong>Vaso sanitário</strong><br>Não descartar papel higiênico no vaso sanitário.</div>
-                        <div class="list-item"><strong>Cuidado com itens</strong><br>Em caso de taças ou copos quebrados, será cobrada a reposição via PIX.</div>
+                        <div class="list-item"><strong>Som alto proibido</strong><br>Não é permitido som em volume alto.</div>
                     </div>
                 </div>
 
-                <!-- Natureza -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🌿</div>
@@ -592,7 +249,7 @@
                     <div class="card-body">
                         <div class="list-item">🦟 Traga o seu repelente — é uma região cercada por mata.</div>
                         <div class="list-item">🪟 Mantenha portas e janelas fechadas ao entardecer.</div>
-                        <div class="list-item">🐒 Evite contato com animais locais (saguis, lagartos) e não os alimente.</div>
+                        <div class="list-item">🐒 Evite contato com animais locais e não os alimente.</div>
                     </div>
                 </div>
             </div>
@@ -601,30 +258,29 @@
             <div id="arredores" class="tab-content">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">🗺️</div>
-                        <div class="card-title">Arredores</div>
+                        <div class="card-icon">🍽️</div>
+                        <div class="card-title" data-key="restaurants">Restaurantes</div>
                     </div>
-                    <div class="card-body">
-                        <p>Você está em um local privilegiado! Aqui você encontra:</p>
-                        <div class="list-item">🏖️ Praia da Solidão — a apenas alguns passos</div>
-                        <div class="list-item">🍽️ Restaurantes e bares na região</div>
-                        <div class="list-item">🛒 Mercados e comércios</div>
-                        <div class="list-item">🏥 Hospitais e farmácias próximas</div>
-                        <div class="list-item">🎯 Atrações turísticas de Florianópolis</div>
+                    <div class="card-body" id="restaurants-list"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🛒</div>
+                        <div class="card-title" data-key="markets">Mercados</div>
                     </div>
+                    <div class="card-body" id="markets-list"></div>
                 </div>
             </div>
 
             <!-- TAB: Contato -->
             <div id="contato" class="tab-content">
-                <!-- Anfitrião -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">👤</div>
-                        <div class="card-title">Anfitrião</div>
+                        <div class="card-title">Nossomar Suites</div>
                     </div>
                     <div class="card-body">
-                        <p><strong>Nossomar Suites</strong></p>
                         <div class="button-group">
                             <button class="button" onclick="openWhatsApp()">💬 WhatsApp</button>
                             <button class="button secondary" onclick="window.open('https://www.instagram.com/nossomarsuites', '_blank')">📸 Instagram</button>
@@ -632,11 +288,10 @@
                     </div>
                 </div>
 
-                <!-- Emergências -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🚨</div>
-                        <div class="card-title">Emergências</div>
+                        <div class="card-title" data-key="emergency">Emergências</div>
                     </div>
                     <div class="card-body">
                         <div class="list-item"><strong>Polícia Militar:</strong> <a href="tel:190" style="color: #0a7ea4;">190</a></div>
@@ -647,67 +302,111 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <div class="footer">
             <p>Manual do Hóspede - Safira<br>Nossomar Suites © 2024</p>
         </div>
     </div>
 
     <script>
-        // Funções de navegação
-        function showTab(tabName) {
-            // Esconder todos os tabs
-            document.querySelectorAll('.tab-content').forEach(el => {
-                el.classList.remove('active');
-            });
-            document.querySelectorAll('.tab').forEach(el => {
-                el.classList.remove('active');
-            });
+        let currentLanguage = 'pt';
+        let data = {};
 
-            // Mostrar o tab selecionado
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
+        // Carregar dados
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                data = await response.json();
+                renderContent();
+            } catch (e) {
+                console.error('Erro ao carregar dados:', e);
+            }
+        }
 
-            // Scroll para o topo
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function t(key) {
+            return data.translations?.[currentLanguage]?.[key] || key;
         }
 
         function setLanguage(lang) {
-            // Atualizar botões
-            document.querySelectorAll('.lang-btn').forEach(el => {
-                el.classList.remove('active');
-            });
+            currentLanguage = lang;
+            document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
             event.target.classList.add('active');
+            renderContent();
+        }
 
-            // TODO: Implementar mudança de idioma
-            console.log('Idioma selecionado:', lang);
+        function renderContent() {
+            // Atualizar elementos com data-key
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.dataset.key;
+                const translation = t(key);
+                if (el.tagName === 'BUTTON' || el.tagName === 'A') {
+                    el.textContent = translation;
+                } else {
+                    el.textContent = translation;
+                }
+            });
+
+            // Renderizar restaurantes
+            const restaurantsList = document.getElementById('restaurants-list');
+            if (restaurantsList && data.restaurants) {
+                restaurantsList.innerHTML = data.restaurants.map(r => `
+                    <div class="list-item">
+                        <strong>${r.name}</strong><br>
+                        ${r.description}<br>
+                        ${r.distance ? `<small>📍 ${r.distance}</small>` : ''}
+                        ${r.phone ? `<br><a href="tel:${r.phone}" style="color: #0a7ea4;">${r.phone}</a>` : ''}
+                    </div>
+                `).join('');
+            }
+
+            // Renderizar mercados
+            const marketsList = document.getElementById('markets-list');
+            if (marketsList && data.markets) {
+                marketsList.innerHTML = data.markets.map(m => `
+                    <div class="list-item">
+                        <strong>${m.name}</strong><br>
+                        ${m.description}<br>
+                        <small>📍 ${m.distance} • ⏱️ ${m.duration}</small><br>
+                        <a href="tel:${m.phone}" style="color: #0a7ea4;">${m.phone}</a>
+                    </div>
+                `).join('');
+            }
+
+            // Renderizar vídeos
+            const videosList = document.getElementById('videos-list');
+            if (videosList && data.videos) {
+                videosList.innerHTML = data.videos.map(v => `
+                    <div class="list-item">▶️ <strong>${v.title}</strong><br><small>${v.description}</small></div>
+                `).join('');
+            }
+        }
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert('✅ Copiado para a área de transferência!');
-            }).catch(err => {
-                console.error('Erro ao copiar:', err);
-            });
+                alert('✅ Copiado!');
+            }).catch(err => console.error('Erro:', err));
         }
 
         function openWhatsApp() {
             const phone = '+554888089128';
             const message = 'Olá! Sou hóspede da Safira e preciso de ajuda.';
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
         function openMaps() {
             const address = 'Servidão Niberto Borges, 140A, Praia da Solidão, Florianópolis, SC';
-            const url = `https://www.google.com/maps/search/${encodeURIComponent(address)}`;
-            window.open(url, '_blank');
+            window.open(`https://www.google.com/maps/search/${encodeURIComponent(address)}`, '_blank');
         }
 
         // Inicializar
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('✅ Manual do Hóspede carregado com sucesso!');
-        });
+        document.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
 </html>
