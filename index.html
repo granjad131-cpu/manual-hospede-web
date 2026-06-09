@@ -1,412 +1,1931 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual do Hóspede - Safira</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; background: white; min-height: 100vh; }
-        .header { position: relative; height: 280px; background: linear-gradient(135deg, #0a7ea4 0%, #0d5f7f 100%); color: white; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; overflow: hidden; }
-        .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)); z-index: 1; }
-        .header-content { position: relative; z-index: 2; }
-        .header-badge { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; opacity: 0.9; margin-bottom: 8px; }
-        .header-title { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
-        .header-subtitle { font-size: 14px; opacity: 0.9; }
-        .lang-bar { display: flex; gap: 8px; padding: 16px 20px; background: #fafafa; border-bottom: 1px solid #e5e5e5; justify-content: flex-end; }
-        .lang-btn { padding: 6px 12px; border: 1px solid #ddd; background: white; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.2s; }
-        .lang-btn.active { background: #0a7ea4; color: white; border-color: #0a7ea4; }
-        .shortcuts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px; background: white; }
-        .shortcut-tile { padding: 16px; border-radius: 12px; border: 1px solid #e5e5e5; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; }
-        .shortcut-tile:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .shortcut-tile.primary { background: rgba(10, 126, 164, 0.08); border-color: rgba(10, 126, 164, 0.3); }
-        .shortcut-tile.success { background: rgba(34, 197, 94, 0.08); border-color: rgba(34, 197, 94, 0.3); }
-        .shortcut-tile.warning { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.3); }
-        .shortcut-tile.error { background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.3); }
-        .shortcut-icon { font-size: 24px; }
-        .shortcut-label { font-size: 13px; font-weight: 600; }
-        .shortcut-sub { font-size: 11px; color: #666; opacity: 0.7; }
-        .content { padding: 20px; }
-        .tabs { display: flex; gap: 0; border-bottom: 2px solid #e5e5e5; margin-bottom: 20px; overflow-x: auto; }
-        .tab { padding: 12px 16px; border: none; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: #999; border-bottom: 3px solid transparent; white-space: nowrap; transition: all 0.2s; }
-        .tab.active { color: #0a7ea4; border-bottom-color: #0a7ea4; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .card { background: white; border: 1px solid #e5e5e5; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
-        .card-header { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
-        .card-icon { font-size: 20px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .card-title { font-size: 16px; font-weight: 600; color: #333; }
-        .card-body { color: #555; font-size: 14px; line-height: 1.6; }
-        .list-item { padding: 12px 0; border-top: 1px solid #f0f0f0; font-size: 14px; }
-        .list-item:first-child { border-top: none; padding-top: 0; }
-        .button { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; background: #0a7ea4; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; text-decoration: none; }
-        .button:hover { background: #0d5f7f; transform: scale(0.98); }
-        .button.secondary { background: rgba(10, 126, 164, 0.1); color: #0a7ea4; border: 1px solid #0a7ea4; }
-        .button-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-        .footer { padding: 40px 20px; text-align: center; color: #999; font-size: 12px; border-top: 1px solid #e5e5e5; }
-        @media (max-width: 600px) { .shortcuts { grid-template-columns: 1fr; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0a7ea4">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Manual do Hóspede — Safira | Nosso Mar Suítes</title>
+<meta name="description" content="Manual completo para hóspedes da Suíte Safira — Nosso Mar Suítes, Praia da Solidão, Florianópolis/SC">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #0a7ea4; --primary-dark: #085f7a; --primary-light: #e6f4fa;
+  --bg: #f5f7fa; --surface: #ffffff; --surface2: #f0f4f8;
+  --text: #11181C; --text2: #687076; --border: #e2e8f0;
+  --success: #22c55e; --warning: #f59e0b; --danger: #ef4444;
+  --tab-height: 64px; --radius: 12px; --radius-sm: 8px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08); --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+}
+html, body { height: 100%; overflow: hidden; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+#app { display: flex; flex-direction: column; height: 100vh; max-width: 480px; margin: 0 auto; background: var(--surface); position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.15); }
+#lang-bar { display: flex; align-items: center; justify-content: flex-end; padding: 6px 12px; background: var(--primary); gap: 4px; flex-shrink: 0; }
+.lang-btn { padding: 4px 10px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.4); background: transparent; color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px; }
+.lang-btn.active { background: white; color: var(--primary); border-color: white; }
+.lang-btn:hover:not(.active) { background: rgba(255,255,255,0.15); color: white; }
+#content { flex: 1; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+.tab-panel { display: none; padding-bottom: 20px; }
+.tab-panel.active { display: block; }
+#tab-bar { display: flex; height: var(--tab-height); background: var(--surface); border-top: 1px solid var(--border); flex-shrink: 0; padding-bottom: env(safe-area-inset-bottom, 0); }
+.tab-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; cursor: pointer; border: none; background: transparent; color: var(--text2); transition: color 0.2s; padding: 4px 2px; font-size: 10px; font-weight: 500; -webkit-tap-highlight-color: transparent; }
+.tab-item.active { color: var(--primary); }
+.tab-item svg { width: 22px; height: 22px; }
+.tab-item span { font-size: 10px; font-weight: 500; white-space: nowrap; }
+.hero { position: relative; height: 220px; overflow: hidden; background: #1a3a4a; }
+.hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%); }
+.hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; }
+.hero-badge { display: inline-block; background: var(--primary); color: white; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase; }
+.hero-title { color: white; font-size: 22px; font-weight: 800; line-height: 1.2; }
+.hero-sub { color: rgba(255,255,255,0.85); font-size: 13px; margin-top: 2px; }
+.section { padding: 16px; }
+.section + .section { padding-top: 0; }
+.section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text2); margin-bottom: 10px; }
+.card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+.card + .card { margin-top: 10px; }
+.card-body { padding: 14px; }
+.card-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.card-text { font-size: 14px; color: var(--text2); line-height: 1.5; }
+.welcome-card { margin: 12px 16px; background: var(--primary-light); border: 1px solid rgba(10,126,164,0.2); border-radius: var(--radius); padding: 14px; }
+.welcome-card p { font-size: 14px; color: #1a4a5a; line-height: 1.6; }
+.welcome-note { margin-top: 10px; padding: 8px 12px; background: rgba(10,126,164,0.1); border-left: 3px solid var(--primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; color: var(--primary-dark); font-weight: 600; }
+.shortcuts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 0 16px 16px; }
+.shortcut-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 12px 6px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; text-align: center; transition: all 0.15s; box-shadow: var(--shadow); text-decoration: none; color: inherit; -webkit-tap-highlight-color: transparent; }
+.shortcut-btn:active { transform: scale(0.96); background: var(--surface2); }
+.shortcut-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.shortcut-icon svg { width: 20px; height: 20px; }
+.shortcut-label { font-size: 12px; font-weight: 700; color: var(--text); line-height: 1.2; }
+.shortcut-sub { font-size: 10px; color: var(--text2); }
+.wifi-card { margin: 0 16px 12px; }
+.wifi-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.wifi-row:last-child { border-bottom: none; }
+.wifi-label { font-size: 12px; color: var(--text2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.wifi-value { font-size: 15px; font-weight: 700; color: var(--text); font-family: 'Courier New', monospace; }
+.wifi-header { padding: 12px 14px; background: var(--primary); display: flex; align-items: center; gap: 8px; }
+.wifi-header-title { color: white; font-size: 14px; font-weight: 700; }
+.wifi-header svg { color: white; width: 18px; height: 18px; }
+.copy-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--primary); color: white; border: none; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; white-space: nowrap; }
+.copy-btn:active { background: var(--primary-dark); transform: scale(0.97); }
+.copy-btn svg { width: 14px; height: 14px; }
+.copy-btn.success { background: var(--success); }
+.copy-row { padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 11px 18px; border-radius: var(--radius-sm); border: none; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; -webkit-tap-highlight-color: transparent; width: 100%; }
+.btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:active { background: var(--primary-dark); transform: scale(0.98); }
+.btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+.btn-outline:active { background: var(--primary-light); transform: scale(0.98); }
+.btn-whatsapp { background: #25d366; color: white; }
+.btn-whatsapp:active { background: #1da851; transform: scale(0.98); }
+.btn-gray { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+.btn-gray:active { background: var(--border); transform: scale(0.98); }
+.btn-sm { padding: 7px 12px; font-size: 12px; width: auto; }
+.video-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--border); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.video-item:last-child { border-bottom: none; }
+.video-item:active { background: var(--surface2); }
+.video-thumb { width: 52px; height: 52px; border-radius: var(--radius-sm); background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: white; }
+.video-thumb svg { width: 24px; height: 24px; }
+.video-info { flex: 1; min-width: 0; }
+.video-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.video-desc { font-size: 12px; color: var(--text2); line-height: 1.4; }
+.video-arrow { color: var(--text2); align-self: center; flex-shrink: 0; }
+.video-arrow svg { width: 16px; height: 16px; }
+.page-header { padding: 20px 16px 12px; }
+.page-title { font-size: 22px; font-weight: 800; color: var(--text); }
+.page-subtitle { font-size: 14px; color: var(--text2); margin-top: 4px; line-height: 1.4; }
+.accordion { border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+.accordion + .accordion { margin-top: 8px; }
+.accordion-header { display: flex; align-items: center; gap: 10px; padding: 14px; background: var(--surface); cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none; }
+.accordion-header:active { background: var(--surface2); }
+.accordion-icon { width: 36px; height: 36px; border-radius: 9px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0; }
+.accordion-icon svg { width: 18px; height: 18px; }
+.accordion-title { flex: 1; font-size: 15px; font-weight: 700; color: var(--text); }
+.accordion-arrow { color: var(--text2); transition: transform 0.25s; }
+.accordion-arrow svg { width: 16px; height: 16px; }
+.accordion.open .accordion-arrow { transform: rotate(180deg); }
+.accordion-body { display: none; border-top: 1px solid var(--border); }
+.accordion.open .accordion-body { display: block; }
+.accordion-list { list-style: none; }
+.accordion-list li { display: flex; align-items: flex-start; gap: 8px; padding: 9px 14px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--text); line-height: 1.4; }
+.accordion-list li:last-child { border-bottom: none; }
+.accordion-list li::before { content: '•'; color: var(--primary); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.rules-list { list-style: none; }
+.rule-item { padding: 12px 14px; border-bottom: 1px solid var(--border); }
+.rule-item:last-child { border-bottom: none; }
+.rule-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.rule-desc { font-size: 13px; color: var(--text2); line-height: 1.4; }
+.silence-banner { margin: 0 16px 12px; background: #1e3a5f; border-radius: var(--radius); padding: 14px; display: flex; align-items: center; gap: 12px; }
+.silence-icon { color: #93c5fd; flex-shrink: 0; }
+.silence-icon svg { width: 28px; height: 28px; }
+.silence-times { display: flex; gap: 16px; }
+.silence-time { text-align: center; }
+.silence-time-label { font-size: 10px; color: #93c5fd; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+.silence-time-value { font-size: 22px; font-weight: 800; color: white; line-height: 1; }
+.silence-note { font-size: 12px; color: #93c5fd; margin-top: 4px; }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { background: var(--surface2); font-size: 12px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.data-table td { padding: 10px 12px; font-size: 14px; color: var(--text); border-bottom: 1px solid var(--border); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table td:last-child { text-align: right; font-weight: 700; color: var(--primary); }
+.pix-card { margin: 0 16px 16px; }
+.pix-key-box { background: var(--surface2); border-radius: var(--radius-sm); padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0; }
+.pix-key-label { font-size: 11px; color: var(--text2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.pix-key-value { font-size: 16px; font-weight: 800; color: var(--text); font-family: 'Courier New', monospace; }
+.filter-scroll { overflow-x: auto; padding: 0 16px 12px; display: flex; gap: 6px; scrollbar-width: none; -ms-overflow-style: none; }
+.filter-scroll::-webkit-scrollbar { display: none; }
+.filter-chip { padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--surface); color: var(--text2); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.15s; -webkit-tap-highlight-color: transparent; flex-shrink: 0; }
+.filter-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+.filter-chip:active:not(.active) { background: var(--surface2); }
+.place-card { margin: 0 16px 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+.place-img { width: 100%; height: 160px; object-fit: cover; display: block; background: var(--surface2); }
+.place-img-placeholder { width: 100%; height: 100px; background: linear-gradient(135deg, var(--primary-light), var(--primary)); display: flex; align-items: center; justify-content: center; }
+.place-img-placeholder svg { width: 36px; height: 36px; color: white; opacity: 0.7; }
+.place-body { padding: 12px 14px; }
+.place-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.place-name { font-size: 16px; font-weight: 800; color: var(--text); flex: 1; }
+.place-cat-badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; flex-shrink: 0; }
+.cat-passeio { background: #dbeafe; color: #1d4ed8; }
+.cat-restaurante { background: #fef3c7; color: #92400e; }
+.cat-delivery { background: #fce7f3; color: #9d174d; }
+.cat-mercado { background: #d1fae5; color: #065f46; }
+.cat-transporte { background: #ede9fe; color: #5b21b6; }
+.place-desc { font-size: 13px; color: var(--text2); line-height: 1.5; margin-bottom: 10px; }
+.place-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.place-meta-item { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text2); background: var(--surface2); padding: 3px 8px; border-radius: 20px; }
+.place-meta-item svg { width: 12px; height: 12px; color: var(--primary); }
+.place-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.place-actions .btn { width: auto; flex: 1; min-width: 80px; }
+.service-card { margin: 0 16px 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+.service-img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.service-body { padding: 14px; }
+.service-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.service-name { font-size: 16px; font-weight: 800; color: var(--text); flex: 1; }
+.service-price { font-size: 14px; font-weight: 800; color: var(--primary); white-space: nowrap; }
+.service-desc { font-size: 13px; color: var(--text2); line-height: 1.5; margin-bottom: 12px; }
+.contact-card { margin: 0 16px 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; }
+.contact-header { padding: 14px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border); }
+.contact-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
+.contact-avatar svg { width: 24px; height: 24px; }
+.contact-name { font-size: 15px; font-weight: 700; color: var(--text); }
+.contact-role { font-size: 12px; color: var(--text2); }
+.contact-actions { padding: 12px 14px; display: flex; gap: 8px; }
+.emergency-card { margin: 0 16px 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; }
+.emergency-item { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+.emergency-item:last-child { border-bottom: none; }
+.emergency-number { width: 48px; height: 48px; border-radius: 50%; background: #fee2e2; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; color: var(--danger); flex-shrink: 0; }
+.emergency-name { flex: 1; font-size: 14px; font-weight: 700; color: var(--text); }
+.emergency-call { display: flex; align-items: center; gap: 5px; padding: 7px 12px; background: var(--danger); color: white; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.emergency-call svg { width: 14px; height: 14px; }
+.alert { display: flex; gap: 10px; padding: 12px 14px; border-radius: var(--radius-sm); margin: 0 16px 12px; }
+.alert-warning { background: #fff7ed; border: 1px solid #fed7aa; }
+.alert-info { background: var(--primary-light); border: 1px solid rgba(10,126,164,0.25); }
+.alert-success { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.alert svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+.alert-warning svg { color: #d97706; }
+.alert-info svg { color: var(--primary); }
+.alert-success svg { color: var(--success); }
+.alert-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+.alert-warning .alert-title { color: #92400e; }
+.alert-info .alert-title { color: var(--primary-dark); }
+.alert-success .alert-title { color: #166534; }
+.alert-body { font-size: 13px; line-height: 1.5; }
+.alert-warning .alert-body { color: #78350f; }
+.alert-info .alert-body { color: #1a4a5a; }
+.alert-success .alert-body { color: #15803d; }
+.checklist { list-style: none; }
+.checklist li { display: flex; align-items: flex-start; gap: 8px; padding: 8px 14px; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text); }
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before { content: ''; width: 18px; height: 18px; border-radius: 50%; background: var(--primary-light); border: 2px solid var(--primary); flex-shrink: 0; margin-top: 1px; }
+.safe-code-box { background: var(--surface2); border-radius: var(--radius-sm); padding: 12px 14px; margin: 8px 0; }
+.safe-code { font-size: 32px; font-weight: 900; color: var(--primary); letter-spacing: 8px; font-family: 'Courier New', monospace; text-align: center; }
+.safe-note { font-size: 12px; color: var(--text2); text-align: center; margin-top: 4px; }
+.safe-contains-title { font-size: 12px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; padding: 0 14px; }
+.safe-item { display: flex; align-items: center; gap: 8px; padding: 7px 14px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--text); }
+.safe-item:last-child { border-bottom: none; }
+.safe-item::before { content: '🔑'; font-size: 14px; }
+.instagram-card { margin: 0 16px 16px; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); border-radius: var(--radius); padding: 16px; text-align: center; color: white; }
+.instagram-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+.instagram-card p { font-size: 13px; opacity: 0.9; margin-bottom: 12px; line-height: 1.4; }
+.instagram-handle { font-size: 18px; font-weight: 800; margin-bottom: 12px; }
+.instagram-btn { display: inline-flex; align-items: center; gap: 7px; padding: 10px 20px; background: white; color: #833ab4; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.instagram-btn svg { width: 18px; height: 18px; }
+.feedback-card { margin: 0 16px 16px; background: var(--primary-light); border: 1px solid rgba(10,126,164,0.2); border-radius: var(--radius); padding: 14px; }
+.feedback-title { font-size: 14px; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; }
+.feedback-body { font-size: 13px; color: #1a4a5a; line-height: 1.5; margin-bottom: 10px; }
+.info-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text2); margin-bottom: 2px; }
+.info-value { font-size: 14px; color: var(--text); line-height: 1.4; }
+.section-divider { height: 8px; background: var(--bg); }
+.hint-text { font-size: 12px; color: var(--text2); font-style: italic; }
+@media (min-width: 481px) { #app { box-shadow: 0 0 60px rgba(0,0,0,0.2); } }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="header-content">
-                <div class="header-badge" data-key="welcome">BEM-VINDO</div>
-                <div class="header-title">Safira</div>
-                <div class="header-subtitle">Praia da Solidão — Florianópolis/SC</div>
-            </div>
+<div id="app">
+  <div id="lang-bar">
+    <button class="lang-btn active" onclick="setLang('pt')" id="btn-pt">PT</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    <button class="lang-btn" onclick="setLang('es')" id="btn-es">ES</button>
+  </div>
+  <div id="content">
+
+    <!-- ═══ TAB: INÍCIO ═══ -->
+    <div class="tab-panel active" id="tab-home">
+      <div class="hero">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1541508881151070432/original/ab68e24a-ad71-40de-9cfb-868ea301f67b.jpeg" alt="Suíte Safira" loading="eager">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-badge" data-i18n="home_badge">Manual do Hóspede</span>
+          <div class="hero-title">Suíte Safira</div>
+          <div class="hero-sub">Nosso Mar Suítes · Praia da Solidão</div>
         </div>
-
-        <div class="lang-bar">
-            <button class="lang-btn active" onclick="setLanguage('pt')">🇧🇷 PT</button>
-            <button class="lang-btn" onclick="setLanguage('en')">🇺🇸 EN</button>
-            <button class="lang-btn" onclick="setLanguage('es')">🇪🇸 ES</button>
+      </div>
+      <div class="welcome-card">
+        <p><strong data-i18n="home_welcome_title">Seja muito bem-vindo(a)!</strong></p>
+        <p style="margin-top:6px" data-i18n="home_welcome_body">Este manual foi preparado especialmente para você, com muito carinho, para que sua experiência seja tranquila, confortável e inesquecível.</p>
+        <div class="welcome-note" data-i18n="home_welcome_note">Imprescindível a leitura completa antes da sua chegada.</div>
+      </div>
+      <div class="section"><div class="section-title" data-i18n="home_quick_access">Acessos rápidos</div></div>
+      <div class="shortcuts-grid">
+        <button class="shortcut-btn" onclick="showWifiModal()">
+          <div class="shortcut-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></div>
+          <span class="shortcut-label" data-i18n="shortcut_wifi">Wi-Fi</span>
+          <span class="shortcut-sub" data-i18n="shortcut_wifi_sub">Ver senha</span>
+        </button>
+        <button class="shortcut-btn" onclick="showSafeModal()">
+          <div class="shortcut-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <span class="shortcut-label" data-i18n="shortcut_safe">Mini cofre</span>
+          <span class="shortcut-sub" data-i18n="shortcut_safe_sub">Código de acesso</span>
+        </button>
+        <button class="shortcut-btn" onclick="switchTab('tab-rules')">
+          <div class="shortcut-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+          <span class="shortcut-label" data-i18n="shortcut_rules">Regras</span>
+          <span class="shortcut-sub" data-i18n="shortcut_rules_sub">Da hospedagem</span>
+        </button>
+        <button class="shortcut-btn" onclick="switchTab('tab-around')">
+          <div class="shortcut-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <span class="shortcut-label" data-i18n="shortcut_around">Arredores</span>
+          <span class="shortcut-sub" data-i18n="shortcut_around_sub">Passeios e restaurantes</span>
+        </button>
+        <a class="shortcut-btn" href="https://wa.me/554888089128" target="_blank" rel="noopener">
+          <div class="shortcut-icon" style="background:#d1fae5"><svg viewBox="0 0 24 24" fill="currentColor" style="color:#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div>
+          <span class="shortcut-label" data-i18n="shortcut_whatsapp">Anfitrião</span>
+          <span class="shortcut-sub" data-i18n="shortcut_whatsapp_sub">Abrir WhatsApp</span>
+        </a>
+        <button class="shortcut-btn" onclick="switchTab('tab-contact')">
+          <div class="shortcut-icon" style="background:#fee2e2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#ef4444"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
+          <span class="shortcut-label" data-i18n="shortcut_emergency">Emergências</span>
+          <span class="shortcut-sub" data-i18n="shortcut_emergency_sub">Contatos de socorro</span>
+        </button>
+      </div>
+      <div class="card wifi-card">
+        <div class="wifi-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+          <span class="wifi-header-title" data-i18n="home_wifi_title">Wi-Fi Principal</span>
         </div>
-
-        <div class="shortcuts">
-            <a href="#" onclick="showTab('inicio'); return false;" class="shortcut-tile primary">
-                <div class="shortcut-icon">📶</div>
-                <div class="shortcut-label" data-key="wifi">Wi-Fi</div>
-                <div class="shortcut-sub" data-key="wifi">Conectar</div>
-            </a>
-            <a href="#" onclick="showTab('casa'); return false;" class="shortcut-tile primary">
-                <div class="shortcut-icon">🔐</div>
-                <div class="shortcut-label" data-key="access">Acesso</div>
-                <div class="shortcut-sub">2352</div>
-            </a>
-            <a href="#" onclick="showTab('contato'); return false;" class="shortcut-tile success">
-                <div class="shortcut-icon">💬</div>
-                <div class="shortcut-label" data-key="whatsapp">WhatsApp</div>
-                <div class="shortcut-sub" data-key="contact">Contato</div>
-            </a>
-            <a href="#" onclick="showTab('regras'); return false;" class="shortcut-tile warning">
-                <div class="shortcut-icon">📋</div>
-                <div class="shortcut-label" data-key="rules">Regras</div>
-                <div class="shortcut-sub" data-key="rules">Importante</div>
-            </a>
-            <a href="#" onclick="showTab('arredores'); return false;" class="shortcut-tile primary">
-                <div class="shortcut-icon">🗺️</div>
-                <div class="shortcut-label" data-key="around">Arredores</div>
-                <div class="shortcut-sub" data-key="around">Consultar</div>
-            </a>
-            <a href="#" onclick="showTab('contato'); return false;" class="shortcut-tile error">
-                <div class="shortcut-icon">🚨</div>
-                <div class="shortcut-label" data-key="emergency">Emergência</div>
-                <div class="shortcut-sub" data-key="emergency">Contatos</div>
-            </a>
+        <div class="wifi-row">
+          <div><div class="wifi-label" data-i18n="home_wifi_network">Rede</div><div class="wifi-value">SAFIRA</div></div>
         </div>
-
-        <div class="content">
-            <div class="tabs">
-                <button class="tab active" onclick="showTab('inicio')" data-key="home">Início</button>
-                <button class="tab" onclick="showTab('casa')" data-key="house">Casa</button>
-                <button class="tab" onclick="showTab('regras')" data-key="rules">Regras</button>
-                <button class="tab" onclick="showTab('arredores')" data-key="around">Arredores</button>
-                <button class="tab" onclick="showTab('contato')" data-key="contact">Contato</button>
-            </div>
-
-            <!-- TAB: Início -->
-            <div id="inicio" class="tab-content active">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🍃</div>
-                        <div class="card-title" data-key="welcome_title">Bem-vindo à Safira!</div>
-                    </div>
-                    <div class="card-body" data-key="welcome_body">Ficamos felizes em recebê-lo! Aqui você encontrará todas as informações necessárias para aproveitar sua estadia ao máximo.</div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📶</div>
-                        <div class="card-title" data-key="wifi_title">Wi-Fi</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-item">
-                            <strong data-key="wifi_network">Rede</strong>: SAFIRA<br>
-                            <strong data-key="wifi_password">Senha</strong>: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 4px;">23589723</code>
-                        </div>
-                        <div class="button-group">
-                            <button class="button" onclick="copyToClipboard('23589723')" data-key="wifi_copy">📋 Copiar Senha</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🎥</div>
-                        <div class="card-title" data-key="videos">Vídeos</div>
-                    </div>
-                    <div class="card-body" id="videos-list"></div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📍</div>
-                        <div class="card-title" data-key="address_title">Endereço</div>
-                    </div>
-                    <div class="card-body">
-                        <p>Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595</p>
-                        <div class="button-group">
-                            <button class="button" onclick="copyToClipboard('Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595')" data-key="address_copy">📋 Copiar Endereço</button>
-                            <button class="button secondary" onclick="openMaps()" data-key="address_map">🗺️ Abrir Mapa</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: Casa -->
-            <div id="casa" class="tab-content">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🛏️</div>
-                        <div class="card-title">Suíte</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-item">✓ Ar-condicionado</div>
-                        <div class="list-item">✓ Smart TV</div>
-                        <div class="list-item">✓ Cama queen</div>
-                        <div class="list-item">✓ Roupas de cama completas</div>
-                        <div class="list-item">✓ Toalhas de banho</div>
-                        <div class="list-item">✓ Banheira de hidromassagem com vista para o mar</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🍽️</div>
-                        <div class="card-title">Cozinha Completa</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-item">✓ Cozinha integrada ao quarto (conceito aberto)</div>
-                        <div class="list-item">✓ Churrasqueira</div>
-                        <div class="list-item">✓ Micro-ondas</div>
-                        <div class="list-item">✓ Chaleira elétrica</div>
-                        <div class="list-item">✓ Cafeteira elétrica</div>
-                        <div class="list-item">✓ Liquidificador</div>
-                        <div class="list-item">✓ Frigobar</div>
-                        <div class="list-item">✓ Jogo de panelas completo</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🚿</div>
-                        <div class="card-title">Banheiro</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-item">✓ Banheiro amplo e espaçoso</div>
-                        <div class="list-item">✓ Chuveiro elétrico</div>
-                        <div class="list-item">✓ Banheira de hidromassagem com vista para o mar</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🛁</div>
-                        <div class="card-title">SPA (Modelo Esmeralda)</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-item">⏱️ Aquecimento em aproximadamente 40 minutos</div>
-                        <div class="list-item">🔌 Desligar quando não estiver em uso</div>
-                        <div class="list-item">💧 Esvaziar antes do check-out</div>
-                        <div class="list-item">♻️ Uso consciente da água</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: Regras -->
-            <div id="regras" class="tab-content">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📋</div>
-                        <div class="card-title" data-key="rules_title">Regras da Casa</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-item"><strong>Apenas hóspedes cadastrados</strong><br>A hospedagem é destinada apenas aos hóspedes cadastrados na reserva.</div>
-                        <div class="list-item"><strong>Economia de energia</strong><br>Sempre que sair, desligue o ar-condicionado, TV e SPA.</div>
-                        <div class="list-item"><strong>Uso simultâneo de equipamentos</strong><br>Evite usar muitos equipamentos ao mesmo tempo.</div>
-                        <div class="list-item"><strong>SPAS — desligar quando não estiver em uso</strong><br>Para preservar o equipamento, desligue a SPA.</div>
-                        <div class="list-item"><strong>Esvaziar SPA antes do check-out</strong><br>Pedimos que a SPA seja esvaziada antes do check-out.</div>
-                        <div class="list-item"><strong>Reposição de toalhas</strong><br>Disponibilizada gratuitamente a partir do 5º dia.</div>
-                        <div class="list-item"><strong>Proibido velas</strong><br>Não é permitido o uso de velas convencionais.</div>
-                        <div class="list-item"><strong>Proibido fumar dentro da suíte</strong><br>Nas áreas externas o uso é livre.</div>
-                        <div class="list-item"><strong>Não aceitamos pets</strong><br>O espaço possui áreas elevadas e vidros.</div>
-                        <div class="list-item"><strong>Trancar a suíte ao sair</strong><br>Mantenha sua suíte trancada.</div>
-                        <div class="list-item"><strong>Cozinha organizada</strong><br>Mantenha louças lavadas e lixo armazenado.</div>
-                        <div class="list-item"><strong>Portas e janelas ao entardecer</strong><br>Recomendamos manter portas encostadas. Traga repelente!</div>
-                        <div class="list-item"><strong>Descarte de lixo</strong><br>Não deixe lixo espalhado.</div>
-                        <div class="list-item"><strong>Silêncio noturno</strong><br>Respeitar silêncio das 22h às 08h.</div>
-                        <div class="list-item"><strong>Som alto proibido</strong><br>Não é permitido som em volume alto.</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🌿</div>
-                        <div class="card-title">Dicas - Natureza</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-item">🦟 Traga o seu repelente — é uma região cercada por mata.</div>
-                        <div class="list-item">🪟 Mantenha portas e janelas fechadas ao entardecer.</div>
-                        <div class="list-item">🐒 Evite contato com animais locais e não os alimente.</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: Arredores -->
-            <div id="arredores" class="tab-content">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🍽️</div>
-                        <div class="card-title" data-key="restaurants">Restaurantes</div>
-                    </div>
-                    <div class="card-body" id="restaurants-list"></div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🛒</div>
-                        <div class="card-title" data-key="markets">Mercados</div>
-                    </div>
-                    <div class="card-body" id="markets-list"></div>
-                </div>
-            </div>
-
-            <!-- TAB: Contato -->
-            <div id="contato" class="tab-content">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">👤</div>
-                        <div class="card-title">Nossomar Suites</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="button-group">
-                            <button class="button" onclick="openWhatsApp()">💬 WhatsApp</button>
-                            <button class="button secondary" onclick="window.open('https://www.instagram.com/nossomarsuites', '_blank')">📸 Instagram</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🚨</div>
-                        <div class="card-title" data-key="emergency">Emergências</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-item"><strong>Polícia Militar:</strong> <a href="tel:190" style="color: #0a7ea4;">190</a></div>
-                        <div class="list-item"><strong>SAMU:</strong> <a href="tel:192" style="color: #0a7ea4;">192</a></div>
-                        <div class="list-item"><strong>Bombeiros:</strong> <a href="tel:193" style="color: #0a7ea4;">193</a></div>
-                    </div>
-                </div>
-            </div>
+        <div class="wifi-row">
+          <div><div class="wifi-label" data-i18n="home_wifi_password">Senha</div><div class="wifi-value">23589723</div></div>
         </div>
-
-        <div class="footer">
-            <p>Manual do Hóspede - Safira<br>Nossomar Suites © 2024</p>
+        <div class="copy-row">
+          <button class="copy-btn" id="copy-wifi-btn" onclick="copyText('23589723','copy-wifi-btn','home_wifi_copied')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span data-i18n="home_wifi_copy">Copiar senha</span>
+          </button>
         </div>
+      </div>
+      <div class="section">
+        <div class="section-title" data-i18n="home_arrival_title">Chegada e acesso</div>
+        <p class="card-text" style="margin-bottom:10px" data-i18n="home_arrival_body">Para garantir uma chegada tranquila, é necessário assistir aos vídeos enviados com as orientações: localização da vaga, caminho até a acomodação e instruções de acesso.</p>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <div class="video-item" onclick="openVideoByLang('arrival_day')">
+          <div class="video-thumb"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="video-info">
+            <div class="video-title" data-i18n="video_arrival_day_title">Vídeo de chegada — diurno</div>
+            <div class="video-desc" data-i18n="video_arrival_day_desc">Rota de acesso filmada durante o dia, com referências visuais.</div>
+          </div>
+          <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="video-item" onclick="openVideoByLang('arrival_night')">
+          <div class="video-thumb" style="background:#1e3a5f"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="video-info">
+            <div class="video-title" data-i18n="video_arrival_night_title">Vídeo de chegada — noturno</div>
+            <div class="video-desc" data-i18n="video_arrival_night_desc">Rota de acesso filmada à noite, com referências visuais do caminho.</div>
+          </div>
+          <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="video-item" onclick="openVideoByLang('safe')">
+          <div class="video-thumb" style="background:#92400e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="video-info">
+            <div class="video-title" data-i18n="video_safe_title">Vídeo do mini cofre — Safira</div>
+            <div class="video-desc" data-i18n="video_safe_desc">Como abrir o mini cofre e localizar o controle do portão.</div>
+          </div>
+          <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="video-item" onclick="openVideoByLang('spa')">
+          <div class="video-thumb" style="background:#0e7490"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+          <div class="video-info">
+            <div class="video-title" data-i18n="video_spa_title">Banheira Esmeralda — Como usar</div>
+            <div class="video-desc" data-i18n="video_spa_desc">Passo a passo para encher, ligar a hidro e acionar a cromoterapia.</div>
+          </div>
+          <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="video-item" onclick="openVideoByLang('shower')">
+          <div class="video-thumb" style="background:#0f766e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a8 8 0 0 1 8-8"/><path d="M12 4v2M8 6l1.5 1.5M16 6l-1.5 1.5"/></svg></div>
+          <div class="video-info">
+            <div class="video-title" data-i18n="video_shower_title">Vídeo do chuveiro elétrico</div>
+            <div class="video-desc" data-i18n="video_shower_desc">Como ajustar temperatura e pressão do chuveiro elétrico.</div>
+          </div>
+          <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title" data-i18n="home_before_title">Antes da chegada</div>
+        <p class="card-text" style="margin-bottom:10px" data-i18n="home_before_body">Envie os dados abaixo com antecedência. O acesso ao manual e à senha da fechadura será liberado pelo nosso assistente de WhatsApp após a confirmação destes dados:</p>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <ul class="checklist">
+          <li data-i18n="home_before_1">Nome completo e CPF de todos os hóspedes maiores de 18 anos</li>
+          <li data-i18n="home_before_2">Placa e modelo do veículo (caso venha de carro)</li>
+        </ul>
+      </div>
+      <div class="alert alert-warning">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div><div class="alert-body" data-i18n="home_before_warning">Os dados serão validados pelo nosso assistente automatizado. Sem o envio dessas informações, a senha de acesso não será liberada.</div></div>
+      </div>
+      <div class="section">
+        <div class="section-title" data-i18n="home_about_title">Sobre a acomodação</div>
+        <p class="card-text" data-i18n="home_about_body">Ambiente inserido em meio à natureza, com árvores, flores e vista para o mar. O acesso inclui escadas e subida — recomendamos bagagens leves e bem distribuídas para evitar cansaço.</p>
+      </div>
+      <div class="alert alert-info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div>
+          <div class="alert-title" data-i18n="home_connectivity_title">Conectividade na região</div>
+          <div class="alert-body" data-i18n="home_connectivity_body">Por estarmos em uma região mais remota, o sinal de algumas operadoras pode apresentar instabilidade. Recomendamos baixar previamente vídeos e informações antes da chegada.</div>
+        </div>
+      </div>
+      <div class="section"><div class="section-title" data-i18n="home_address_title">Endereço da acomodação</div></div>
+      <div class="card" style="margin:0 16px 12px">
+        <div style="padding:12px 14px;font-size:14px;font-weight:600;color:var(--text);line-height:1.5">Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595</div>
+        <div style="font-size:12px;color:var(--text2);padding:0 14px 12px;line-height:1.4" data-i18n="home_address_helper">Use este endereço ao pedir delivery (iFood, restaurantes, etc.) ou cadastrar entregas.</div>
+        <div style="padding:0 14px 14px;display:flex;gap:8px">
+          <button class="btn btn-outline btn-sm" id="copy-addr-btn" onclick="copyText('Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595','copy-addr-btn','home_address_copied')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span data-i18n="home_address_copy">Copiar endereço</span>
+          </button>
+          <a class="btn btn-primary btn-sm" href="https://maps.google.com/?q=Servidão+Niberto+Borges+140A+Praia+da+Solidão+Florianópolis+88067-595" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n="home_address_open_map">Abrir no mapa</span>
+          </a>
+        </div>
+      </div>
+      <div class="instagram-card">
+        <h3 data-i18n="instagram_title">Compartilhe sua experiência!</h3>
+        <p data-i18n="instagram_body">Aproveite o pôr do sol, a natureza e os momentos especiais. Marque a gente nas suas fotos!</p>
+        <div class="instagram-handle" data-i18n="instagram_handle">@nossomarsuites</div>
+        <a class="instagram-btn" href="https://www.instagram.com/nossomarsuites/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span data-i18n="instagram_cta">Ver no Instagram</span>
+        </a>
+      </div>
     </div>
 
-    <script>
-        let currentLanguage = 'pt';
-        let data = {};
+    <!-- ═══ TAB: REGRAS ═══ -->
+    <div class="tab-panel" id="tab-rules">
+      <div class="page-header">
+        <div class="page-title" data-i18n="rules_title">Regras da hospedagem</div>
+        <div class="page-subtitle" data-i18n="rules_subtitle">Leia com atenção para garantir uma estadia tranquila para todos.</div>
+      </div>
 
-        // Carregar dados
-        async function loadData() {
-            try {
-                const response = await fetch('data.json');
-                data = await response.json();
-                renderContent();
-            } catch (e) {
-                console.error('Erro ao carregar dados:', e);
-            }
-        }
+      <!-- Silêncio -->
+      <div class="silence-banner">
+        <div class="silence-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <div>
+          <div style="font-size:12px;color:#93c5fd;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px" data-i18n="rules_silence_label">Horário de silêncio</div>
+          <div class="silence-times">
+            <div class="silence-time"><div class="silence-time-label" data-i18n="rules_silence_from">Das</div><div class="silence-time-value">22h</div></div>
+            <div class="silence-time"><div class="silence-time-label" data-i18n="rules_silence_to">Às</div><div class="silence-time-value">08h</div></div>
+          </div>
+          <div class="silence-note" data-i18n="rules_silence_note">Respeite os vizinhos e outros hóspedes.</div>
+        </div>
+      </div>
 
-        function t(key) {
-            return data.translations?.[currentLanguage]?.[key] || key;
-        }
+      <!-- Check-in / Check-out -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_checkin_title">Check-in e Check-out</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <table class="data-table">
+          <tr><th data-i18n="rules_table_item">Item</th><th data-i18n="rules_table_time">Horário</th></tr>
+          <tr><td data-i18n="rules_checkin">Check-in</td><td>15h</td></tr>
+          <tr><td data-i18n="rules_checkout">Check-out</td><td>11h</td></tr>
+          <tr><td data-i18n="rules_early_checkin">Early check-in</td><td data-i18n="rules_early_checkin_val">Consultar disponibilidade</td></tr>
+          <tr><td data-i18n="rules_late_checkout">Late check-out</td><td data-i18n="rules_late_checkout_val">Consultar disponibilidade</td></tr>
+        </table>
+      </div>
+      <div class="alert alert-warning">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div><div class="alert-body" data-i18n="rules_checkout_warning">Saídas após 11h sem autorização prévia serão cobradas como diária adicional.</div></div>
+      </div>
 
-        function setLanguage(lang) {
-            currentLanguage = lang;
-            document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
-            event.target.classList.add('active');
-            renderContent();
-        }
+      <!-- Capacidade -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_capacity_title">Capacidade e hóspedes</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <ul class="accordion-list">
+          <li data-i18n="rules_capacity_1">Capacidade máxima: 2 hóspedes adultos + 1 criança de colo (até 2 anos).</li>
+          <li data-i18n="rules_capacity_2">Não é permitido receber visitas externas na acomodação.</li>
+          <li data-i18n="rules_capacity_3">Todos os hóspedes maiores de 18 anos devem ter CPF cadastrado antecipadamente.</li>
+          <li data-i18n="rules_capacity_4">Crianças acima de 2 anos são contabilizadas como hóspede adulto para fins de capacidade.</li>
+        </ul>
+      </div>
 
-        function renderContent() {
-            // Atualizar elementos com data-key
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.dataset.key;
-                const translation = t(key);
-                if (el.tagName === 'BUTTON' || el.tagName === 'A') {
-                    el.textContent = translation;
-                } else {
-                    el.textContent = translation;
-                }
-            });
+      <!-- Pets -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_pets_title">Animais de estimação</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <ul class="accordion-list">
+          <li data-i18n="rules_pets_1">Pets são bem-vindos mediante taxa adicional de R$50 por animal.</li>
+          <li data-i18n="rules_pets_2">Informe com antecedência a presença de animais para liberação do acesso.</li>
+          <li data-i18n="rules_pets_3">Não é permitido que os animais subam nos móveis ou na cama.</li>
+          <li data-i18n="rules_pets_4">Danos causados por animais serão cobrados do hóspede responsável.</li>
+        </ul>
+      </div>
 
-            // Renderizar restaurantes
-            const restaurantsList = document.getElementById('restaurants-list');
-            if (restaurantsList && data.restaurants) {
-                restaurantsList.innerHTML = data.restaurants.map(r => `
-                    <div class="list-item">
-                        <strong>${r.name}</strong><br>
-                        ${r.description}<br>
-                        ${r.distance ? `<small>📍 ${r.distance}</small>` : ''}
-                        ${r.phone ? `<br><a href="tel:${r.phone}" style="color: #0a7ea4;">${r.phone}</a>` : ''}
-                    </div>
-                `).join('');
-            }
+      <!-- Fumo / Festas -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_smoking_title">Fumo e festas</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <div class="rule-item">
+          <div class="rule-title" data-i18n="rules_no_smoking_title">🚭 Proibido fumar no interior</div>
+          <div class="rule-desc" data-i18n="rules_no_smoking_desc">É terminantemente proibido fumar dentro da acomodação. Fumar é permitido apenas em áreas externas abertas. Multa de R$500 em caso de descumprimento.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-title" data-i18n="rules_no_party_title">🎉 Festas e eventos</div>
+          <div class="rule-desc" data-i18n="rules_no_party_desc">Festas, eventos e reuniões com pessoas externas não são permitidos. O espaço é destinado exclusivamente aos hóspedes cadastrados.</div>
+        </div>
+      </div>
 
-            // Renderizar mercados
-            const marketsList = document.getElementById('markets-list');
-            if (marketsList && data.markets) {
-                marketsList.innerHTML = data.markets.map(m => `
-                    <div class="list-item">
-                        <strong>${m.name}</strong><br>
-                        ${m.description}<br>
-                        <small>📍 ${m.distance} • ⏱️ ${m.duration}</small><br>
-                        <a href="tel:${m.phone}" style="color: #0a7ea4;">${m.phone}</a>
-                    </div>
-                `).join('');
-            }
+      <!-- Limpeza e conservação -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_cleaning_title">Limpeza e conservação</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <ul class="accordion-list">
+          <li data-i18n="rules_cleaning_1">Deixe a acomodação nas mesmas condições em que a encontrou.</li>
+          <li data-i18n="rules_cleaning_2">Descarte o lixo nos locais indicados antes de sair.</li>
+          <li data-i18n="rules_cleaning_3">Danos ao patrimônio serão cobrados do hóspede responsável.</li>
+          <li data-i18n="rules_cleaning_4">Não remova toalhas, roupas de cama ou itens da acomodação.</li>
+          <li data-i18n="rules_cleaning_5">Reporte qualquer avaria ou problema ao anfitrião imediatamente.</li>
+        </ul>
+      </div>
 
-            // Renderizar vídeos
-            const videosList = document.getElementById('videos-list');
-            if (videosList && data.videos) {
-                videosList.innerHTML = data.videos.map(v => `
-                    <div class="list-item">▶️ <strong>${v.title}</strong><br><small>${v.description}</small></div>
-                `).join('');
-            }
-        }
+      <!-- Segurança -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_security_title">Segurança</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <ul class="accordion-list">
+          <li data-i18n="rules_security_1">Feche sempre a porta e o portão ao sair, mesmo que por poucos minutos.</li>
+          <li data-i18n="rules_security_2">Não compartilhe a senha da fechadura com terceiros.</li>
+          <li data-i18n="rules_security_3">Em caso de emergência, acione o anfitrião imediatamente pelo WhatsApp.</li>
+          <li data-i18n="rules_security_4">Não utilize a lareira sem orientação prévia do anfitrião.</li>
+        </ul>
+      </div>
 
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+      <!-- Estacionamento -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_parking_title">Estacionamento</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <ul class="accordion-list">
+          <li data-i18n="rules_parking_1">Há 1 vaga privativa disponível para os hóspedes da Safira.</li>
+          <li data-i18n="rules_parking_2">Informe a placa e modelo do veículo com antecedência.</li>
+          <li data-i18n="rules_parking_3">Não ocupe vagas de outros hóspedes ou moradores.</li>
+          <li data-i18n="rules_parking_4">Assista ao vídeo de chegada para localizar corretamente a vaga.</li>
+        </ul>
+      </div>
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('✅ Copiado!');
-            }).catch(err => console.error('Erro:', err));
-        }
+      <!-- Acessibilidade -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_accessibility_title">Acessibilidade</div>
+      </div>
+      <div class="alert alert-info" style="margin:0 16px 12px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div><div class="alert-body" data-i18n="rules_accessibility_body">O acesso à acomodação envolve escadas e terreno irregular. Não é recomendado para pessoas com mobilidade reduzida ou dificuldade de locomoção. Recomendamos bagagens leves e bem distribuídas.</div></div>
+      </div>
 
-        function openWhatsApp() {
-            const phone = '+554888089128';
-            const message = 'Olá! Sou hóspede da Safira e preciso de ajuda.';
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-        }
+      <!-- Fauna local -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_fauna_title">Fauna local</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <div class="rule-item">
+          <div class="rule-title" data-i18n="rules_fauna_1_title">🦎 Lagartixas e insetos</div>
+          <div class="rule-desc" data-i18n="rules_fauna_1_desc">São comuns na região e fazem parte do ecossistema local. São inofensivos e ajudam a controlar insetos.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-title" data-i18n="rules_fauna_2_title">🐝 Abelhas e vespas</div>
+          <div class="rule-desc" data-i18n="rules_fauna_2_desc">Podem aparecer eventualmente. Mantenha janelas fechadas ao anoitecer e não deixe alimentos expostos.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-title" data-i18n="rules_fauna_3_title">🌿 Natureza preservada</div>
+          <div class="rule-desc" data-i18n="rules_fauna_3_desc">Estamos em área de Mata Atlântica. Não alimente, capture ou prejudique animais silvestres.</div>
+        </div>
+      </div>
 
-        function openMaps() {
-            const address = 'Servidão Niberto Borges, 140A, Praia da Solidão, Florianópolis, SC';
-            window.open(`https://www.google.com/maps/search/${encodeURIComponent(address)}`, '_blank');
-        }
+      <!-- Contato anfitrião -->
+      <div class="section"><div class="section-title" data-i18n="rules_contact_title">Dúvidas? Fale conosco</div></div>
+      <div style="padding:0 16px 20px">
+        <a class="btn btn-whatsapp" href="https://wa.me/554888089128" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          <span data-i18n="rules_whatsapp_btn">Falar com o anfitrião pelo WhatsApp</span>
+        </a>
+      </div>
+    </div>
 
-        // Inicializar
-        document.addEventListener('DOMContentLoaded', loadData);
-    </script>
+    <!-- ═══ TAB: ARREDORES ═══ -->
+    <div class="tab-panel" id="tab-around">
+      <div class="page-header">
+        <div class="page-title" data-i18n="around_title">Arredores</div>
+        <div class="page-subtitle" data-i18n="around_subtitle">Passeios, praias, restaurantes e serviços próximos.</div>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filter-scroll" id="around-filters">
+        <button class="filter-chip active" onclick="filterAround('all')" data-i18n="around_filter_all">Todos</button>
+        <button class="filter-chip" onclick="filterAround('passeio')" data-i18n="around_filter_tour">Passeios</button>
+        <button class="filter-chip" onclick="filterAround('restaurante')" data-i18n="around_filter_restaurant">Restaurantes</button>
+        <button class="filter-chip" onclick="filterAround('delivery')" data-i18n="around_filter_delivery">Delivery</button>
+        <button class="filter-chip" onclick="filterAround('mercado')" data-i18n="around_filter_market">Mercados</button>
+        <button class="filter-chip" onclick="filterAround('transporte')" data-i18n="around_filter_transport">Transporte</button>
+      </div>
+
+      <div id="around-list">
+
+        <!-- PASSEIOS -->
+        <div class="place-card" data-cat="passeio">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_solidao_name">Praia da Solidão</div>
+              <span class="place-cat-badge cat-passeio" data-i18n="cat_passeio">Passeio</span>
+            </div>
+            <div class="place-desc" data-i18n="place_solidao_desc">Praia tranquila e preservada, ideal para banho de mar, relaxar e apreciar o pôr do sol. A apenas 5 minutos a pé da acomodação.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_solidao_dist">5 min a pé</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="place_solidao_hours">Aberta 24h</span></span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Praia+da+Solidão+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="btn_map">Ver no mapa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="passeio">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_campeche_name">Praia do Campeche</div>
+              <span class="place-cat-badge cat-passeio" data-i18n="cat_passeio">Passeio</span>
+            </div>
+            <div class="place-desc" data-i18n="place_campeche_desc">Uma das praias mais bonitas de Florianópolis, com ondas fortes, areia branca e mar azul-turquesa. Ótima para surf e caminhadas.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_campeche_dist">10 min de carro</span></span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Praia+do+Campeche+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="btn_map">Ver no mapa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="passeio">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_morro_name">Morro do Lampião</div>
+              <span class="place-cat-badge cat-passeio" data-i18n="cat_passeio">Passeio</span>
+            </div>
+            <div class="place-desc" data-i18n="place_morro_desc">Trilha de fácil acesso com vista panorâmica para a Praia da Solidão e o mar. Ideal para o pôr do sol e fotos incríveis.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_morro_dist">15 min a pé</span></span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Morro+do+Lampião+Praia+da+Solidão+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="btn_map">Ver no mapa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="passeio">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_ilha_name">Ilha do Campeche</div>
+              <span class="place-cat-badge cat-passeio" data-i18n="cat_passeio">Passeio</span>
+            </div>
+            <div class="place-desc" data-i18n="place_ilha_desc">Ilha paradisíaca com inscrições rupestres, trilhas e snorkeling. Acesso por barco a partir da Praia do Campeche. Reserva obrigatória.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_ilha_dist">15 min de barco</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="place_ilha_hours">Temporada: out–abr</span></span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Ilha+do+Campeche+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="btn_map">Ver no mapa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESTAURANTES -->
+        <div class="place-card" data-cat="restaurante">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_restaurante1_name">Rancho de Canoa</div>
+              <span class="place-cat-badge cat-restaurante" data-i18n="cat_restaurante">Restaurante</span>
+            </div>
+            <div class="place-desc" data-i18n="place_restaurante1_desc">Frutos do mar frescos com vista para o mar. Especialidade em camarão, ostra e peixe grelhado. Ambiente rústico e aconchegante.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_restaurante1_dist">8 min de carro</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="place_restaurante1_hours">Almoço e jantar</span></span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Rancho+de+Canoa+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="btn_map">Ver no mapa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="restaurante">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_restaurante2_name">Restaurante Sambaqui do Sul</div>
+              <span class="place-cat-badge cat-restaurante" data-i18n="cat_restaurante">Restaurante</span>
+            </div>
+            <div class="place-desc" data-i18n="place_restaurante2_desc">Culinária catarinense com pratos típicos, tainha e frutos do mar. Ambiente familiar, preços acessíveis e porções generosas.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_restaurante2_dist">10 min de carro</span></span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Restaurante+Sambaqui+do+Sul+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="btn_map">Ver no mapa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DELIVERY -->
+        <div class="place-card" data-cat="delivery">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_ifood_name">iFood</div>
+              <span class="place-cat-badge cat-delivery" data-i18n="cat_delivery">Delivery</span>
+            </div>
+            <div class="place-desc" data-i18n="place_ifood_desc">Peça delivery pelo iFood usando o endereço da acomodação. Há opções de pizza, hambúrguer, sushi e comida caseira com entrega na região.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="place_ifood_hours">Disponível até ~23h</span></span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-primary btn-sm" href="https://www.ifood.com.br" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span data-i18n="btn_open">Abrir iFood</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="delivery">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_rappi_name">Rappi</div>
+              <span class="place-cat-badge cat-delivery" data-i18n="cat_delivery">Delivery</span>
+            </div>
+            <div class="place-desc" data-i18n="place_rappi_desc">Outra opção de delivery com restaurantes, mercados e farmácias. Entrega rápida na região sul de Florianópolis.</div>
+            <div class="place-actions">
+              <a class="btn btn-primary btn-sm" href="https://www.rappi.com.br" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span data-i18n="btn_open">Abrir Rappi</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERCADOS -->
+        <div class="place-card" data-cat="mercado">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_mercado1_name">Supermercado Imperatriz</div>
+              <span class="place-cat-badge cat-mercado" data-i18n="cat_mercado">Mercado</span>
+            </div>
+            <div class="place-desc" data-i18n="place_mercado1_desc">Supermercado completo com grande variedade de produtos, padaria, açougue e hortifrúti. Boa opção para fazer compras para a estadia.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_mercado1_dist">12 min de carro</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="place_mercado1_hours">7h–22h</span></span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Supermercado+Imperatriz+Campeche+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="btn_map">Ver no mapa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="mercado">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_mercado2_name">Mercadinho da Solidão</div>
+              <span class="place-cat-badge cat-mercado" data-i18n="cat_mercado">Mercado</span>
+            </div>
+            <div class="place-desc" data-i18n="place_mercado2_desc">Pequeno mercadinho local com itens básicos, bebidas, sorvetes e produtos de conveniência. Prático para compras rápidas.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_mercado2_dist">5 min de carro</span></span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Mercadinho+Praia+da+Solidão+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="btn_map">Ver no mapa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRANSPORTE -->
+        <div class="place-card" data-cat="transporte">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_uber_name">Uber / 99</div>
+              <span class="place-cat-badge cat-transporte" data-i18n="cat_transporte">Transporte</span>
+            </div>
+            <div class="place-desc" data-i18n="place_uber_desc">Aplicativos de transporte disponíveis na região. Tempo médio de espera de 10 a 20 minutos. Recomendamos agendar com antecedência em horários de pico.</div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://www.uber.com/br/pt-br/ride/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="btn_open">Abrir Uber</span>
+              </a>
+              <a class="btn btn-gray btn-sm" href="https://99app.com" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="btn_open_99">Abrir 99</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="transporte">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name" data-i18n="place_bus_name">Ônibus urbano</div>
+              <span class="place-cat-badge cat-transporte" data-i18n="cat_transporte">Transporte</span>
+            </div>
+            <div class="place-desc" data-i18n="place_bus_desc">Há linhas de ônibus que conectam a Praia da Solidão ao centro de Florianópolis e ao aeroporto. Consulte o app Moovit para horários atualizados.</div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://moovitapp.com" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                <span data-i18n="btn_moovit">Ver horários no Moovit</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /around-list -->
+    </div>
+
+    <!-- ═══ TAB: SERVIÇOS ═══ -->
+    <div class="tab-panel" id="tab-services">
+      <div class="page-header">
+        <div class="page-title" data-i18n="services_title">Serviços</div>
+        <div class="page-subtitle" data-i18n="services_subtitle">Serviços opcionais disponíveis para tornar sua estadia ainda mais especial.</div>
+      </div>
+
+      <!-- Café da manhã -->
+      <div class="service-card">
+        <div class="service-body">
+          <div class="service-header">
+            <div class="service-name" data-i18n="service_breakfast_name">☕ Café da manhã</div>
+            <div class="service-price" data-i18n="service_breakfast_price">R$ 45/pessoa</div>
+          </div>
+          <div class="service-desc" data-i18n="service_breakfast_desc">Café da manhã artesanal entregue na acomodação. Inclui pão caseiro, frios, frutas da estação, geleias, sucos naturais e café especial. Pedido com 12h de antecedência.</div>
+          <a class="btn btn-whatsapp" href="https://wa.me/554888089128?text=Olá!%20Gostaria%20de%20solicitar%20café%20da%20manhã%20para%20minha%20estadia%20na%20Suíte%20Safira." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span data-i18n="service_request">Solicitar pelo WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Decoração romântica -->
+      <div class="service-card">
+        <div class="service-body">
+          <div class="service-header">
+            <div class="service-name" data-i18n="service_romantic_name">🌹 Decoração romântica</div>
+            <div class="service-price" data-i18n="service_romantic_price">R$ 120</div>
+          </div>
+          <div class="service-desc" data-i18n="service_romantic_desc">Decoração especial com pétalas de rosa, velas, balões e mensagem personalizada. Ideal para aniversários, lua de mel e datas comemorativas. Solicite com 24h de antecedência.</div>
+          <a class="btn btn-whatsapp" href="https://wa.me/554888089128?text=Olá!%20Gostaria%20de%20solicitar%20decoração%20romântica%20para%20minha%20estadia%20na%20Suíte%20Safira." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span data-i18n="service_request">Solicitar pelo WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Transfer -->
+      <div class="service-card">
+        <div class="service-body">
+          <div class="service-header">
+            <div class="service-name" data-i18n="service_transfer_name">🚗 Transfer aeroporto</div>
+            <div class="service-price" data-i18n="service_transfer_price">Consultar</div>
+          </div>
+          <div class="service-desc" data-i18n="service_transfer_desc">Transfer privativo entre o aeroporto de Florianópolis (FLN) e a acomodação. Veículo confortável, motorista pontual. Solicite com 24h de antecedência informando horário do voo.</div>
+          <a class="btn btn-whatsapp" href="https://wa.me/554888089128?text=Olá!%20Gostaria%20de%20solicitar%20transfer%20do%20aeroporto%20para%20a%20Suíte%20Safira." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span data-i18n="service_request">Solicitar pelo WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pagamento -->
+      <div class="section"><div class="section-title" data-i18n="services_payment_title">Formas de pagamento</div></div>
+      <div class="pix-card card">
+        <div class="card-body">
+          <div class="info-label" data-i18n="services_pix_label">Chave PIX</div>
+          <div class="pix-key-box">
+            <div>
+              <div class="pix-key-label" data-i18n="services_pix_type">Celular</div>
+              <div class="pix-key-value">+55 (48) 8808-9128</div>
+            </div>
+            <button class="copy-btn" id="copy-pix-btn" onclick="copyText('+55 (48) 8808-9128','copy-pix-btn','services_pix_copied')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span data-i18n="services_pix_copy">Copiar</span>
+            </button>
+          </div>
+          <div class="info-label" style="margin-top:8px" data-i18n="services_pix_name_label">Titular</div>
+          <div class="info-value" data-i18n="services_pix_name">Nosso Mar Suítes</div>
+        </div>
+      </div>
+      <div class="alert alert-info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div><div class="alert-body" data-i18n="services_payment_note">Pagamentos via PIX são confirmados instantaneamente. Envie o comprovante pelo WhatsApp após o pagamento.</div></div>
+      </div>
+
+      <!-- Avaliação -->
+      <div class="feedback-card">
+        <div class="feedback-title" data-i18n="services_review_title">Sua avaliação é muito importante!</div>
+        <div class="feedback-body" data-i18n="services_review_body">Se você está gostando da estadia, que tal deixar uma avaliação 5 estrelas no Airbnb? Isso nos ajuda muito a continuar oferecendo a melhor experiência possível.</div>
+        <a class="btn btn-primary" href="https://www.airbnb.com.br/rooms/1541508881151070432" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span data-i18n="services_review_btn">Avaliar no Airbnb</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ═══ TAB: CONTATO ═══ -->
+    <div class="tab-panel" id="tab-contact">
+      <div class="page-header">
+        <div class="page-title" data-i18n="contact_title">Contato</div>
+        <div class="page-subtitle" data-i18n="contact_subtitle">Estamos disponíveis para ajudar durante toda a sua estadia.</div>
+      </div>
+
+      <!-- Anfitrião principal -->
+      <div class="section"><div class="section-title" data-i18n="contact_host_title">Anfitrião</div></div>
+      <div class="contact-card">
+        <div class="contact-header">
+          <div class="contact-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div>
+            <div class="contact-name" data-i18n="contact_host_name">Nosso Mar Suítes</div>
+            <div class="contact-role" data-i18n="contact_host_role">Anfitrião · Disponível todos os dias</div>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-whatsapp" href="https://wa.me/554888089128" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span data-i18n="contact_whatsapp_btn">WhatsApp</span>
+          </a>
+          <a class="btn btn-outline" href="tel:+554888089128">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+            <span data-i18n="contact_call_btn">Ligar</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Emergências -->
+      <div class="section"><div class="section-title" data-i18n="contact_emergency_title">Emergências</div></div>
+      <div class="emergency-card">
+        <div class="emergency-item">
+          <div class="emergency-number">190</div>
+          <div class="emergency-name" data-i18n="contact_police">Polícia Militar</div>
+          <a class="emergency-call" href="tel:190"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg><span data-i18n="contact_call">Ligar</span></a>
+        </div>
+        <div class="emergency-item">
+          <div class="emergency-number">192</div>
+          <div class="emergency-name" data-i18n="contact_samu">SAMU</div>
+          <a class="emergency-call" href="tel:192"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg><span data-i18n="contact_call">Ligar</span></a>
+        </div>
+        <div class="emergency-item">
+          <div class="emergency-number">193</div>
+          <div class="emergency-name" data-i18n="contact_fire">Corpo de Bombeiros</div>
+          <a class="emergency-call" href="tel:193"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg><span data-i18n="contact_call">Ligar</span></a>
+        </div>
+        <div class="emergency-item">
+          <div class="emergency-number">197</div>
+          <div class="emergency-name" data-i18n="contact_civil_police">Polícia Civil</div>
+          <a class="emergency-call" href="tel:197"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg><span data-i18n="contact_call">Ligar</span></a>
+        </div>
+      </div>
+
+      <!-- UPA mais próxima -->
+      <div class="section"><div class="section-title" data-i18n="contact_upa_title">UPA mais próxima</div></div>
+      <div class="card" style="margin:0 16px 12px">
+        <div class="card-body">
+          <div class="card-title" data-i18n="contact_upa_name">UPA 24h — Campeche</div>
+          <div class="card-text" style="margin:4px 0 10px" data-i18n="contact_upa_address">Av. Pequeno Príncipe, 3065 — Campeche, Florianópolis/SC</div>
+          <div style="display:flex;gap:8px">
+            <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=UPA+Campeche+Florianópolis" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="btn_map">Ver no mapa</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Farmácia -->
+      <div class="section"><div class="section-title" data-i18n="contact_pharmacy_title">Farmácia 24h</div></div>
+      <div class="card" style="margin:0 16px 12px">
+        <div class="card-body">
+          <div class="card-title" data-i18n="contact_pharmacy_name">Drogaria Catarinense — Campeche</div>
+          <div class="card-text" style="margin:4px 0 10px" data-i18n="contact_pharmacy_address">Av. Campeche, 1086 — Campeche, Florianópolis/SC</div>
+          <div style="display:flex;gap:8px">
+            <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Drogaria+Catarinense+Campeche+Florianópolis" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="btn_map">Ver no mapa</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Airbnb -->
+      <div class="section"><div class="section-title" data-i18n="contact_airbnb_title">Suporte Airbnb</div></div>
+      <div class="card" style="margin:0 16px 20px">
+        <div class="card-body">
+          <div class="card-text" style="margin-bottom:10px" data-i18n="contact_airbnb_body">Para questões relacionadas à reserva, reembolsos ou disputas, entre em contato diretamente com o suporte do Airbnb.</div>
+          <a class="btn btn-outline" href="https://www.airbnb.com.br/help" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span data-i18n="contact_airbnb_btn">Central de ajuda Airbnb</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- Tab Bar -->
+  <div id="tab-bar">
+    <button class="tab-item active" onclick="switchTab('tab-home')" id="tabBtn-home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span data-i18n="tab_home">Início</span>
+    </button>
+    <button class="tab-item" onclick="switchTab('tab-rules')" id="tabBtn-rules">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <span data-i18n="tab_rules">Regras</span>
+    </button>
+    <button class="tab-item" onclick="switchTab('tab-around')" id="tabBtn-around">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span data-i18n="tab_around">Arredores</span>
+    </button>
+    <button class="tab-item" onclick="switchTab('tab-services')" id="tabBtn-services">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+      <span data-i18n="tab_services">Serviços</span>
+    </button>
+    <button class="tab-item" onclick="switchTab('tab-contact')" id="tabBtn-contact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+      <span data-i18n="tab_contact">Contato</span>
+    </button>
+  </div>
+
+  <!-- Modal Wi-Fi -->
+  <div id="wifi-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.5);align-items:flex-end;justify-content:center" onclick="closeModal('wifi-modal')">
+    <div style="background:var(--surface);border-radius:20px 20px 0 0;width:100%;max-width:480px;padding:20px;padding-bottom:calc(20px + env(safe-area-inset-bottom,0))" onclick="event.stopPropagation()">
+      <div style="width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px"></div>
+      <div style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px" data-i18n="wifi_modal_title">Wi-Fi da Suíte Safira</div>
+      <div class="card">
+        <div class="wifi-row"><div><div class="wifi-label" data-i18n="home_wifi_network">Rede</div><div class="wifi-value">SAFIRA</div></div></div>
+        <div class="wifi-row"><div><div class="wifi-label" data-i18n="home_wifi_password">Senha</div><div class="wifi-value">23589723</div></div></div>
+        <div class="copy-row">
+          <button class="copy-btn" id="copy-wifi-modal-btn" onclick="copyText('23589723','copy-wifi-modal-btn','home_wifi_copied')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span data-i18n="home_wifi_copy">Copiar senha</span>
+          </button>
+        </div>
+      </div>
+      <button class="btn btn-gray" style="margin-top:12px" onclick="closeModal('wifi-modal')" data-i18n="modal_close">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Modal Mini Cofre -->
+  <div id="safe-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.5);align-items:flex-end;justify-content:center" onclick="closeModal('safe-modal')">
+    <div style="background:var(--surface);border-radius:20px 20px 0 0;width:100%;max-width:480px;padding:20px;padding-bottom:calc(20px + env(safe-area-inset-bottom,0))" onclick="event.stopPropagation()">
+      <div style="width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px"></div>
+      <div style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px" data-i18n="safe_modal_title">Mini Cofre — Safira</div>
+      <div class="safe-code-box">
+        <div class="safe-code">1234</div>
+        <div class="safe-note" data-i18n="safe_modal_note">Código padrão de fábrica. Altere após o check-in.</div>
+      </div>
+      <div class="safe-contains-title" style="margin-top:14px" data-i18n="safe_modal_contains">O cofre contém:</div>
+      <div class="card" style="margin:0 0 12px">
+        <div class="safe-item" style="--before-content:'🔑'">
+          <span data-i18n="safe_item_1">Controle do portão eletrônico</span>
+        </div>
+        <div class="safe-item">
+          <span data-i18n="safe_item_2">Chave reserva da acomodação</span>
+        </div>
+      </div>
+      <div class="alert alert-warning" style="margin:0 0 12px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div><div class="alert-body" data-i18n="safe_modal_warning">Assista ao vídeo do mini cofre para instruções detalhadas de abertura e localização.</div></div>
+      </div>
+      <button class="btn btn-gray" onclick="closeModal('safe-modal')" data-i18n="modal_close">Fechar</button>
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// TRADUÇÕES — PT / EN / ES
+// ═══════════════════════════════════════════════════════════
+const i18n = {
+  pt: {
+    // Lang bar / meta
+    home_badge: "Manual do Hóspede",
+    // Home
+    home_welcome_title: "Seja muito bem-vindo(a)!",
+    home_welcome_body: "Este manual foi preparado especialmente para você, com muito carinho, para que sua experiência seja tranquila, confortável e inesquecível.",
+    home_welcome_note: "Imprescindível a leitura completa antes da sua chegada.",
+    home_quick_access: "Acessos rápidos",
+    shortcut_wifi: "Wi-Fi",
+    shortcut_wifi_sub: "Ver senha",
+    shortcut_safe: "Mini cofre",
+    shortcut_safe_sub: "Código de acesso",
+    shortcut_rules: "Regras",
+    shortcut_rules_sub: "Da hospedagem",
+    shortcut_around: "Arredores",
+    shortcut_around_sub: "Passeios e restaurantes",
+    shortcut_whatsapp: "Anfitrião",
+    shortcut_whatsapp_sub: "Abrir WhatsApp",
+    shortcut_emergency: "Emergências",
+    shortcut_emergency_sub: "Contatos de socorro",
+    home_wifi_title: "Wi-Fi Principal",
+    home_wifi_network: "Rede",
+    home_wifi_password: "Senha",
+    home_wifi_copy: "Copiar senha",
+    home_wifi_copied: "Copiado!",
+    home_arrival_title: "Chegada e acesso",
+    home_arrival_body: "Para garantir uma chegada tranquila, é necessário assistir aos vídeos enviados com as orientações: localização da vaga, caminho até a acomodação e instruções de acesso.",
+    video_arrival_day_title: "Vídeo de chegada — diurno",
+    video_arrival_day_desc: "Rota de acesso filmada durante o dia, com referências visuais.",
+    video_arrival_night_title: "Vídeo de chegada — noturno",
+    video_arrival_night_desc: "Rota de acesso filmada à noite, com referências visuais do caminho.",
+    video_safe_title: "Vídeo do mini cofre — Safira",
+    video_safe_desc: "Como abrir o mini cofre e localizar o controle do portão.",
+    video_spa_title: "Banheira Esmeralda — Como usar",
+    video_spa_desc: "Passo a passo para encher, ligar a hidro e acionar a cromoterapia.",
+    video_shower_title: "Vídeo do chuveiro elétrico",
+    video_shower_desc: "Como ajustar temperatura e pressão do chuveiro elétrico.",
+    home_before_title: "Antes da chegada",
+    home_before_body: "Envie os dados abaixo com antecedência. O acesso ao manual e à senha da fechadura será liberado pelo nosso assistente de WhatsApp após a confirmação destes dados:",
+    home_before_1: "Nome completo e CPF de todos os hóspedes maiores de 18 anos",
+    home_before_2: "Placa e modelo do veículo (caso venha de carro)",
+    home_before_warning: "Os dados serão validados pelo nosso assistente automatizado. Sem o envio dessas informações, a senha de acesso não será liberada.",
+    home_about_title: "Sobre a acomodação",
+    home_about_body: "Ambiente inserido em meio à natureza, com árvores, flores e vista para o mar. O acesso inclui escadas e subida — recomendamos bagagens leves e bem distribuídas para evitar cansaço.",
+    home_connectivity_title: "Conectividade na região",
+    home_connectivity_body: "Por estarmos em uma região mais remota, o sinal de algumas operadoras pode apresentar instabilidade. Recomendamos baixar previamente vídeos e informações antes da chegada.",
+    home_address_title: "Endereço da acomodação",
+    home_address_helper: "Use este endereço ao pedir delivery (iFood, restaurantes, etc.) ou cadastrar entregas.",
+    home_address_copy: "Copiar endereço",
+    home_address_copied: "Endereço copiado!",
+    home_address_open_map: "Abrir no mapa",
+    instagram_title: "Compartilhe sua experiência!",
+    instagram_body: "Aproveite o pôr do sol, a natureza e os momentos especiais. Marque a gente nas suas fotos!",
+    instagram_handle: "@nossomarsuites",
+    instagram_cta: "Ver no Instagram",
+    // Regras
+    rules_title: "Regras da hospedagem",
+    rules_subtitle: "Leia com atenção para garantir uma estadia tranquila para todos.",
+    rules_silence_label: "Horário de silêncio",
+    rules_silence_from: "Das",
+    rules_silence_to: "Às",
+    rules_silence_note: "Respeite os vizinhos e outros hóspedes.",
+    rules_checkin_title: "Check-in e Check-out",
+    rules_table_item: "Item",
+    rules_table_time: "Horário",
+    rules_checkin: "Check-in",
+    rules_checkout: "Check-out",
+    rules_early_checkin: "Early check-in",
+    rules_early_checkin_val: "Consultar disponibilidade",
+    rules_late_checkout: "Late check-out",
+    rules_late_checkout_val: "Consultar disponibilidade",
+    rules_checkout_warning: "Saídas após 11h sem autorização prévia serão cobradas como diária adicional.",
+    rules_capacity_title: "Capacidade e hóspedes",
+    rules_capacity_1: "Capacidade máxima: 2 hóspedes adultos + 1 criança de colo (até 2 anos).",
+    rules_capacity_2: "Não é permitido receber visitas externas na acomodação.",
+    rules_capacity_3: "Todos os hóspedes maiores de 18 anos devem ter CPF cadastrado antecipadamente.",
+    rules_capacity_4: "Crianças acima de 2 anos são contabilizadas como hóspede adulto para fins de capacidade.",
+    rules_pets_title: "Animais de estimação",
+    rules_pets_1: "Pets são bem-vindos mediante taxa adicional de R$50 por animal.",
+    rules_pets_2: "Informe com antecedência a presença de animais para liberação do acesso.",
+    rules_pets_3: "Não é permitido que os animais subam nos móveis ou na cama.",
+    rules_pets_4: "Danos causados por animais serão cobrados do hóspede responsável.",
+    rules_smoking_title: "Fumo e festas",
+    rules_no_smoking_title: "🚭 Proibido fumar no interior",
+    rules_no_smoking_desc: "É terminantemente proibido fumar dentro da acomodação. Fumar é permitido apenas em áreas externas abertas. Multa de R$500 em caso de descumprimento.",
+    rules_no_party_title: "🎉 Festas e eventos",
+    rules_no_party_desc: "Festas, eventos e reuniões com pessoas externas não são permitidos. O espaço é destinado exclusivamente aos hóspedes cadastrados.",
+    rules_cleaning_title: "Limpeza e conservação",
+    rules_cleaning_1: "Deixe a acomodação nas mesmas condições em que a encontrou.",
+    rules_cleaning_2: "Descarte o lixo nos locais indicados antes de sair.",
+    rules_cleaning_3: "Danos ao patrimônio serão cobrados do hóspede responsável.",
+    rules_cleaning_4: "Não remova toalhas, roupas de cama ou itens da acomodação.",
+    rules_cleaning_5: "Reporte qualquer avaria ou problema ao anfitrião imediatamente.",
+    rules_security_title: "Segurança",
+    rules_security_1: "Feche sempre a porta e o portão ao sair, mesmo que por poucos minutos.",
+    rules_security_2: "Não compartilhe a senha da fechadura com terceiros.",
+    rules_security_3: "Em caso de emergência, acione o anfitrião imediatamente pelo WhatsApp.",
+    rules_security_4: "Não utilize a lareira sem orientação prévia do anfitrião.",
+    rules_parking_title: "Estacionamento",
+    rules_parking_1: "Há 1 vaga privativa disponível para os hóspedes da Safira.",
+    rules_parking_2: "Informe a placa e modelo do veículo com antecedência.",
+    rules_parking_3: "Não ocupe vagas de outros hóspedes ou moradores.",
+    rules_parking_4: "Assista ao vídeo de chegada para localizar corretamente a vaga.",
+    rules_accessibility_title: "Acessibilidade",
+    rules_accessibility_body: "O acesso à acomodação envolve escadas e terreno irregular. Não é recomendado para pessoas com mobilidade reduzida ou dificuldade de locomoção. Recomendamos bagagens leves e bem distribuídas.",
+    rules_fauna_title: "Fauna local",
+    rules_fauna_1_title: "🦎 Lagartixas e insetos",
+    rules_fauna_1_desc: "São comuns na região e fazem parte do ecossistema local. São inofensivos e ajudam a controlar insetos.",
+    rules_fauna_2_title: "🐝 Abelhas e vespas",
+    rules_fauna_2_desc: "Podem aparecer eventualmente. Mantenha janelas fechadas ao anoitecer e não deixe alimentos expostos.",
+    rules_fauna_3_title: "🌿 Natureza preservada",
+    rules_fauna_3_desc: "Estamos em área de Mata Atlântica. Não alimente, capture ou prejudique animais silvestres.",
+    rules_contact_title: "Dúvidas? Fale conosco",
+    rules_whatsapp_btn: "Falar com o anfitrião pelo WhatsApp",
+    // Arredores
+    around_title: "Arredores",
+    around_subtitle: "Passeios, praias, restaurantes e serviços próximos.",
+    around_filter_all: "Todos",
+    around_filter_tour: "Passeios",
+    around_filter_restaurant: "Restaurantes",
+    around_filter_delivery: "Delivery",
+    around_filter_market: "Mercados",
+    around_filter_transport: "Transporte",
+    cat_passeio: "Passeio",
+    cat_restaurante: "Restaurante",
+    cat_delivery: "Delivery",
+    cat_mercado: "Mercado",
+    cat_transporte: "Transporte",
+    place_solidao_name: "Praia da Solidão",
+    place_solidao_desc: "Praia tranquila e preservada, ideal para banho de mar, relaxar e apreciar o pôr do sol. A apenas 5 minutos a pé da acomodação.",
+    place_solidao_dist: "5 min a pé",
+    place_solidao_hours: "Aberta 24h",
+    place_campeche_name: "Praia do Campeche",
+    place_campeche_desc: "Uma das praias mais bonitas de Florianópolis, com ondas fortes, areia branca e mar azul-turquesa. Ótima para surf e caminhadas.",
+    place_campeche_dist: "10 min de carro",
+    place_morro_name: "Morro do Lampião",
+    place_morro_desc: "Trilha de fácil acesso com vista panorâmica para a Praia da Solidão e o mar. Ideal para o pôr do sol e fotos incríveis.",
+    place_morro_dist: "15 min a pé",
+    place_ilha_name: "Ilha do Campeche",
+    place_ilha_desc: "Ilha paradisíaca com inscrições rupestres, trilhas e snorkeling. Acesso por barco a partir da Praia do Campeche. Reserva obrigatória.",
+    place_ilha_dist: "15 min de barco",
+    place_ilha_hours: "Temporada: out–abr",
+    place_restaurante1_name: "Rancho de Canoa",
+    place_restaurante1_desc: "Frutos do mar frescos com vista para o mar. Especialidade em camarão, ostra e peixe grelhado. Ambiente rústico e aconchegante.",
+    place_restaurante1_dist: "8 min de carro",
+    place_restaurante1_hours: "Almoço e jantar",
+    place_restaurante2_name: "Restaurante Sambaqui do Sul",
+    place_restaurante2_desc: "Culinária catarinense com pratos típicos, tainha e frutos do mar. Ambiente familiar, preços acessíveis e porções generosas.",
+    place_restaurante2_dist: "10 min de carro",
+    place_ifood_name: "iFood",
+    place_ifood_desc: "Peça delivery pelo iFood usando o endereço da acomodação. Há opções de pizza, hambúrguer, sushi e comida caseira com entrega na região.",
+    place_ifood_hours: "Disponível até ~23h",
+    place_rappi_name: "Rappi",
+    place_rappi_desc: "Outra opção de delivery com restaurantes, mercados e farmácias. Entrega rápida na região sul de Florianópolis.",
+    place_mercado1_name: "Supermercado Imperatriz",
+    place_mercado1_desc: "Supermercado completo com grande variedade de produtos, padaria, açougue e hortifrúti. Boa opção para fazer compras para a estadia.",
+    place_mercado1_dist: "12 min de carro",
+    place_mercado1_hours: "7h–22h",
+    place_mercado2_name: "Mercadinho da Solidão",
+    place_mercado2_desc: "Pequeno mercadinho local com itens básicos, bebidas, sorvetes e produtos de conveniência. Prático para compras rápidas.",
+    place_mercado2_dist: "5 min de carro",
+    place_uber_name: "Uber / 99",
+    place_uber_desc: "Aplicativos de transporte disponíveis na região. Tempo médio de espera de 10 a 20 minutos. Recomendamos agendar com antecedência em horários de pico.",
+    place_bus_name: "Ônibus urbano",
+    place_bus_desc: "Há linhas de ônibus que conectam a Praia da Solidão ao centro de Florianópolis e ao aeroporto. Consulte o app Moovit para horários atualizados.",
+    btn_map: "Ver no mapa",
+    btn_open: "Abrir iFood",
+    btn_open_99: "Abrir 99",
+    btn_moovit: "Ver horários no Moovit",
+    // Serviços
+    services_title: "Serviços",
+    services_subtitle: "Serviços opcionais disponíveis para tornar sua estadia ainda mais especial.",
+    service_breakfast_name: "☕ Café da manhã",
+    service_breakfast_price: "R$ 45/pessoa",
+    service_breakfast_desc: "Café da manhã artesanal entregue na acomodação. Inclui pão caseiro, frios, frutas da estação, geleias, sucos naturais e café especial. Pedido com 12h de antecedência.",
+    service_romantic_name: "🌹 Decoração romântica",
+    service_romantic_price: "R$ 120",
+    service_romantic_desc: "Decoração especial com pétalas de rosa, velas, balões e mensagem personalizada. Ideal para aniversários, lua de mel e datas comemorativas. Solicite com 24h de antecedência.",
+    service_transfer_name: "🚗 Transfer aeroporto",
+    service_transfer_price: "Consultar",
+    service_transfer_desc: "Transfer privativo entre o aeroporto de Florianópolis (FLN) e a acomodação. Veículo confortável, motorista pontual. Solicite com 24h de antecedência informando horário do voo.",
+    service_request: "Solicitar pelo WhatsApp",
+    services_payment_title: "Formas de pagamento",
+    services_pix_label: "Chave PIX",
+    services_pix_type: "Celular",
+    services_pix_copy: "Copiar",
+    services_pix_copied: "Copiado!",
+    services_pix_name_label: "Titular",
+    services_pix_name: "Nosso Mar Suítes",
+    services_payment_note: "Pagamentos via PIX são confirmados instantaneamente. Envie o comprovante pelo WhatsApp após o pagamento.",
+    services_review_title: "Sua avaliação é muito importante!",
+    services_review_body: "Se você está gostando da estadia, que tal deixar uma avaliação 5 estrelas no Airbnb? Isso nos ajuda muito a continuar oferecendo a melhor experiência possível.",
+    services_review_btn: "Avaliar no Airbnb",
+    // Contato
+    contact_title: "Contato",
+    contact_subtitle: "Estamos disponíveis para ajudar durante toda a sua estadia.",
+    contact_host_title: "Anfitrião",
+    contact_host_name: "Nosso Mar Suítes",
+    contact_host_role: "Anfitrião · Disponível todos os dias",
+    contact_whatsapp_btn: "WhatsApp",
+    contact_call_btn: "Ligar",
+    contact_emergency_title: "Emergências",
+    contact_police: "Polícia Militar",
+    contact_samu: "SAMU",
+    contact_fire: "Corpo de Bombeiros",
+    contact_civil_police: "Polícia Civil",
+    contact_call: "Ligar",
+    contact_upa_title: "UPA mais próxima",
+    contact_upa_name: "UPA 24h — Campeche",
+    contact_upa_address: "Av. Pequeno Príncipe, 3065 — Campeche, Florianópolis/SC",
+    contact_pharmacy_title: "Farmácia 24h",
+    contact_pharmacy_name: "Drogaria Catarinense — Campeche",
+    contact_pharmacy_address: "Av. Campeche, 1086 — Campeche, Florianópolis/SC",
+    contact_airbnb_title: "Suporte Airbnb",
+    contact_airbnb_body: "Para questões relacionadas à reserva, reembolsos ou disputas, entre em contato diretamente com o suporte do Airbnb.",
+    contact_airbnb_btn: "Central de ajuda Airbnb",
+    // Modais
+    wifi_modal_title: "Wi-Fi da Suíte Safira",
+    safe_modal_title: "Mini Cofre — Safira",
+    safe_modal_note: "Código padrão de fábrica. Altere após o check-in.",
+    safe_modal_contains: "O cofre contém:",
+    safe_item_1: "Controle do portão eletrônico",
+    safe_item_2: "Chave reserva da acomodação",
+    safe_modal_warning: "Assista ao vídeo do mini cofre para instruções detalhadas de abertura e localização.",
+    modal_close: "Fechar",
+    // Tabs
+    tab_home: "Início",
+    tab_rules: "Regras",
+    tab_around: "Arredores",
+    tab_services: "Serviços",
+    tab_contact: "Contato",
+  },
+  en: {
+    home_badge: "Guest Manual",
+    home_welcome_title: "Welcome!",
+    home_welcome_body: "This manual was specially prepared for you, with great care, so that your experience is peaceful, comfortable and unforgettable.",
+    home_welcome_note: "Please read it completely before your arrival.",
+    home_quick_access: "Quick access",
+    shortcut_wifi: "Wi-Fi",
+    shortcut_wifi_sub: "View password",
+    shortcut_safe: "Mini safe",
+    shortcut_safe_sub: "Access code",
+    shortcut_rules: "Rules",
+    shortcut_rules_sub: "House rules",
+    shortcut_around: "Around",
+    shortcut_around_sub: "Tours & restaurants",
+    shortcut_whatsapp: "Host",
+    shortcut_whatsapp_sub: "Open WhatsApp",
+    shortcut_emergency: "Emergency",
+    shortcut_emergency_sub: "Emergency contacts",
+    home_wifi_title: "Main Wi-Fi",
+    home_wifi_network: "Network",
+    home_wifi_password: "Password",
+    home_wifi_copy: "Copy password",
+    home_wifi_copied: "Copied!",
+    home_arrival_title: "Arrival & access",
+    home_arrival_body: "To ensure a smooth arrival, please watch the videos sent with instructions: parking spot location, path to the accommodation and access instructions.",
+    video_arrival_day_title: "Arrival video — daytime",
+    video_arrival_day_desc: "Access route filmed during the day, with visual references.",
+    video_arrival_night_title: "Arrival video — nighttime",
+    video_arrival_night_desc: "Access route filmed at night, with visual references along the way.",
+    video_safe_title: "Mini safe video — Safira",
+    video_safe_desc: "How to open the mini safe and locate the gate remote.",
+    video_spa_title: "Esmeralda Bathtub — How to use",
+    video_spa_desc: "Step by step to fill, turn on the hydro jets and activate chromotherapy.",
+    video_shower_title: "Electric shower video",
+    video_shower_desc: "How to adjust the temperature and pressure of the electric shower.",
+    home_before_title: "Before arrival",
+    home_before_body: "Please send the information below in advance. Access to the manual and the door lock password will be released by our WhatsApp assistant after confirming this data:",
+    home_before_1: "Full name and ID (CPF) of all guests over 18 years old",
+    home_before_2: "License plate and model of the vehicle (if coming by car)",
+    home_before_warning: "The data will be validated by our automated assistant. Without sending this information, the access password will not be released.",
+    home_about_title: "About the accommodation",
+    home_about_body: "A nature-surrounded environment with trees, flowers and sea views. Access includes stairs and an uphill path — we recommend light, well-distributed luggage to avoid fatigue.",
+    home_connectivity_title: "Connectivity in the area",
+    home_connectivity_body: "As we are in a more remote area, some carriers may experience signal instability. We recommend downloading videos and information before arrival.",
+    home_address_title: "Accommodation address",
+    home_address_helper: "Use this address when ordering delivery (iFood, restaurants, etc.) or registering deliveries.",
+    home_address_copy: "Copy address",
+    home_address_copied: "Address copied!",
+    home_address_open_map: "Open in maps",
+    instagram_title: "Share your experience!",
+    instagram_body: "Enjoy the sunset, nature and special moments. Tag us in your photos!",
+    instagram_handle: "@nossomarsuites",
+    instagram_cta: "View on Instagram",
+    rules_title: "House rules",
+    rules_subtitle: "Please read carefully to ensure a peaceful stay for everyone.",
+    rules_silence_label: "Quiet hours",
+    rules_silence_from: "From",
+    rules_silence_to: "To",
+    rules_silence_note: "Please respect neighbors and other guests.",
+    rules_checkin_title: "Check-in & Check-out",
+    rules_table_item: "Item",
+    rules_table_time: "Time",
+    rules_checkin: "Check-in",
+    rules_checkout: "Check-out",
+    rules_early_checkin: "Early check-in",
+    rules_early_checkin_val: "Subject to availability",
+    rules_late_checkout: "Late check-out",
+    rules_late_checkout_val: "Subject to availability",
+    rules_checkout_warning: "Departures after 11am without prior authorization will be charged as an additional night.",
+    rules_capacity_title: "Capacity & guests",
+    rules_capacity_1: "Maximum capacity: 2 adult guests + 1 infant (up to 2 years old).",
+    rules_capacity_2: "External visitors are not allowed in the accommodation.",
+    rules_capacity_3: "All guests over 18 must have their ID registered in advance.",
+    rules_capacity_4: "Children over 2 years old count as adult guests for capacity purposes.",
+    rules_pets_title: "Pets",
+    rules_pets_1: "Pets are welcome with an additional fee of R$50 per animal.",
+    rules_pets_2: "Please inform us in advance about the presence of animals.",
+    rules_pets_3: "Animals are not allowed on furniture or the bed.",
+    rules_pets_4: "Damage caused by animals will be charged to the responsible guest.",
+    rules_smoking_title: "Smoking & parties",
+    rules_no_smoking_title: "🚭 No smoking indoors",
+    rules_no_smoking_desc: "Smoking is strictly prohibited inside the accommodation. Smoking is only allowed in open outdoor areas. Fine of R$500 for non-compliance.",
+    rules_no_party_title: "🎉 Parties & events",
+    rules_no_party_desc: "Parties, events and gatherings with external people are not allowed. The space is exclusively for registered guests.",
+    rules_cleaning_title: "Cleaning & conservation",
+    rules_cleaning_1: "Leave the accommodation in the same condition you found it.",
+    rules_cleaning_2: "Dispose of trash in the designated locations before leaving.",
+    rules_cleaning_3: "Damage to property will be charged to the responsible guest.",
+    rules_cleaning_4: "Do not remove towels, bed linen or items from the accommodation.",
+    rules_cleaning_5: "Report any damage or problem to the host immediately.",
+    rules_security_title: "Security",
+    rules_security_1: "Always close the door and gate when leaving, even for a few minutes.",
+    rules_security_2: "Do not share the door lock password with third parties.",
+    rules_security_3: "In case of emergency, contact the host immediately via WhatsApp.",
+    rules_security_4: "Do not use the fireplace without prior guidance from the host.",
+    rules_parking_title: "Parking",
+    rules_parking_1: "There is 1 private parking spot available for Safira guests.",
+    rules_parking_2: "Please inform your vehicle license plate and model in advance.",
+    rules_parking_3: "Do not occupy parking spots of other guests or residents.",
+    rules_parking_4: "Watch the arrival video to correctly locate the parking spot.",
+    rules_accessibility_title: "Accessibility",
+    rules_accessibility_body: "Access to the accommodation involves stairs and uneven terrain. Not recommended for people with reduced mobility. We recommend light, well-distributed luggage.",
+    rules_fauna_title: "Local wildlife",
+    rules_fauna_1_title: "🦎 Geckos & insects",
+    rules_fauna_1_desc: "Common in the area and part of the local ecosystem. They are harmless and help control insects.",
+    rules_fauna_2_title: "🐝 Bees & wasps",
+    rules_fauna_2_desc: "May occasionally appear. Keep windows closed at dusk and don't leave food exposed.",
+    rules_fauna_3_title: "🌿 Preserved nature",
+    rules_fauna_3_desc: "We are in an Atlantic Forest area. Do not feed, capture or harm wild animals.",
+    rules_contact_title: "Questions? Talk to us",
+    rules_whatsapp_btn: "Talk to the host on WhatsApp",
+    around_title: "Around",
+    around_subtitle: "Tours, beaches, restaurants and nearby services.",
+    around_filter_all: "All",
+    around_filter_tour: "Tours",
+    around_filter_restaurant: "Restaurants",
+    around_filter_delivery: "Delivery",
+    around_filter_market: "Markets",
+    around_filter_transport: "Transport",
+    cat_passeio: "Tour",
+    cat_restaurante: "Restaurant",
+    cat_delivery: "Delivery",
+    cat_mercado: "Market",
+    cat_transporte: "Transport",
+    place_solidao_name: "Solidão Beach",
+    place_solidao_desc: "A quiet, preserved beach, ideal for swimming, relaxing and watching the sunset. Just 5 minutes walk from the accommodation.",
+    place_solidao_dist: "5 min walk",
+    place_solidao_hours: "Open 24h",
+    place_campeche_name: "Campeche Beach",
+    place_campeche_desc: "One of the most beautiful beaches in Florianópolis, with strong waves, white sand and turquoise-blue sea. Great for surfing and walks.",
+    place_campeche_dist: "10 min by car",
+    place_morro_name: "Morro do Lampião",
+    place_morro_desc: "An easy-access trail with a panoramic view of Solidão Beach and the sea. Perfect for sunset and amazing photos.",
+    place_morro_dist: "15 min walk",
+    place_ilha_name: "Campeche Island",
+    place_ilha_desc: "A paradise island with rock carvings, trails and snorkeling. Access by boat from Campeche Beach. Reservation required.",
+    place_ilha_dist: "15 min by boat",
+    place_ilha_hours: "Season: Oct–Apr",
+    place_restaurante1_name: "Rancho de Canoa",
+    place_restaurante1_desc: "Fresh seafood with sea views. Specialty in shrimp, oysters and grilled fish. Rustic and cozy atmosphere.",
+    place_restaurante1_dist: "8 min by car",
+    place_restaurante1_hours: "Lunch and dinner",
+    place_restaurante2_name: "Sambaqui do Sul Restaurant",
+    place_restaurante2_desc: "Santa Catarina cuisine with typical dishes, mullet and seafood. Family atmosphere, affordable prices and generous portions.",
+    place_restaurante2_dist: "10 min by car",
+    place_ifood_name: "iFood",
+    place_ifood_desc: "Order delivery via iFood using the accommodation address. Options include pizza, burgers, sushi and home-cooked food with delivery to the area.",
+    place_ifood_hours: "Available until ~11pm",
+    place_rappi_name: "Rappi",
+    place_rappi_desc: "Another delivery option with restaurants, markets and pharmacies. Fast delivery in southern Florianópolis.",
+    place_mercado1_name: "Imperatriz Supermarket",
+    place_mercado1_desc: "Full supermarket with a wide variety of products, bakery, butcher and fresh produce. Good option for stocking up for your stay.",
+    place_mercado1_dist: "12 min by car",
+    place_mercado1_hours: "7am–10pm",
+    place_mercado2_name: "Solidão Mini Market",
+    place_mercado2_desc: "Small local market with basic items, drinks, ice cream and convenience products. Handy for quick purchases.",
+    place_mercado2_dist: "5 min by car",
+    place_uber_name: "Uber / 99",
+    place_uber_desc: "Ride-hailing apps available in the area. Average wait time of 10 to 20 minutes. We recommend booking in advance during peak hours.",
+    place_bus_name: "City bus",
+    place_bus_desc: "There are bus lines connecting Solidão Beach to downtown Florianópolis and the airport. Check the Moovit app for updated schedules.",
+    btn_map: "View on map",
+    btn_open: "Open iFood",
+    btn_open_99: "Open 99",
+    btn_moovit: "Check schedules on Moovit",
+    services_title: "Services",
+    services_subtitle: "Optional services available to make your stay even more special.",
+    service_breakfast_name: "☕ Breakfast",
+    service_breakfast_price: "R$ 45/person",
+    service_breakfast_desc: "Artisanal breakfast delivered to the accommodation. Includes homemade bread, cold cuts, seasonal fruits, jams, natural juices and specialty coffee. Order 12h in advance.",
+    service_romantic_name: "🌹 Romantic decoration",
+    service_romantic_price: "R$ 120",
+    service_romantic_desc: "Special decoration with rose petals, candles, balloons and a personalized message. Ideal for birthdays, honeymoons and special occasions. Request 24h in advance.",
+    service_transfer_name: "🚗 Airport transfer",
+    service_transfer_price: "On request",
+    service_transfer_desc: "Private transfer between Florianópolis Airport (FLN) and the accommodation. Comfortable vehicle, punctual driver. Request 24h in advance with your flight time.",
+    service_request: "Request via WhatsApp",
+    services_payment_title: "Payment methods",
+    services_pix_label: "PIX Key",
+    services_pix_type: "Phone",
+    services_pix_copy: "Copy",
+    services_pix_copied: "Copied!",
+    services_pix_name_label: "Account holder",
+    services_pix_name: "Nosso Mar Suítes",
+    services_payment_note: "PIX payments are confirmed instantly. Send the receipt via WhatsApp after payment.",
+    services_review_title: "Your review matters a lot!",
+    services_review_body: "If you are enjoying your stay, how about leaving a 5-star review on Airbnb? It helps us a lot to keep offering the best possible experience.",
+    services_review_btn: "Review on Airbnb",
+    contact_title: "Contact",
+    contact_subtitle: "We are available to help throughout your stay.",
+    contact_host_title: "Host",
+    contact_host_name: "Nosso Mar Suítes",
+    contact_host_role: "Host · Available every day",
+    contact_whatsapp_btn: "WhatsApp",
+    contact_call_btn: "Call",
+    contact_emergency_title: "Emergencies",
+    contact_police: "Military Police",
+    contact_samu: "SAMU (Ambulance)",
+    contact_fire: "Fire Department",
+    contact_civil_police: "Civil Police",
+    contact_call: "Call",
+    contact_upa_title: "Nearest urgent care",
+    contact_upa_name: "UPA 24h — Campeche",
+    contact_upa_address: "Av. Pequeno Príncipe, 3065 — Campeche, Florianópolis/SC",
+    contact_pharmacy_title: "24h Pharmacy",
+    contact_pharmacy_name: "Drogaria Catarinense — Campeche",
+    contact_pharmacy_address: "Av. Campeche, 1086 — Campeche, Florianópolis/SC",
+    contact_airbnb_title: "Airbnb support",
+    contact_airbnb_body: "For issues related to your reservation, refunds or disputes, contact Airbnb support directly.",
+    contact_airbnb_btn: "Airbnb Help Center",
+    wifi_modal_title: "Safira Suite Wi-Fi",
+    safe_modal_title: "Mini Safe — Safira",
+    safe_modal_note: "Factory default code. Change after check-in.",
+    safe_modal_contains: "The safe contains:",
+    safe_item_1: "Electronic gate remote",
+    safe_item_2: "Spare key to the accommodation",
+    safe_modal_warning: "Watch the mini safe video for detailed instructions on opening and location.",
+    modal_close: "Close",
+    tab_home: "Home",
+    tab_rules: "Rules",
+    tab_around: "Around",
+    tab_services: "Services",
+    tab_contact: "Contact",
+  },
+  es: {
+    home_badge: "Manual del Huésped",
+    home_welcome_title: "¡Bienvenido/a!",
+    home_welcome_body: "Este manual fue preparado especialmente para usted, con mucho cariño, para que su experiencia sea tranquila, cómoda e inolvidable.",
+    home_welcome_note: "Es imprescindible leerlo completo antes de su llegada.",
+    home_quick_access: "Accesos rápidos",
+    shortcut_wifi: "Wi-Fi",
+    shortcut_wifi_sub: "Ver contraseña",
+    shortcut_safe: "Mini caja fuerte",
+    shortcut_safe_sub: "Código de acceso",
+    shortcut_rules: "Reglas",
+    shortcut_rules_sub: "Del alojamiento",
+    shortcut_around: "Alrededores",
+    shortcut_around_sub: "Paseos y restaurantes",
+    shortcut_whatsapp: "Anfitrión",
+    shortcut_whatsapp_sub: "Abrir WhatsApp",
+    shortcut_emergency: "Emergencias",
+    shortcut_emergency_sub: "Contactos de socorro",
+    home_wifi_title: "Wi-Fi Principal",
+    home_wifi_network: "Red",
+    home_wifi_password: "Contraseña",
+    home_wifi_copy: "Copiar contraseña",
+    home_wifi_copied: "¡Copiado!",
+    home_arrival_title: "Llegada y acceso",
+    home_arrival_body: "Para garantizar una llegada tranquila, es necesario ver los videos enviados con las instrucciones: ubicación del estacionamiento, camino al alojamiento e instrucciones de acceso.",
+    video_arrival_day_title: "Video de llegada — diurno",
+    video_arrival_day_desc: "Ruta de acceso filmada durante el día, con referencias visuales.",
+    video_arrival_night_title: "Video de llegada — nocturno",
+    video_arrival_night_desc: "Ruta de acceso filmada de noche, con referencias visuales del camino.",
+    video_safe_title: "Video de la caja fuerte — Safira",
+    video_safe_desc: "Cómo abrir la caja fuerte y localizar el control del portón.",
+    video_spa_title: "Bañera Esmeralda — Cómo usar",
+    video_spa_desc: "Paso a paso para llenar, encender la hidro y activar la cromoterapia.",
+    video_shower_title: "Video de la ducha eléctrica",
+    video_shower_desc: "Cómo ajustar la temperatura y presión de la ducha eléctrica.",
+    home_before_title: "Antes de la llegada",
+    home_before_body: "Envíe los datos a continuación con anticipación. El acceso al manual y la contraseña de la cerradura será liberado por nuestro asistente de WhatsApp tras confirmar estos datos:",
+    home_before_1: "Nombre completo y documento de todos los huéspedes mayores de 18 años",
+    home_before_2: "Matrícula y modelo del vehículo (si viene en auto)",
+    home_before_warning: "Los datos serán validados por nuestro asistente automatizado. Sin el envío de esta información, la contraseña de acceso no será liberada.",
+    home_about_title: "Sobre el alojamiento",
+    home_about_body: "Ambiente rodeado de naturaleza, con árboles, flores y vista al mar. El acceso incluye escaleras y subida — recomendamos equipaje liviano y bien distribuido para evitar cansancio.",
+    home_connectivity_title: "Conectividad en la zona",
+    home_connectivity_body: "Al estar en una zona más remota, la señal de algunos operadores puede presentar inestabilidad. Recomendamos descargar videos e información antes de la llegada.",
+    home_address_title: "Dirección del alojamiento",
+    home_address_helper: "Use esta dirección al pedir delivery (iFood, restaurantes, etc.) o registrar entregas.",
+    home_address_copy: "Copiar dirección",
+    home_address_copied: "¡Dirección copiada!",
+    home_address_open_map: "Abrir en el mapa",
+    instagram_title: "¡Comparte tu experiencia!",
+    instagram_body: "Disfruta del atardecer, la naturaleza y los momentos especiales. ¡Etiquétanos en tus fotos!",
+    instagram_handle: "@nossomarsuites",
+    instagram_cta: "Ver en Instagram",
+    rules_title: "Reglas del alojamiento",
+    rules_subtitle: "Léalas con atención para garantizar una estadía tranquila para todos.",
+    rules_silence_label: "Horario de silencio",
+    rules_silence_from: "De",
+    rules_silence_to: "A",
+    rules_silence_note: "Respete a los vecinos y otros huéspedes.",
+    rules_checkin_title: "Check-in y Check-out",
+    rules_table_item: "Ítem",
+    rules_table_time: "Horario",
+    rules_checkin: "Check-in",
+    rules_checkout: "Check-out",
+    rules_early_checkin: "Early check-in",
+    rules_early_checkin_val: "Consultar disponibilidad",
+    rules_late_checkout: "Late check-out",
+    rules_late_checkout_val: "Consultar disponibilidad",
+    rules_checkout_warning: "Las salidas después de las 11h sin autorización previa serán cobradas como noche adicional.",
+    rules_capacity_title: "Capacidad y huéspedes",
+    rules_capacity_1: "Capacidad máxima: 2 huéspedes adultos + 1 bebé (hasta 2 años).",
+    rules_capacity_2: "No está permitido recibir visitas externas en el alojamiento.",
+    rules_capacity_3: "Todos los huéspedes mayores de 18 años deben tener su documento registrado con anticipación.",
+    rules_capacity_4: "Los niños mayores de 2 años se contabilizan como huéspedes adultos para fines de capacidad.",
+    rules_pets_title: "Mascotas",
+    rules_pets_1: "Las mascotas son bienvenidas con una tarifa adicional de R$50 por animal.",
+    rules_pets_2: "Informe con anticipación la presencia de animales para la liberación del acceso.",
+    rules_pets_3: "No está permitido que los animales suban a los muebles o a la cama.",
+    rules_pets_4: "Los daños causados por animales serán cobrados al huésped responsable.",
+    rules_smoking_title: "Fumar y fiestas",
+    rules_no_smoking_title: "🚭 Prohibido fumar en el interior",
+    rules_no_smoking_desc: "Está terminantemente prohibido fumar dentro del alojamiento. Solo se permite fumar en áreas exteriores abiertas. Multa de R$500 en caso de incumplimiento.",
+    rules_no_party_title: "🎉 Fiestas y eventos",
+    rules_no_party_desc: "No están permitidas fiestas, eventos ni reuniones con personas externas. El espacio es exclusivo para los huéspedes registrados.",
+    rules_cleaning_title: "Limpieza y conservación",
+    rules_cleaning_1: "Deje el alojamiento en las mismas condiciones en que lo encontró.",
+    rules_cleaning_2: "Descarte la basura en los lugares indicados antes de salir.",
+    rules_cleaning_3: "Los daños al patrimonio serán cobrados al huésped responsable.",
+    rules_cleaning_4: "No retire toallas, ropa de cama ni artículos del alojamiento.",
+    rules_cleaning_5: "Reporte cualquier avería o problema al anfitrión de inmediato.",
+    rules_security_title: "Seguridad",
+    rules_security_1: "Cierre siempre la puerta y el portón al salir, aunque sea por pocos minutos.",
+    rules_security_2: "No comparta la contraseña de la cerradura con terceros.",
+    rules_security_3: "En caso de emergencia, contacte al anfitrión de inmediato por WhatsApp.",
+    rules_security_4: "No utilice la chimenea sin orientación previa del anfitrión.",
+    rules_parking_title: "Estacionamiento",
+    rules_parking_1: "Hay 1 plaza de estacionamiento privada disponible para los huéspedes de Safira.",
+    rules_parking_2: "Informe la matrícula y modelo del vehículo con anticipación.",
+    rules_parking_3: "No ocupe plazas de otros huéspedes o residentes.",
+    rules_parking_4: "Vea el video de llegada para localizar correctamente la plaza.",
+    rules_accessibility_title: "Accesibilidad",
+    rules_accessibility_body: "El acceso al alojamiento involucra escaleras y terreno irregular. No es recomendado para personas con movilidad reducida. Recomendamos equipaje liviano y bien distribuido.",
+    rules_fauna_title: "Fauna local",
+    rules_fauna_1_title: "🦎 Lagartijas e insectos",
+    rules_fauna_1_desc: "Son comunes en la zona y forman parte del ecosistema local. Son inofensivos y ayudan a controlar insectos.",
+    rules_fauna_2_title: "🐝 Abejas y avispas",
+    rules_fauna_2_desc: "Pueden aparecer ocasionalmente. Mantenga las ventanas cerradas al anochecer y no deje alimentos expuestos.",
+    rules_fauna_3_title: "🌿 Naturaleza preservada",
+    rules_fauna_3_desc: "Estamos en un área de Mata Atlántica. No alimente, capture ni perjudique animales silvestres.",
+    rules_contact_title: "¿Dudas? Hable con nosotros",
+    rules_whatsapp_btn: "Hablar con el anfitrión por WhatsApp",
+    around_title: "Alrededores",
+    around_subtitle: "Paseos, playas, restaurantes y servicios cercanos.",
+    around_filter_all: "Todos",
+    around_filter_tour: "Paseos",
+    around_filter_restaurant: "Restaurantes",
+    around_filter_delivery: "Delivery",
+    around_filter_market: "Mercados",
+    around_filter_transport: "Transporte",
+    cat_passeio: "Paseo",
+    cat_restaurante: "Restaurante",
+    cat_delivery: "Delivery",
+    cat_mercado: "Mercado",
+    cat_transporte: "Transporte",
+    place_solidao_name: "Playa da Solidão",
+    place_solidao_desc: "Playa tranquila y preservada, ideal para bañarse, relajarse y disfrutar del atardecer. A solo 5 minutos a pie del alojamiento.",
+    place_solidao_dist: "5 min a pie",
+    place_solidao_hours: "Abierta 24h",
+    place_campeche_name: "Playa de Campeche",
+    place_campeche_desc: "Una de las playas más hermosas de Florianópolis, con olas fuertes, arena blanca y mar azul turquesa. Ideal para surf y caminatas.",
+    place_campeche_dist: "10 min en auto",
+    place_morro_name: "Morro do Lampião",
+    place_morro_desc: "Sendero de fácil acceso con vista panorámica a la Playa da Solidão y el mar. Ideal para el atardecer y fotos increíbles.",
+    place_morro_dist: "15 min a pie",
+    place_ilha_name: "Isla de Campeche",
+    place_ilha_desc: "Isla paradisíaca con petroglifos, senderos y snorkeling. Acceso en barco desde la Playa de Campeche. Reserva obligatoria.",
+    place_ilha_dist: "15 min en barco",
+    place_ilha_hours: "Temporada: oct–abr",
+    place_restaurante1_name: "Rancho de Canoa",
+    place_restaurante1_desc: "Mariscos frescos con vista al mar. Especialidad en camarones, ostras y pescado a la parrilla. Ambiente rústico y acogedor.",
+    place_restaurante1_dist: "8 min en auto",
+    place_restaurante1_hours: "Almuerzo y cena",
+    place_restaurante2_name: "Restaurante Sambaqui do Sul",
+    place_restaurante2_desc: "Cocina catarinense con platos típicos, lisa y mariscos. Ambiente familiar, precios accesibles y porciones generosas.",
+    place_restaurante2_dist: "10 min en auto",
+    place_ifood_name: "iFood",
+    place_ifood_desc: "Pida delivery por iFood usando la dirección del alojamiento. Hay opciones de pizza, hamburguesas, sushi y comida casera con entrega en la zona.",
+    place_ifood_hours: "Disponible hasta ~23h",
+    place_rappi_name: "Rappi",
+    place_rappi_desc: "Otra opción de delivery con restaurantes, mercados y farmacias. Entrega rápida en el sur de Florianópolis.",
+    place_mercado1_name: "Supermercado Imperatriz",
+    place_mercado1_desc: "Supermercado completo con gran variedad de productos, panadería, carnicería y verdulería. Buena opción para hacer compras para la estadía.",
+    place_mercado1_dist: "12 min en auto",
+    place_mercado1_hours: "7h–22h",
+    place_mercado2_name: "Minimercado da Solidão",
+    place_mercado2_desc: "Pequeño mercado local con artículos básicos, bebidas, helados y productos de conveniencia. Práctico para compras rápidas.",
+    place_mercado2_dist: "5 min en auto",
+    place_uber_name: "Uber / 99",
+    place_uber_desc: "Aplicaciones de transporte disponibles en la zona. Tiempo de espera promedio de 10 a 20 minutos. Recomendamos reservar con anticipación en horas pico.",
+    place_bus_name: "Autobús urbano",
+    place_bus_desc: "Hay líneas de autobús que conectan la Playa da Solidão con el centro de Florianópolis y el aeropuerto. Consulte el app Moovit para horarios actualizados.",
+    btn_map: "Ver en el mapa",
+    btn_open: "Abrir iFood",
+    btn_open_99: "Abrir 99",
+    btn_moovit: "Ver horarios en Moovit",
+    services_title: "Servicios",
+    services_subtitle: "Servicios opcionales disponibles para hacer su estadía aún más especial.",
+    service_breakfast_name: "☕ Desayuno",
+    service_breakfast_price: "R$ 45/persona",
+    service_breakfast_desc: "Desayuno artesanal entregado en el alojamiento. Incluye pan casero, fiambres, frutas de temporada, mermeladas, jugos naturales y café especial. Pedido con 12h de anticipación.",
+    service_romantic_name: "🌹 Decoración romántica",
+    service_romantic_price: "R$ 120",
+    service_romantic_desc: "Decoración especial con pétalos de rosa, velas, globos y mensaje personalizado. Ideal para cumpleaños, luna de miel y fechas especiales. Solicite con 24h de anticipación.",
+    service_transfer_name: "🚗 Transfer aeropuerto",
+    service_transfer_price: "Consultar",
+    service_transfer_desc: "Transfer privado entre el aeropuerto de Florianópolis (FLN) y el alojamiento. Vehículo cómodo, conductor puntual. Solicite con 24h de anticipación indicando el horario del vuelo.",
+    service_request: "Solicitar por WhatsApp",
+    services_payment_title: "Formas de pago",
+    services_pix_label: "Clave PIX",
+    services_pix_type: "Celular",
+    services_pix_copy: "Copiar",
+    services_pix_copied: "¡Copiado!",
+    services_pix_name_label: "Titular",
+    services_pix_name: "Nosso Mar Suítes",
+    services_payment_note: "Los pagos por PIX se confirman al instante. Envíe el comprobante por WhatsApp después del pago.",
+    services_review_title: "¡Su opinión es muy importante!",
+    services_review_body: "Si está disfrutando de su estadía, ¿qué tal dejar una reseña de 5 estrellas en Airbnb? Nos ayuda mucho a seguir ofreciendo la mejor experiencia posible.",
+    services_review_btn: "Calificar en Airbnb",
+    contact_title: "Contacto",
+    contact_subtitle: "Estamos disponibles para ayudar durante toda su estadía.",
+    contact_host_title: "Anfitrión",
+    contact_host_name: "Nosso Mar Suítes",
+    contact_host_role: "Anfitrión · Disponible todos los días",
+    contact_whatsapp_btn: "WhatsApp",
+    contact_call_btn: "Llamar",
+    contact_emergency_title: "Emergencias",
+    contact_police: "Policía Militar",
+    contact_samu: "SAMU (Ambulancia)",
+    contact_fire: "Bomberos",
+    contact_civil_police: "Policía Civil",
+    contact_call: "Llamar",
+    contact_upa_title: "Urgencia más cercana",
+    contact_upa_name: "UPA 24h — Campeche",
+    contact_upa_address: "Av. Pequeno Príncipe, 3065 — Campeche, Florianópolis/SC",
+    contact_pharmacy_title: "Farmacia 24h",
+    contact_pharmacy_name: "Drogaria Catarinense — Campeche",
+    contact_pharmacy_address: "Av. Campeche, 1086 — Campeche, Florianópolis/SC",
+    contact_airbnb_title: "Soporte Airbnb",
+    contact_airbnb_body: "Para cuestiones relacionadas con la reserva, reembolsos o disputas, contacte directamente con el soporte de Airbnb.",
+    contact_airbnb_btn: "Centro de ayuda Airbnb",
+    wifi_modal_title: "Wi-Fi de la Suite Safira",
+    safe_modal_title: "Caja fuerte — Safira",
+    safe_modal_note: "Código predeterminado de fábrica. Cámbielo después del check-in.",
+    safe_modal_contains: "La caja fuerte contiene:",
+    safe_item_1: "Control del portón electrónico",
+    safe_item_2: "Llave de repuesto del alojamiento",
+    safe_modal_warning: "Vea el video de la caja fuerte para instrucciones detalladas de apertura y ubicación.",
+    modal_close: "Cerrar",
+    tab_home: "Inicio",
+    tab_rules: "Reglas",
+    tab_around: "Alrededores",
+    tab_services: "Servicios",
+    tab_contact: "Contacto",
+  }
+};
+
+// Videos por idioma
+const videos = {
+  arrival_day: {
+    pt: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
+    en: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
+    es: "https://www.youtube.com/shorts/7jFqe4Vu_fA"
+  },
+  arrival_night: {
+    pt: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
+    en: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
+    es: "https://www.youtube.com/shorts/7jFqe4Vu_fA"
+  },
+  safe: {
+    pt: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
+    en: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
+    es: "https://www.youtube.com/shorts/7jFqe4Vu_fA"
+  },
+  spa: {
+    pt: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
+    en: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
+    es: "https://www.youtube.com/shorts/7jFqe4Vu_fA"
+  },
+  shower: {
+    pt: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
+    en: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
+    es: "https://www.youtube.com/shorts/7jFqe4Vu_fA"
+  }
+};
+
+// ═══════════════════════════════════════════════════════════
+// ESTADO
+// ═══════════════════════════════════════════════════════════
+let currentLang = 'pt';
+let currentTab = 'tab-home';
+
+// ═══════════════════════════════════════════════════════════
+// NAVEGAÇÃO
+// ═══════════════════════════════════════════════════════════
+function switchTab(tabId) {
+  // Esconder painel atual
+  const prev = document.getElementById(currentTab);
+  if (prev) prev.classList.remove('active');
+  const prevBtn = document.getElementById('tabBtn-' + currentTab.replace('tab-',''));
+  if (prevBtn) prevBtn.classList.remove('active');
+
+  // Mostrar novo painel
+  currentTab = tabId;
+  const next = document.getElementById(tabId);
+  if (next) next.classList.add('active');
+  const nextBtn = document.getElementById('tabBtn-' + tabId.replace('tab-',''));
+  if (nextBtn) nextBtn.classList.add('active');
+
+  // Scroll ao topo
+  document.getElementById('content').scrollTop = 0;
+}
+
+// ═══════════════════════════════════════════════════════════
+// IDIOMA
+// ═══════════════════════════════════════════════════════════
+function setLang(lang) {
+  currentLang = lang;
+  // Atualizar botões
+  ['pt','en','es'].forEach(l => {
+    const btn = document.getElementById('btn-' + l);
+    if (btn) btn.classList.toggle('active', l === lang);
+  });
+  // Atualizar textos
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const text = i18n[lang][key];
+    if (text !== undefined) el.textContent = text;
+  });
+  // Atualizar lang do html
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+}
+
+// ═══════════════════════════════════════════════════════════
+// COPIAR TEXTO
+// ═══════════════════════════════════════════════════════════
+function copyText(text, btnId, successKey) {
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById(btnId);
+    if (!btn) return;
+    const span = btn.querySelector('span');
+    const originalText = span ? span.textContent : '';
+    btn.classList.add('success');
+    if (span) span.textContent = i18n[currentLang][successKey] || 'Copiado!';
+    setTimeout(() => {
+      btn.classList.remove('success');
+      if (span) span.textContent = originalText;
+    }, 2000);
+  }).catch(() => {
+    // Fallback para dispositivos sem clipboard API
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const btn = document.getElementById(btnId);
+    if (btn) {
+      const span = btn.querySelector('span');
+      const originalText = span ? span.textContent : '';
+      btn.classList.add('success');
+      if (span) span.textContent = i18n[currentLang][successKey] || 'Copiado!';
+      setTimeout(() => {
+        btn.classList.remove('success');
+        if (span) span.textContent = originalText;
+      }, 2000);
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+// MODAIS
+// ═══════════════════════════════════════════════════════════
+function showWifiModal() {
+  const modal = document.getElementById('wifi-modal');
+  modal.style.display = 'flex';
+  setTimeout(() => modal.style.opacity = '1', 10);
+}
+
+function showSafeModal() {
+  const modal = document.getElementById('safe-modal');
+  modal.style.display = 'flex';
+  setTimeout(() => modal.style.opacity = '1', 10);
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  modal.style.display = 'none';
+}
+
+// ═══════════════════════════════════════════════════════════
+// VÍDEOS
+// ═══════════════════════════════════════════════════════════
+function openVideoByLang(videoKey) {
+  const url = videos[videoKey] && videos[videoKey][currentLang];
+  if (url) window.open(url, '_blank', 'noopener');
+}
+
+// ═══════════════════════════════════════════════════════════
+// FILTRO DE ARREDORES
+// ═══════════════════════════════════════════════════════════
+function filterAround(cat) {
+  // Atualizar chips
+  document.querySelectorAll('#around-filters .filter-chip').forEach(chip => {
+    chip.classList.remove('active');
+  });
+  event.target.classList.add('active');
+
+  // Filtrar cards
+  document.querySelectorAll('#around-list .place-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+// INICIALIZAÇÃO
+// ═══════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  // Detectar idioma do navegador
+  const browserLang = (navigator.language || 'pt').toLowerCase();
+  if (browserLang.startsWith('en')) {
+    setLang('en');
+  } else if (browserLang.startsWith('es')) {
+    setLang('es');
+  } else {
+    setLang('pt');
+  }
+});
+</script>
 </body>
 </html>
