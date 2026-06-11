@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0a7ea4">
+<meta name="theme-color" content="#0F766E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Manual do Hóspede — Safira | Nosso Mar Suítes</title>
@@ -11,9 +11,9 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --primary: #0a7ea4; --primary-dark: #085f7a; --primary-light: #e6f4fa;
-  --bg: #f5f7fa; --surface: #ffffff; --surface2: #f0f4f8;
-  --text: #11181C; --text2: #687076; --border: #e2e8f0;
+  --primary: #0F766E; --primary-dark: #0a5c54; --primary-light: #f0fdf9;
+  --bg: #FAFAF7; --surface: #ffffff; --surface2: #f5f5f2;
+  --text: #1C1917; --text2: #78716C; --border: #E7E5E4;
   --success: #22c55e; --warning: #f59e0b; --danger: #ef4444;
   --tab-height: 64px; --radius: 12px; --radius-sm: 8px;
   --shadow: 0 2px 8px rgba(0,0,0,0.08); --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
@@ -371,7 +371,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
       <div class="section"><div class="section-title" data-i18n="home_address_title">Endereço da acomodação</div></div>
       <div class="card" style="margin:0 16px 12px">
         <div style="padding:12px 14px;font-size:14px;font-weight:600;color:var(--text);line-height:1.5">Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595</div>
-        <div style="font-size:12px;color:var(--text2);padding:0 14px 12px;line-height:1.4" data-i18n="home_address_helper">Use este endereço ao pedir delivery (iFood, restaurantes, etc.) ou cadastrar entregas.</div>
+        <div style="font-size:12px;color:var(--text2);padding:0 14px 12px;line-height:1.4" data-i18n="home_address_helper">Use este endereço ao pedir delivery (restaurantes, etc.) ou cadastrar entregas.</div>
         <div style="padding:0 14px 14px;display:flex;gap:8px">
           <button class="btn btn-outline btn-sm" id="copy-addr-btn" onclick="copyText('Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595','copy-addr-btn','home_address_copied')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -572,78 +572,125 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
 
         <!-- PASSEIOS -->
         <div class="place-card" data-cat="passeio">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/vQFdoeMJJrrjjkrG.jpg" alt="Praia da Solidão" loading="lazy">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_solidao_name">Praia da Solidão</div>
-              <span class="place-cat-badge cat-passeio" data-i18n="cat_passeio">Passeio</span>
+              <div class="place-name">Praia da Solidão</div>
+              <span class="place-cat-badge cat-passeio">Passeio</span>
             </div>
-            <div class="place-desc" data-i18n="place_solidao_desc">Praia tranquila e preservada, ideal para banho de mar, relaxar e apreciar o pôr do sol. A apenas 5 minutos a pé da acomodação.</div>
+            <div class="place-desc">Praia tranquila e preservada, ideal para banho de mar, relaxar e apreciar o pôr do sol. A apenas 5 minutos a pé da acomodação.</div>
             <div class="place-meta">
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_solidao_dist">5 min a pé</span></span>
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="place_solidao_hours">Aberta 24h</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>5 min a pé</span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Aberta 24h</span>
             </div>
             <div class="place-actions">
               <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Praia+da+Solidão+Florianópolis" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="btn_map">Ver no mapa</span>
+                Ver no mapa
               </a>
             </div>
           </div>
         </div>
 
         <div class="place-card" data-cat="passeio">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/aXEWoTRHrBSUTuux.jpg" alt="Praia dos Açores" loading="lazy">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_campeche_name">Praia do Campeche</div>
-              <span class="place-cat-badge cat-passeio" data-i18n="cat_passeio">Passeio</span>
+              <div class="place-name">Praia dos Açores</div>
+              <span class="place-cat-badge cat-passeio">Passeio</span>
             </div>
-            <div class="place-desc" data-i18n="place_campeche_desc">Uma das praias mais bonitas de Florianópolis, com ondas fortes, areia branca e mar azul-turquesa. Ótima para surf e caminhadas.</div>
+            <div class="place-desc">Conectada à Solidão por um charmoso deck de madeira, encanta pela faixa de areia clara e mar de águas cristalinas. Ideal para caminhadas à beira-mar e contato com a natureza preservada do sul da ilha.</div>
             <div class="place-meta">
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_campeche_dist">10 min de carro</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>500 m a pé pelo deck</span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min de caminhada</span>
             </div>
             <div class="place-actions">
-              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Praia+do+Campeche+Florianópolis" target="_blank" rel="noopener">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Praia+dos+Açores+Florianópolis" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="btn_map">Ver no mapa</span>
+                Ver no mapa
               </a>
             </div>
           </div>
         </div>
 
         <div class="place-card" data-cat="passeio">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/SqdmXMkxZKdtiPId.jpg" alt="Cachoeira da Solidão" loading="lazy">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_morro_name">Morro do Lampião</div>
-              <span class="place-cat-badge cat-passeio" data-i18n="cat_passeio">Passeio</span>
+              <div class="place-name">Cachoeira da Solidão</div>
+              <span class="place-cat-badge cat-passeio">Passeio</span>
             </div>
-            <div class="place-desc" data-i18n="place_morro_desc">Trilha de fácil acesso com vista panorâmica para a Praia da Solidão e o mar. Ideal para o pôr do sol e fotos incríveis.</div>
+            <div class="place-desc">Trilha curta e leve até uma cachoeira refrescante no Sul da Ilha. Entrada na lateral da estrada, próximo ao Paiol Beach Bar.</div>
             <div class="place-meta">
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_morro_dist">15 min a pé</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>1,3 km (ida e volta)</span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>20–30 min</span>
             </div>
             <div class="place-actions">
-              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Morro+do+Lampião+Praia+da+Solidão+Florianópolis" target="_blank" rel="noopener">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Cachoeira+da+Solidão+Florianópolis" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="btn_map">Ver no mapa</span>
+                Ver no mapa
               </a>
             </div>
           </div>
         </div>
 
         <div class="place-card" data-cat="passeio">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/dzxJnvsmyCmHehPD.jpg" alt="Trilha Praia do Saquinho" loading="lazy">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_ilha_name">Ilha do Campeche</div>
-              <span class="place-cat-badge cat-passeio" data-i18n="cat_passeio">Passeio</span>
+              <div class="place-name">Trilha Praia do Saquinho</div>
+              <span class="place-cat-badge cat-passeio">Passeio</span>
             </div>
-            <div class="place-desc" data-i18n="place_ilha_desc">Ilha paradisíaca com inscrições rupestres, trilhas e snorkeling. Acesso por barco a partir da Praia do Campeche. Reserva obrigatória.</div>
+            <div class="place-desc">Trilha de nível médio com subida e descida pela mata. Praia paradisíaca de águas calmas e quase deserta.</div>
             <div class="place-meta">
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_ilha_dist">15 min de barco</span></span>
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="place_ilha_hours">Temporada: out–abr</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Aprox. 2,5 km (ida e volta)</span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>40–60 min</span>
             </div>
             <div class="place-actions">
-              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Ilha+do+Campeche+Florianópolis" target="_blank" rel="noopener">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Praia+do+Saquinho+Florianópolis" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="btn_map">Ver no mapa</span>
+                Ver no mapa
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="passeio">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/UWzwnLaNCgNTXMCw.jpg" alt="Lagoinha do Leste" loading="lazy">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name">Lagoinha do Leste</div>
+              <span class="place-cat-badge cat-passeio">Passeio</span>
+            </div>
+            <div class="place-desc">Paraíso intocado no sul da ilha, acessível só por trilha ou barco. Praia selvagem, lagoa de águas escuras e o famoso Morro da Coroa — uma das vistas mais espetaculares de Florianópolis.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>4 km / 10 min de carro até Pântano do Sul</span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Trilha 2h30 ida</span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Lagoinha+do+Leste+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Ver no mapa
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="passeio">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/VRbFroZMjNOXnXVE.jpg" alt="Ilha do Campeche" loading="lazy">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name">Ilha do Campeche</div>
+              <span class="place-cat-badge cat-passeio">Passeio</span>
+            </div>
+            <div class="place-desc">Ilha-paraíso com águas cristalinas, sítios arqueológicos e visitação controlada (limite diário de visitantes). Voucher de acesso obrigatório — consulte ilhadocampeche.pmf.sc.gov.br.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Travessias a partir das 8h30 (Praia da Armação)</span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://ilhadocampeche.pmf.sc.gov.br/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Reservar acesso
               </a>
             </div>
           </div>
@@ -651,39 +698,85 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
 
         <!-- RESTAURANTES -->
         <div class="place-card" data-cat="restaurante">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/epYwpKYyPIPkhlcg.jpg" alt="Paiol Beach Bar" loading="lazy">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_restaurante1_name">Rancho de Canoa</div>
-              <span class="place-cat-badge cat-restaurante" data-i18n="cat_restaurante">Restaurante</span>
+              <div class="place-name">Paiol Beach Bar</div>
+              <span class="place-cat-badge cat-restaurante">Restaurante</span>
             </div>
-            <div class="place-desc" data-i18n="place_restaurante1_desc">Frutos do mar frescos com vista para o mar. Especialidade em camarão, ostra e peixe grelhado. Ambiente rústico e aconchegante.</div>
+            <div class="place-desc">Beach bar premiado (Tripadvisor Travellers' Choice) no acesso à Praia da Solidão. Pastéis, porções de frutos do mar e pratos veganos. Vibe surf, vista para o mar.</div>
             <div class="place-meta">
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_restaurante1_dist">8 min de carro</span></span>
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="place_restaurante1_hours">Almoço e jantar</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>5 min a pé</span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Sáb–Dom 10h–18h • Seg–Sex 11h–17h</span>
             </div>
             <div class="place-actions">
-              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Rancho+de+Canoa+Florianópolis" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="btn_map">Ver no mapa</span>
+              <a class="btn btn-outline btn-sm" href="https://www.instagram.com/paiolbeachbar/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Instagram
+              </a>
+              <a class="btn btn-gray btn-sm" href="tel:+554898553033">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 4.9 2 2 0 0 1 3.6 2.72h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.4a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 18"/></svg>
+                Ligar
               </a>
             </div>
           </div>
         </div>
 
         <div class="place-card" data-cat="restaurante">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/fphUTTMhdXgyvVta.jpg" alt="Bar do Arante" loading="lazy">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_restaurante2_name">Restaurante Sambaqui do Sul</div>
-              <span class="place-cat-badge cat-restaurante" data-i18n="cat_restaurante">Restaurante</span>
+              <div class="place-name">Bar do Arante</div>
+              <span class="place-cat-badge cat-restaurante">Restaurante</span>
             </div>
-            <div class="place-desc" data-i18n="place_restaurante2_desc">Culinária catarinense com pratos típicos, tainha e frutos do mar. Ambiente familiar, preços acessíveis e porções generosas.</div>
+            <div class="place-desc">Ícone gastronômico de Florianópolis no Pântano do Sul. Famoso pelas notas de dinheiro no teto, frutos do mar e ambiente histórico.</div>
             <div class="place-meta">
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_restaurante2_dist">10 min de carro</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>10 min de carro</span>
             </div>
             <div class="place-actions">
-              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Restaurante+Sambaqui+do+Sul+Florianópolis" target="_blank" rel="noopener">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Bar+do+Arante+Pântano+do+Sul+Florianópolis" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="btn_map">Ver no mapa</span>
+                Ver no mapa
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="restaurante">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/JdhMWrFprwkbzYVM.jpg" alt="Rancho de Canoa" loading="lazy">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name">Rancho de Canoa</div>
+              <span class="place-cat-badge cat-restaurante">Restaurante</span>
+            </div>
+            <div class="place-desc">Frutos do mar frescos com vista para o mar. Especialidade em camarão, ostra e peixe grelhado. Ambiente rústico e aconchegante.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>10 min de carro</span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Rancho+de+Canoa+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Ver no mapa
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="restaurante">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/CVvnXeuPUoJtCMRf.jpg" alt="Sambaqui do Sul" loading="lazy">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name">Sambaqui do Sul</div>
+              <span class="place-cat-badge cat-restaurante">Restaurante</span>
+            </div>
+            <div class="place-desc">Culinária catarinense com pratos típicos, tainha e frutos do mar. Ambiente familiar, preços acessíveis e porções generosas.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>10 min de carro</span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Sambaqui+do+Sul+Florianópolis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Ver no mapa
               </a>
             </div>
           </div>
@@ -691,19 +784,51 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
 
         <!-- DELIVERY -->
         <div class="place-card" data-cat="delivery">
+          <img class="place-img" src="https://static2.menufyy.com/aloha-pizzaria-albums-1.jpg" alt="Aloha Pizzaria" loading="lazy">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_ifood_name">iFood</div>
-              <span class="place-cat-badge cat-delivery" data-i18n="cat_delivery">Delivery</span>
+              <div class="place-name">Aloha Pizzaria à Lenha</div>
+              <span class="place-cat-badge cat-delivery">Delivery</span>
             </div>
-            <div class="place-desc" data-i18n="place_ifood_desc">Peça delivery pelo iFood usando o endereço da acomodação. Há opções de pizza, hambúrguer, sushi e comida caseira com entrega na região.</div>
-            <div class="place-meta">
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="place_ifood_hours">Disponível até ~23h</span></span>
-            </div>
+            <div class="place-desc">Pizzaria à lenha com entrega na região do Sul da Ilha.</div>
             <div class="place-actions">
-              <a class="btn btn-primary btn-sm" href="https://www.ifood.com.br" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                <span data-i18n="btn_open">Abrir iFood</span>
+              <a class="btn btn-whatsapp btn-sm" href="https://wa.me/554898481233" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Pedir pelo WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="delivery">
+          <img class="place-img" src="https://static.goto-where.com/235077-albums-1.jpg" alt="Mané Raiz Hamburgueria" loading="lazy">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name">Mané Raiz Hamburgueria</div>
+              <span class="place-cat-badge cat-delivery">Delivery</span>
+            </div>
+            <div class="place-desc">Hamburgueria gourmet com smash burgers — entrega no Pântano do Sul.</div>
+            <div class="place-actions">
+              <a class="btn btn-whatsapp btn-sm" href="https://wa.me/554899576965" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Pedir pelo WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="delivery">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/AXJsUrfoENrLlhOL.png" alt="Alambique Moderno" loading="lazy">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name">Alambique Moderno</div>
+              <span class="place-cat-badge cat-delivery">Delivery</span>
+            </div>
+            <div class="place-desc">Comida brasileira contemporânea e cachaçaria.</div>
+            <div class="place-actions">
+              <a class="btn btn-whatsapp btn-sm" href="https://wa.me/554832375870" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Pedir pelo WhatsApp
               </a>
             </div>
           </div>
@@ -712,14 +837,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
         <div class="place-card" data-cat="delivery">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_rappi_name">Rappi</div>
-              <span class="place-cat-badge cat-delivery" data-i18n="cat_delivery">Delivery</span>
+              <div class="place-name">Bully Dogs Açaí e Lanches</div>
+              <span class="place-cat-badge cat-delivery">Delivery</span>
             </div>
-            <div class="place-desc" data-i18n="place_rappi_desc">Outra opção de delivery com restaurantes, mercados e farmácias. Entrega rápida na região sul de Florianópolis.</div>
+            <div class="place-desc">Lanches, hot dogs e açaí artesanal na Armação. Muito bem avaliado (4.1 ⭐ com mais de 120 avaliações). Abre às 18h.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>6 km / 10 min de carro</span>
+            </div>
             <div class="place-actions">
-              <a class="btn btn-primary btn-sm" href="https://www.rappi.com.br" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                <span data-i18n="btn_open">Abrir Rappi</span>
+              <a class="btn btn-whatsapp btn-sm" href="https://wa.me/5548996620049" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Pedir pelo WhatsApp
               </a>
             </div>
           </div>
@@ -729,18 +857,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
         <div class="place-card" data-cat="mercado">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_mercado1_name">Supermercado Imperatriz</div>
-              <span class="place-cat-badge cat-mercado" data-i18n="cat_mercado">Mercado</span>
+              <div class="place-name">Mini Mercado Açores</div>
+              <span class="place-cat-badge cat-mercado">Mercado</span>
             </div>
-            <div class="place-desc" data-i18n="place_mercado1_desc">Supermercado completo com grande variedade de produtos, padaria, açougue e hortifrúti. Boa opção para fazer compras para a estadia.</div>
+            <div class="place-desc">Mercadinho de bairro no Balneário dos Açores, pertinho da Praia da Solidão. Ideal para compras rápidas do dia a dia — pão, bebidas, frios e produtos básicos.</div>
             <div class="place-meta">
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_mercado1_dist">12 min de carro</span></span>
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="place_mercado1_hours">7h–22h</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>2 km / 5 min de carro</span>
             </div>
             <div class="place-actions">
-              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Supermercado+Imperatriz+Campeche+Florianópolis" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="btn_map">Ver no mapa</span>
+              <a class="btn btn-outline btn-sm" href="tel:+554832377251">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 4.9 2 2 0 0 1 3.6 2.72h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.4a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 18"/></svg>
+                Ligar
               </a>
             </div>
           </div>
@@ -749,17 +876,38 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
         <div class="place-card" data-cat="mercado">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_mercado2_name">Mercadinho da Solidão</div>
-              <span class="place-cat-badge cat-mercado" data-i18n="cat_mercado">Mercado</span>
+              <div class="place-name">Samer Supermercados</div>
+              <span class="place-cat-badge cat-mercado">Mercado</span>
             </div>
-            <div class="place-desc" data-i18n="place_mercado2_desc">Pequeno mercadinho local com itens básicos, bebidas, sorvetes e produtos de conveniência. Prático para compras rápidas.</div>
+            <div class="place-desc">Supermercado completo no Pântano do Sul — o mais próximo da Praia da Solidão. Carnes, hortifruti, bebidas e produtos de limpeza.</div>
             <div class="place-meta">
-              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="place_mercado2_dist">5 min de carro</span></span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>3 km / 7 min de carro</span>
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Seg–Dom 07h–22h</span>
             </div>
             <div class="place-actions">
-              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Mercadinho+Praia+da+Solidão+Florianópolis" target="_blank" rel="noopener">
+              <a class="btn btn-outline btn-sm" href="https://maps.google.com/?q=Samer+Supermercados+Pântano+do+Sul+Florianópolis" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="btn_map">Ver no mapa</span>
+                Ver no mapa
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-cat="mercado">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/fhLYXxeAOwDwWNnG.jpg" alt="Hiper Select" loading="lazy">
+          <div class="place-body">
+            <div class="place-header">
+              <div class="place-name">Hiper Select (Armação)</div>
+              <span class="place-cat-badge cat-mercado">Mercado</span>
+            </div>
+            <div class="place-desc">Supermercado completo na Armação do Pântano do Sul — hortifruti sempre fresquinho, carnes, bebidas, padaria e muito mais. Também disponível para compras online com entrega na região.</div>
+            <div class="place-meta">
+              <span class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>6 km / 10 min de carro</span>
+            </div>
+            <div class="place-actions">
+              <a class="btn btn-outline btn-sm" href="https://www.hiperselect.com.br/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Ver site
               </a>
             </div>
           </div>
@@ -767,36 +915,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
 
         <!-- TRANSPORTE -->
         <div class="place-card" data-cat="transporte">
+          <img class="place-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663047224434/JQeRKntmmZxLegbz.jpg" alt="Guilherme Transporte" loading="lazy">
           <div class="place-body">
             <div class="place-header">
-              <div class="place-name" data-i18n="place_uber_name">Uber / 99</div>
-              <span class="place-cat-badge cat-transporte" data-i18n="cat_transporte">Transporte</span>
+              <div class="place-name">Guilherme — Transporte local</div>
+              <span class="place-cat-badge cat-transporte">Transporte</span>
             </div>
-            <div class="place-desc" data-i18n="place_uber_desc">Aplicativos de transporte disponíveis na região. Tempo médio de espera de 10 a 20 minutos. Recomendamos agendar com antecedência em horários de pico.</div>
+            <div class="place-desc">Motorista local de confiança para passeios, transfers e deslocamentos na região. Atende pelo WhatsApp.</div>
             <div class="place-actions">
-              <a class="btn btn-outline btn-sm" href="https://www.uber.com/br/pt-br/ride/" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="btn_open">Abrir Uber</span>
-              </a>
-              <a class="btn btn-gray btn-sm" href="https://99app.com" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="btn_open_99">Abrir 99</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="place-card" data-cat="transporte">
-          <div class="place-body">
-            <div class="place-header">
-              <div class="place-name" data-i18n="place_bus_name">Ônibus urbano</div>
-              <span class="place-cat-badge cat-transporte" data-i18n="cat_transporte">Transporte</span>
-            </div>
-            <div class="place-desc" data-i18n="place_bus_desc">Há linhas de ônibus que conectam a Praia da Solidão ao centro de Florianópolis e ao aeroporto. Consulte o app Moovit para horários atualizados.</div>
-            <div class="place-actions">
-              <a class="btn btn-outline btn-sm" href="https://moovitapp.com" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-                <span data-i18n="btn_moovit">Ver horários no Moovit</span>
+              <a class="btn btn-whatsapp btn-sm" href="https://wa.me/554896327479" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Chamar pelo WhatsApp
               </a>
             </div>
           </div>
@@ -817,7 +946,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
         <div class="service-body">
           <div class="service-header">
             <div class="service-name" data-i18n="service_breakfast_name">☕ Café da manhã</div>
-            <div class="service-price" data-i18n="service_breakfast_price">R$ 45/pessoa</div>
+            <div class="service-price" data-i18n="service_breakfast_price">A partir de R$ 250</div>
           </div>
           <div class="service-desc" data-i18n="service_breakfast_desc">Café da manhã artesanal entregue na acomodação. Inclui pão caseiro, frios, frutas da estação, geleias, sucos naturais e café especial. Pedido com 12h de antecedência.</div>
           <a class="btn btn-whatsapp" href="https://wa.me/554888089128?text=Olá!%20Gostaria%20de%20solicitar%20café%20da%20manhã%20para%20minha%20estadia%20na%20Suíte%20Safira." target="_blank" rel="noopener">
@@ -832,7 +961,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
         <div class="service-body">
           <div class="service-header">
             <div class="service-name" data-i18n="service_romantic_name">🌹 Decoração romântica</div>
-            <div class="service-price" data-i18n="service_romantic_price">R$ 120</div>
+            <div class="service-price" data-i18n="service_romantic_price">A partir de R$ 150</div>
           </div>
           <div class="service-desc" data-i18n="service_romantic_desc">Decoração especial com pétalas de rosa, velas, balões e mensagem personalizada. Ideal para aniversários, lua de mel e datas comemorativas. Solicite com 24h de antecedência.</div>
           <a class="btn btn-whatsapp" href="https://wa.me/554888089128?text=Olá!%20Gostaria%20de%20solicitar%20decoração%20romântica%20para%20minha%20estadia%20na%20Suíte%20Safira." target="_blank" rel="noopener">
@@ -1114,7 +1243,7 @@ const i18n = {
     home_connectivity_title: "Conectividade na região",
     home_connectivity_body: "Por estarmos em uma região mais remota, o sinal de algumas operadoras pode apresentar instabilidade. Recomendamos baixar previamente vídeos e informações antes da chegada.",
     home_address_title: "Endereço da acomodação",
-    home_address_helper: "Use este endereço ao pedir delivery (iFood, restaurantes, etc.) ou cadastrar entregas.",
+    home_address_helper: "Use este endereço ao pedir delivery (restaurantes, etc.) ou cadastrar entregas.",
     home_address_copy: "Copiar endereço",
     home_address_copied: "Endereço copiado!",
     home_address_open_map: "Abrir no mapa",
@@ -1216,11 +1345,6 @@ const i18n = {
     place_restaurante2_name: "Restaurante Sambaqui do Sul",
     place_restaurante2_desc: "Culinária catarinense com pratos típicos, tainha e frutos do mar. Ambiente familiar, preços acessíveis e porções generosas.",
     place_restaurante2_dist: "10 min de carro",
-    place_ifood_name: "iFood",
-    place_ifood_desc: "Peça delivery pelo iFood usando o endereço da acomodação. Há opções de pizza, hambúrguer, sushi e comida caseira com entrega na região.",
-    place_ifood_hours: "Disponível até ~23h",
-    place_rappi_name: "Rappi",
-    place_rappi_desc: "Outra opção de delivery com restaurantes, mercados e farmácias. Entrega rápida na região sul de Florianópolis.",
     place_mercado1_name: "Supermercado Imperatriz",
     place_mercado1_desc: "Supermercado completo com grande variedade de produtos, padaria, açougue e hortifrúti. Boa opção para fazer compras para a estadia.",
     place_mercado1_dist: "12 min de carro",
@@ -1228,22 +1352,15 @@ const i18n = {
     place_mercado2_name: "Mercadinho da Solidão",
     place_mercado2_desc: "Pequeno mercadinho local com itens básicos, bebidas, sorvetes e produtos de conveniência. Prático para compras rápidas.",
     place_mercado2_dist: "5 min de carro",
-    place_uber_name: "Uber / 99",
-    place_uber_desc: "Aplicativos de transporte disponíveis na região. Tempo médio de espera de 10 a 20 minutos. Recomendamos agendar com antecedência em horários de pico.",
-    place_bus_name: "Ônibus urbano",
-    place_bus_desc: "Há linhas de ônibus que conectam a Praia da Solidão ao centro de Florianópolis e ao aeroporto. Consulte o app Moovit para horários atualizados.",
     btn_map: "Ver no mapa",
-    btn_open: "Abrir iFood",
-    btn_open_99: "Abrir 99",
-    btn_moovit: "Ver horários no Moovit",
     // Serviços
     services_title: "Serviços",
     services_subtitle: "Serviços opcionais disponíveis para tornar sua estadia ainda mais especial.",
     service_breakfast_name: "☕ Café da manhã",
-    service_breakfast_price: "R$ 45/pessoa",
-    service_breakfast_desc: "Café da manhã artesanal entregue na acomodação. Inclui pão caseiro, frios, frutas da estação, geleias, sucos naturais e café especial. Pedido com 12h de antecedência.",
+    service_breakfast_price: "A partir de R$ 250",
+    service_breakfast_desc: "Cesta completa com 20+ itens: pães artesanais, waffles, croissants, queijos, frutas, bebidas e muito mais. Solicite com antecedência pelo WhatsApp (Mariane).",
     service_romantic_name: "🌹 Decoração romântica",
-    service_romantic_price: "R$ 120",
+    service_romantic_price: "A partir de R$ 150",
     service_romantic_desc: "Decoração especial com pétalas de rosa, velas, balões e mensagem personalizada. Ideal para aniversários, lua de mel e datas comemorativas. Solicite com 24h de antecedência.",
     service_transfer_name: "🚗 Transfer aeroporto",
     service_transfer_price: "Consultar",
@@ -1344,7 +1461,7 @@ const i18n = {
     home_connectivity_title: "Connectivity in the area",
     home_connectivity_body: "As we are in a more remote area, some carriers may experience signal instability. We recommend downloading videos and information before arrival.",
     home_address_title: "Accommodation address",
-    home_address_helper: "Use this address when ordering delivery (iFood, restaurants, etc.) or registering deliveries.",
+    home_address_helper: "Use this address when ordering delivery (restaurants, etc.) or registering deliveries.",
     home_address_copy: "Copy address",
     home_address_copied: "Address copied!",
     home_address_open_map: "Open in maps",
@@ -1444,11 +1561,6 @@ const i18n = {
     place_restaurante2_name: "Sambaqui do Sul Restaurant",
     place_restaurante2_desc: "Santa Catarina cuisine with typical dishes, mullet and seafood. Family atmosphere, affordable prices and generous portions.",
     place_restaurante2_dist: "10 min by car",
-    place_ifood_name: "iFood",
-    place_ifood_desc: "Order delivery via iFood using the accommodation address. Options include pizza, burgers, sushi and home-cooked food with delivery to the area.",
-    place_ifood_hours: "Available until ~11pm",
-    place_rappi_name: "Rappi",
-    place_rappi_desc: "Another delivery option with restaurants, markets and pharmacies. Fast delivery in southern Florianópolis.",
     place_mercado1_name: "Imperatriz Supermarket",
     place_mercado1_desc: "Full supermarket with a wide variety of products, bakery, butcher and fresh produce. Good option for stocking up for your stay.",
     place_mercado1_dist: "12 min by car",
@@ -1456,21 +1568,14 @@ const i18n = {
     place_mercado2_name: "Solidão Mini Market",
     place_mercado2_desc: "Small local market with basic items, drinks, ice cream and convenience products. Handy for quick purchases.",
     place_mercado2_dist: "5 min by car",
-    place_uber_name: "Uber / 99",
-    place_uber_desc: "Ride-hailing apps available in the area. Average wait time of 10 to 20 minutes. We recommend booking in advance during peak hours.",
-    place_bus_name: "City bus",
-    place_bus_desc: "There are bus lines connecting Solidão Beach to downtown Florianópolis and the airport. Check the Moovit app for updated schedules.",
     btn_map: "View on map",
-    btn_open: "Open iFood",
-    btn_open_99: "Open 99",
-    btn_moovit: "Check schedules on Moovit",
     services_title: "Services",
     services_subtitle: "Optional services available to make your stay even more special.",
     service_breakfast_name: "☕ Breakfast",
-    service_breakfast_price: "R$ 45/person",
-    service_breakfast_desc: "Artisanal breakfast delivered to the accommodation. Includes homemade bread, cold cuts, seasonal fruits, jams, natural juices and specialty coffee. Order 12h in advance.",
+    service_breakfast_price: "From R$ 250",
+    service_breakfast_desc: "Complete basket with 20+ items: artisanal breads, waffles, croissants, cheeses, fruits, beverages and more. Request in advance via WhatsApp (Mariane).",
     service_romantic_name: "🌹 Romantic decoration",
-    service_romantic_price: "R$ 120",
+    service_romantic_price: "A partir de R$ 150",
     service_romantic_desc: "Special decoration with rose petals, candles, balloons and a personalized message. Ideal for birthdays, honeymoons and special occasions. Request 24h in advance.",
     service_transfer_name: "🚗 Airport transfer",
     service_transfer_price: "On request",
@@ -1568,7 +1673,7 @@ const i18n = {
     home_connectivity_title: "Conectividad en la zona",
     home_connectivity_body: "Al estar en una zona más remota, la señal de algunos operadores puede presentar inestabilidad. Recomendamos descargar videos e información antes de la llegada.",
     home_address_title: "Dirección del alojamiento",
-    home_address_helper: "Use esta dirección al pedir delivery (iFood, restaurantes, etc.) o registrar entregas.",
+    home_address_helper: "Use esta dirección al pedir delivery (restaurantes, etc.) o registrar entregas.",
     home_address_copy: "Copiar dirección",
     home_address_copied: "¡Dirección copiada!",
     home_address_open_map: "Abrir en el mapa",
@@ -1668,11 +1773,6 @@ const i18n = {
     place_restaurante2_name: "Restaurante Sambaqui do Sul",
     place_restaurante2_desc: "Cocina catarinense con platos típicos, lisa y mariscos. Ambiente familiar, precios accesibles y porciones generosas.",
     place_restaurante2_dist: "10 min en auto",
-    place_ifood_name: "iFood",
-    place_ifood_desc: "Pida delivery por iFood usando la dirección del alojamiento. Hay opciones de pizza, hamburguesas, sushi y comida casera con entrega en la zona.",
-    place_ifood_hours: "Disponible hasta ~23h",
-    place_rappi_name: "Rappi",
-    place_rappi_desc: "Otra opción de delivery con restaurantes, mercados y farmacias. Entrega rápida en el sur de Florianópolis.",
     place_mercado1_name: "Supermercado Imperatriz",
     place_mercado1_desc: "Supermercado completo con gran variedad de productos, panadería, carnicería y verdulería. Buena opción para hacer compras para la estadía.",
     place_mercado1_dist: "12 min en auto",
@@ -1680,21 +1780,14 @@ const i18n = {
     place_mercado2_name: "Minimercado da Solidão",
     place_mercado2_desc: "Pequeño mercado local con artículos básicos, bebidas, helados y productos de conveniencia. Práctico para compras rápidas.",
     place_mercado2_dist: "5 min en auto",
-    place_uber_name: "Uber / 99",
-    place_uber_desc: "Aplicaciones de transporte disponibles en la zona. Tiempo de espera promedio de 10 a 20 minutos. Recomendamos reservar con anticipación en horas pico.",
-    place_bus_name: "Autobús urbano",
-    place_bus_desc: "Hay líneas de autobús que conectan la Playa da Solidão con el centro de Florianópolis y el aeropuerto. Consulte el app Moovit para horarios actualizados.",
     btn_map: "Ver en el mapa",
-    btn_open: "Abrir iFood",
-    btn_open_99: "Abrir 99",
-    btn_moovit: "Ver horarios en Moovit",
     services_title: "Servicios",
     services_subtitle: "Servicios opcionales disponibles para hacer su estadía aún más especial.",
     service_breakfast_name: "☕ Desayuno",
-    service_breakfast_price: "R$ 45/persona",
-    service_breakfast_desc: "Desayuno artesanal entregado en el alojamiento. Incluye pan casero, fiambres, frutas de temporada, mermeladas, jugos naturales y café especial. Pedido con 12h de anticipación.",
+    service_breakfast_price: "Desde R$ 250",
+    service_breakfast_desc: "Cesta completa con 20+ artículos: panes artesanales, waffles, croissants, quesos, frutas, bebidas y más. Solicite con anticipación por WhatsApp (Mariane).",
     service_romantic_name: "🌹 Decoración romántica",
-    service_romantic_price: "R$ 120",
+    service_romantic_price: "A partir de R$ 150",
     service_romantic_desc: "Decoración especial con pétalos de rosa, velas, globos y mensaje personalizado. Ideal para cumpleaños, luna de miel y fechas especiales. Solicite con 24h de anticipación.",
     service_transfer_name: "🚗 Transfer aeropuerto",
     service_transfer_price: "Consultar",
@@ -1752,29 +1845,29 @@ const i18n = {
 // Videos por idioma
 const videos = {
   arrival_day: {
-    pt: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
-    en: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
-    es: "https://www.youtube.com/shorts/7jFqe4Vu_fA"
+    pt: "https://drive.google.com/file/d/19E4QlENtCpJlnNi7tti51rOMMsj2rgEe/view",
+    en: "https://drive.google.com/file/d/1ZeqASYezli8h0PvhCwGuhNKvGAp_C8EQ/view",
+    es: "https://drive.google.com/file/d/1EmHJArwZ6mjAdnvJrnLhowNaLbgwP6A_/view"
   },
   arrival_night: {
-    pt: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
-    en: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
-    es: "https://www.youtube.com/shorts/7jFqe4Vu_fA"
+    pt: "https://drive.google.com/file/d/1IILF0Da7i5ib4O5Mk09vtl9S_PegmMO6/view",
+    en: "https://drive.google.com/file/d/1IbG0dqPHR7K8abHANOL90d0B6MbFAxqk/view",
+    es: "https://drive.google.com/file/d/1pv7dTP5WS9DRikfDIULqnPL1NlKSBacL/view"
   },
   safe: {
-    pt: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
-    en: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
-    es: "https://www.youtube.com/shorts/7jFqe4Vu_fA"
+    pt: "https://drive.google.com/file/d/1NASpQEbYGxU0Dc1Yl6_Dbx7Ymtn0fB3m/view",
+    en: "https://drive.google.com/file/d/1F_O-cYFOmLYV9-RGsvM2JImlv2Ue2VTp/view",
+    es: "https://drive.google.com/file/d/1Ac3_FE3NP9seBfX3QPMaX1DVTdCtmZoF/view"
   },
   spa: {
-    pt: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
-    en: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
-    es: "https://www.youtube.com/shorts/7jFqe4Vu_fA"
+    pt: "https://drive.google.com/file/d/12GKT-E2Zglu8yQaTcqPF1JDjVlL8-IaB/view",
+    en: "https://drive.google.com/file/d/1YHv2mBwMqlRGYZsHCdW_Ba7Uiz9Pf9-K/view",
+    es: "https://drive.google.com/file/d/1Zsua0JS6fziAGaw1AVM3G12wOUjyuTfP/view"
   },
   shower: {
-    pt: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
-    en: "https://www.youtube.com/shorts/7jFqe4Vu_fA",
-    es: "https://www.youtube.com/shorts/7jFqe4Vu_fA"
+    pt: "https://drive.google.com/file/d/1ZeqASYezli8h0PvhCwGuhNKvGAp_C8EQ/view?usp=drive_link",
+    en: "https://drive.google.com/file/d/13Bk9hnRvRUnYA9k3D9VxBpPu8gRGbjwk/view?usp=drive_link",
+    es: "https://drive.google.com/file/d/18ZUnEjlaN4FGKLx2Xkmnyajt1bb3nDzQ/view?usp=drive_link"
   }
 };
 
