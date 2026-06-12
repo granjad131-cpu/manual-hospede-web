@@ -11,9 +11,9 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --primary: #0F766E; --primary-dark: #0a5c54; --primary-light: #f0fdf9;
-  --bg: #FAFAF7; --surface: #ffffff; --surface2: #f5f5f2;
-  --text: #1C1917; --text2: #78716C; --border: #E7E5E4;
+  --primary: #14B8A6; --primary-dark: #0F766E; --primary-light: #1a2e2c;
+  --bg: #0A0A0A; --surface: #141414; --surface2: #1C1C1C;
+  --text: #F5F5F4; --text2: #A8A29E; --border: #292524;
   --success: #22c55e; --warning: #f59e0b; --danger: #ef4444;
   --tab-height: 64px; --radius: 12px; --radius-sm: 8px;
   --shadow: 0 2px 8px rgba(0,0,0,0.08); --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
@@ -37,7 +37,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
 .hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%); }
 .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; }
-.hero-badge { display: inline-block; background: var(--primary); color: white; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase; }
+.hero-badge { display: inline-block; background: var(--primary); color: #0A0A0A; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase; }
 .hero-title { color: white; font-size: 22px; font-weight: 800; line-height: 1.2; }
 .hero-sub { color: rgba(255,255,255,0.85); font-size: 13px; margin-top: 2px; }
 .section { padding: 16px; }
@@ -66,14 +66,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
 .wifi-header { padding: 12px 14px; background: var(--primary); display: flex; align-items: center; gap: 8px; }
 .wifi-header-title { color: white; font-size: 14px; font-weight: 700; }
 .wifi-header svg { color: white; width: 18px; height: 18px; }
-.copy-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--primary); color: white; border: none; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; white-space: nowrap; }
+.copy-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--primary); color: #0A0A0A; border: none; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; white-space: nowrap; }
 .copy-btn:active { background: var(--primary-dark); transform: scale(0.97); }
 .copy-btn svg { width: 14px; height: 14px; }
 .copy-btn.success { background: var(--success); }
 .copy-row { padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 11px 18px; border-radius: var(--radius-sm); border: none; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; -webkit-tap-highlight-color: transparent; width: 100%; }
 .btn svg { width: 17px; height: 17px; flex-shrink: 0; }
-.btn-primary { background: var(--primary); color: white; }
+.btn-primary { background: var(--primary); color: #0A0A0A; }
 .btn-primary:active { background: var(--primary-dark); transform: scale(0.98); }
 .btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
 .btn-outline:active { background: var(--primary-light); transform: scale(0.98); }
@@ -136,7 +136,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
 .filter-scroll { overflow-x: auto; padding: 0 16px 12px; display: flex; gap: 6px; scrollbar-width: none; -ms-overflow-style: none; }
 .filter-scroll::-webkit-scrollbar { display: none; }
 .filter-chip { padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--surface); color: var(--text2); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.15s; -webkit-tap-highlight-color: transparent; flex-shrink: 0; }
-.filter-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+.filter-chip.active { background: var(--primary); color: #0A0A0A; border-color: var(--primary); }
 .filter-chip:active:not(.active) { background: var(--surface2); }
 .place-card { margin: 0 16px 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
 .place-img { width: 100%; height: 160px; object-fit: cover; display: block; background: var(--surface2); }
@@ -285,13 +285,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
           <span class="wifi-header-title" data-i18n="home_wifi_title">Wi-Fi Principal</span>
         </div>
         <div class="wifi-row">
-          <div><div class="wifi-label" data-i18n="home_wifi_network">Rede</div><div class="wifi-value">SAFIRA</div></div>
+          <div><div class="wifi-label" data-i18n="home_wifi_network">Rede</div><div class="wifi-value">Mini Coffee</div></div>
         </div>
         <div class="wifi-row">
-          <div><div class="wifi-label" data-i18n="home_wifi_password">Senha</div><div class="wifi-value">23589723</div></div>
+          <div><div class="wifi-label" data-i18n="home_wifi_password">Senha</div><div class="wifi-value">2352</div></div>
         </div>
         <div class="copy-row">
-          <button class="copy-btn" id="copy-wifi-btn" onclick="copyText('23589723','copy-wifi-btn','home_wifi_copied')">
+          <button class="copy-btn" id="copy-wifi-btn" onclick="copyText('2352','copy-wifi-btn','home_wifi_copied')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             <span data-i18n="home_wifi_copy">Copiar senha</span>
           </button>
@@ -299,64 +299,44 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
       </div>
       <div class="section">
         <div class="section-title" data-i18n="home_arrival_title">Chegada e acesso</div>
-        <p class="card-text" style="margin-bottom:10px" data-i18n="home_arrival_body">Para garantir uma chegada tranquila, é necessário assistir aos vídeos enviados com as orientações: localização da vaga, caminho até a acomodação e instruções de acesso.</p>
       </div>
+      <!-- Endereço no topo da chegada -->
+      <div class="card" style="margin:0 16px 12px">
+        <div style="padding:14px 14px 10px">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text2);margin-bottom:8px">📍 Endereço</div>
+          <div style="font-size:14px;font-weight:600;color:var(--text);line-height:1.7">Servidão Niberto Borges, 140A<br>Praia da Solidão, Florianópolis/SC<br>CEP 88067-595</div>
+        </div>
+        <div style="padding:0 14px 14px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-outline btn-sm" id="copy-addr-btn2" onclick="copyText('Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595','copy-addr-btn2','home_address_copied')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span data-i18n="home_address_copy">Copiar endereço</span>
+          </button>
+          <a class="btn btn-primary btn-sm" href="https://maps.google.com/?q=Servidão+Niberto+Borges+140A+Praia+da+Solidão+Florianópolis+88067-595" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n="home_address_open_map">Abrir no mapa</span>
+          </a>
+        </div>
+      </div>
+      <!-- Vídeos de chegada: apenas diurno e noturno -->
       <div class="card" style="margin:0 16px 12px">
         <div class="video-item" onclick="openVideoByLang('arrival_day')">
           <div class="video-thumb"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           <div class="video-info">
-            <div class="video-title" data-i18n="video_arrival_day_title">Vídeo de chegada — diurno</div>
-            <div class="video-desc" data-i18n="video_arrival_day_desc">Rota de acesso filmada durante o dia, com referências visuais.</div>
+            <div class="video-title" data-i18n="video_arrival_day_title">Chegada diurna — Safira</div>
+            <div class="video-desc" data-i18n="video_arrival_day_desc">Como chegar, estacionar e acessar a suíte durante o dia.</div>
           </div>
           <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
         <div class="video-item" onclick="openVideoByLang('arrival_night')">
           <div class="video-thumb" style="background:#1e3a5f"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           <div class="video-info">
-            <div class="video-title" data-i18n="video_arrival_night_title">Vídeo de chegada — noturno</div>
-            <div class="video-desc" data-i18n="video_arrival_night_desc">Rota de acesso filmada à noite, com referências visuais do caminho.</div>
-          </div>
-          <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-        </div>
-        <div class="video-item" onclick="openVideoByLang('safe')">
-          <div class="video-thumb" style="background:#92400e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <div class="video-info">
-            <div class="video-title" data-i18n="video_safe_title">Vídeo do mini cofre — Safira</div>
-            <div class="video-desc" data-i18n="video_safe_desc">Como abrir o mini cofre e localizar o controle do portão.</div>
-          </div>
-          <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-        </div>
-        <div class="video-item" onclick="openVideoByLang('spa')">
-          <div class="video-thumb" style="background:#0e7490"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-          <div class="video-info">
-            <div class="video-title" data-i18n="video_spa_title">Banheira Esmeralda — Como usar</div>
-            <div class="video-desc" data-i18n="video_spa_desc">Passo a passo para encher, ligar a hidro e acionar a cromoterapia.</div>
-          </div>
-          <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
-        </div>
-        <div class="video-item" onclick="openVideoByLang('shower')">
-          <div class="video-thumb" style="background:#0f766e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a8 8 0 0 1 8-8"/><path d="M12 4v2M8 6l1.5 1.5M16 6l-1.5 1.5"/></svg></div>
-          <div class="video-info">
-            <div class="video-title" data-i18n="video_shower_title">Vídeo do chuveiro elétrico</div>
-            <div class="video-desc" data-i18n="video_shower_desc">Como ajustar temperatura e pressão do chuveiro elétrico.</div>
+            <div class="video-title" data-i18n="video_arrival_night_title">Chegada noturna — Safira</div>
+            <div class="video-desc" data-i18n="video_arrival_night_desc">Como chegar e acessar a suíte à noite com segurança.</div>
           </div>
           <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
       </div>
-      <div class="section">
-        <div class="section-title" data-i18n="home_before_title">Antes da chegada</div>
-        <p class="card-text" style="margin-bottom:10px" data-i18n="home_before_body">Envie os dados abaixo com antecedência. O acesso ao manual e à senha da fechadura será liberado pelo nosso assistente de WhatsApp após a confirmação destes dados:</p>
-      </div>
-      <div class="card" style="margin:0 16px 12px">
-        <ul class="checklist">
-          <li data-i18n="home_before_1">Nome completo e CPF de todos os hóspedes maiores de 18 anos</li>
-          <li data-i18n="home_before_2">Placa e modelo do veículo (caso venha de carro)</li>
-        </ul>
-      </div>
-      <div class="alert alert-warning">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <div><div class="alert-body" data-i18n="home_before_warning">Os dados serão validados pelo nosso assistente automatizado. Sem o envio dessas informações, a senha de acesso não será liberada.</div></div>
-      </div>
+
       <div class="section">
         <div class="section-title" data-i18n="home_about_title">Sobre a acomodação</div>
         <p class="card-text" data-i18n="home_about_body">Ambiente inserido em meio à natureza, com árvores, flores e vista para o mar. O acesso inclui escadas e subida — recomendamos bagagens leves e bem distribuídas para evitar cansaço.</p>
@@ -368,21 +348,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
           <div class="alert-body" data-i18n="home_connectivity_body">Por estarmos em uma região mais remota, o sinal de algumas operadoras pode apresentar instabilidade. Recomendamos baixar previamente vídeos e informações antes da chegada.</div>
         </div>
       </div>
-      <div class="section"><div class="section-title" data-i18n="home_address_title">Endereço da acomodação</div></div>
-      <div class="card" style="margin:0 16px 12px">
-        <div style="padding:12px 14px;font-size:14px;font-weight:600;color:var(--text);line-height:1.5">Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595</div>
-        <div style="font-size:12px;color:var(--text2);padding:0 14px 12px;line-height:1.4" data-i18n="home_address_helper">Use este endereço ao pedir delivery (restaurantes, etc.) ou cadastrar entregas.</div>
-        <div style="padding:0 14px 14px;display:flex;gap:8px">
-          <button class="btn btn-outline btn-sm" id="copy-addr-btn" onclick="copyText('Servidão Niberto Borges, 140A — Praia da Solidão, Florianópolis/SC — CEP 88067-595','copy-addr-btn','home_address_copied')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <span data-i18n="home_address_copy">Copiar endereço</span>
-          </button>
-          <a class="btn btn-primary btn-sm" href="https://maps.google.com/?q=Servidão+Niberto+Borges+140A+Praia+da+Solidão+Florianópolis+88067-595" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span data-i18n="home_address_open_map">Abrir no mapa</span>
-          </a>
-        </div>
-      </div>
+
       <div class="instagram-card">
         <h3 data-i18n="instagram_title">Compartilhe sua experiência!</h3>
         <p data-i18n="instagram_body">Aproveite o pôr do sol, a natureza e os momentos especiais. Marque a gente nas suas fotos!</p>
@@ -957,6 +923,28 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
       </div>
 
       <!-- Decoração romântica -->
+      <!-- Vídeos da suíte -->
+      <div class="section">
+        <div class="section-title">🛁 Equipamentos da suíte</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <div class="video-item" onclick="openVideoByLang('spa')">
+          <div class="video-thumb" style="background:#0e7490"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+          <div class="video-info">
+            <div class="video-title" data-i18n="video_spa_title">Banheira Esmeralda — Como usar</div>
+            <div class="video-desc" data-i18n="video_spa_desc">Passo a passo para encher, ligar a hidro e acionar a cromoterapia.</div>
+          </div>
+          <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="video-item" onclick="openVideoByLang('shower')">
+          <div class="video-thumb" style="background:#0f766e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a8 8 0 0 1 8-8"/><path d="M12 4v2M8 6l1.5 1.5M16 6l-1.5 1.5"/></svg></div>
+          <div class="video-info">
+            <div class="video-title" data-i18n="video_shower_title">Vídeo do chuveiro elétrico</div>
+            <div class="video-desc" data-i18n="video_shower_desc">Como ajustar temperatura e pressão do chuveiro elétrico.</div>
+          </div>
+          <div class="video-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
       <div class="service-card">
         <div class="service-body">
           <div class="service-header">
@@ -1150,8 +1138,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
       <div style="width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px"></div>
       <div style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px" data-i18n="wifi_modal_title">Wi-Fi da Suíte Safira</div>
       <div class="card">
-        <div class="wifi-row"><div><div class="wifi-label" data-i18n="home_wifi_network">Rede</div><div class="wifi-value">SAFIRA</div></div></div>
-        <div class="wifi-row"><div><div class="wifi-label" data-i18n="home_wifi_password">Senha</div><div class="wifi-value">23589723</div></div></div>
+        <div class="wifi-row"><div><div class="wifi-label" data-i18n="home_wifi_network">Rede</div><div class="wifi-value">Mini Coffee</div></div></div>
+        <div class="wifi-row"><div><div class="wifi-label" data-i18n="home_wifi_password">Senha</div><div class="wifi-value">2352</div></div></div>
         <div class="copy-row">
           <button class="copy-btn" id="copy-wifi-modal-btn" onclick="copyText('23589723','copy-wifi-modal-btn','home_wifi_copied')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -1176,9 +1164,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
       <div class="card" style="margin:0 0 12px">
         <div class="safe-item" style="--before-content:'🔑'">
           <span data-i18n="safe_item_1">Controle do portão eletrônico</span>
-        </div>
-        <div class="safe-item">
-          <span data-i18n="safe_item_2">Chave reserva da acomodação</span>
         </div>
       </div>
       <div class="alert alert-warning" style="margin:0 0 12px">
@@ -1223,21 +1208,16 @@ const i18n = {
     home_wifi_copied: "Copiado!",
     home_arrival_title: "Chegada e acesso",
     home_arrival_body: "Para garantir uma chegada tranquila, é necessário assistir aos vídeos enviados com as orientações: localização da vaga, caminho até a acomodação e instruções de acesso.",
-    video_arrival_day_title: "Vídeo de chegada — diurno",
-    video_arrival_day_desc: "Rota de acesso filmada durante o dia, com referências visuais.",
-    video_arrival_night_title: "Vídeo de chegada — noturno",
-    video_arrival_night_desc: "Rota de acesso filmada à noite, com referências visuais do caminho.",
+    video_arrival_day_title: "Chegada diurna — Safira",
+    video_arrival_day_desc: "Como chegar, estacionar e acessar a suíte durante o dia.",
+    video_arrival_night_title: "Chegada noturna — Safira",
+    video_arrival_night_desc: "Como chegar e acessar a suíte à noite com segurança.",
     video_safe_title: "Vídeo do mini cofre — Safira",
     video_safe_desc: "Como abrir o mini cofre e localizar o controle do portão.",
     video_spa_title: "Banheira Esmeralda — Como usar",
     video_spa_desc: "Passo a passo para encher, ligar a hidro e acionar a cromoterapia.",
     video_shower_title: "Vídeo do chuveiro elétrico",
     video_shower_desc: "Como ajustar temperatura e pressão do chuveiro elétrico.",
-    home_before_title: "Antes da chegada",
-    home_before_body: "Envie os dados abaixo com antecedência. O acesso ao manual e à senha da fechadura será liberado pelo nosso assistente de WhatsApp após a confirmação destes dados:",
-    home_before_1: "Nome completo e CPF de todos os hóspedes maiores de 18 anos",
-    home_before_2: "Placa e modelo do veículo (caso venha de carro)",
-    home_before_warning: "Os dados serão validados pelo nosso assistente automatizado. Sem o envio dessas informações, a senha de acesso não será liberada.",
     home_about_title: "Sobre a acomodação",
     home_about_body: "Ambiente inserido em meio à natureza, com árvores, flores e vista para o mar. O acesso inclui escadas e subida — recomendamos bagagens leves e bem distribuídas para evitar cansaço.",
     home_connectivity_title: "Conectividade na região",
@@ -1406,7 +1386,6 @@ const i18n = {
     safe_modal_note: "Código padrão de fábrica. Altere após o check-in.",
     safe_modal_contains: "O cofre contém:",
     safe_item_1: "Controle do portão eletrônico",
-    safe_item_2: "Chave reserva da acomodação",
     safe_modal_warning: "Assista ao vídeo do mini cofre para instruções detalhadas de abertura e localização.",
     modal_close: "Fechar",
     // Tabs
@@ -1441,9 +1420,9 @@ const i18n = {
     home_wifi_copied: "Copied!",
     home_arrival_title: "Arrival & access",
     home_arrival_body: "To ensure a smooth arrival, please watch the videos sent with instructions: parking spot location, path to the accommodation and access instructions.",
-    video_arrival_day_title: "Arrival video — daytime",
+    video_arrival_day_title: "Daytime arrival — Safira",
     video_arrival_day_desc: "Access route filmed during the day, with visual references.",
-    video_arrival_night_title: "Arrival video — nighttime",
+    video_arrival_night_title: "Nighttime arrival — Safira",
     video_arrival_night_desc: "Access route filmed at night, with visual references along the way.",
     video_safe_title: "Mini safe video — Safira",
     video_safe_desc: "How to open the mini safe and locate the gate remote.",
@@ -1451,11 +1430,6 @@ const i18n = {
     video_spa_desc: "Step by step to fill, turn on the hydro jets and activate chromotherapy.",
     video_shower_title: "Electric shower video",
     video_shower_desc: "How to adjust the temperature and pressure of the electric shower.",
-    home_before_title: "Before arrival",
-    home_before_body: "Please send the information below in advance. Access to the manual and the door lock password will be released by our WhatsApp assistant after confirming this data:",
-    home_before_1: "Full name and ID (CPF) of all guests over 18 years old",
-    home_before_2: "License plate and model of the vehicle (if coming by car)",
-    home_before_warning: "The data will be validated by our automated assistant. Without sending this information, the access password will not be released.",
     home_about_title: "About the accommodation",
     home_about_body: "A nature-surrounded environment with trees, flowers and sea views. Access includes stairs and an uphill path — we recommend light, well-distributed luggage to avoid fatigue.",
     home_connectivity_title: "Connectivity in the area",
@@ -1619,7 +1593,6 @@ const i18n = {
     safe_modal_note: "Factory default code. Change after check-in.",
     safe_modal_contains: "The safe contains:",
     safe_item_1: "Electronic gate remote",
-    safe_item_2: "Spare key to the accommodation",
     safe_modal_warning: "Watch the mini safe video for detailed instructions on opening and location.",
     modal_close: "Close",
     tab_home: "Home",
@@ -1653,9 +1626,9 @@ const i18n = {
     home_wifi_copied: "¡Copiado!",
     home_arrival_title: "Llegada y acceso",
     home_arrival_body: "Para garantizar una llegada tranquila, es necesario ver los videos enviados con las instrucciones: ubicación del estacionamiento, camino al alojamiento e instrucciones de acceso.",
-    video_arrival_day_title: "Video de llegada — diurno",
+    video_arrival_day_title: "Llegada diurna — Safira",
     video_arrival_day_desc: "Ruta de acceso filmada durante el día, con referencias visuales.",
-    video_arrival_night_title: "Video de llegada — nocturno",
+    video_arrival_night_title: "Llegada nocturna — Safira",
     video_arrival_night_desc: "Ruta de acceso filmada de noche, con referencias visuales del camino.",
     video_safe_title: "Video de la caja fuerte — Safira",
     video_safe_desc: "Cómo abrir la caja fuerte y localizar el control del portón.",
@@ -1663,11 +1636,6 @@ const i18n = {
     video_spa_desc: "Paso a paso para llenar, encender la hidro y activar la cromoterapia.",
     video_shower_title: "Video de la ducha eléctrica",
     video_shower_desc: "Cómo ajustar la temperatura y presión de la ducha eléctrica.",
-    home_before_title: "Antes de la llegada",
-    home_before_body: "Envíe los datos a continuación con anticipación. El acceso al manual y la contraseña de la cerradura será liberado por nuestro asistente de WhatsApp tras confirmar estos datos:",
-    home_before_1: "Nombre completo y documento de todos los huéspedes mayores de 18 años",
-    home_before_2: "Matrícula y modelo del vehículo (si viene en auto)",
-    home_before_warning: "Los datos serán validados por nuestro asistente automatizado. Sin el envío de esta información, la contraseña de acceso no será liberada.",
     home_about_title: "Sobre el alojamiento",
     home_about_body: "Ambiente rodeado de naturaleza, con árboles, flores y vista al mar. El acceso incluye escaleras y subida — recomendamos equipaje liviano y bien distribuido para evitar cansancio.",
     home_connectivity_title: "Conectividad en la zona",
@@ -1831,7 +1799,6 @@ const i18n = {
     safe_modal_note: "Código predeterminado de fábrica. Cámbielo después del check-in.",
     safe_modal_contains: "La caja fuerte contiene:",
     safe_item_1: "Control del portón electrónico",
-    safe_item_2: "Llave de repuesto del alojamiento",
     safe_modal_warning: "Vea el video de la caja fuerte para instrucciones detalladas de apertura y ubicación.",
     modal_close: "Cerrar",
     tab_home: "Inicio",
