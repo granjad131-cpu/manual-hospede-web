@@ -363,119 +363,57 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
     <!-- ═══ TAB: REGRAS ═══ -->
     <div class="tab-panel" id="tab-rules">
       <div class="page-header">
-        <div class="page-title" data-i18n="rules_title">Regras da hospedagem</div>
-        <div class="page-subtitle" data-i18n="rules_subtitle">Leia com atenção para garantir uma estadia tranquila para todos.</div>
+        <div class="page-title" data-i18n="rules_title">Regras da casa</div>
+        <div class="page-subtitle" data-i18n="rules_subtitle">Pedimos sua colaboração para o conforto de todos.</div>
       </div>
 
-      <!-- Silêncio -->
+      <!-- Silêncio noturno -->
       <div class="silence-banner">
         <div class="silence-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-        <div>
+        <div style="flex:1">
           <div style="font-size:12px;color:#93c5fd;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px" data-i18n="rules_silence_label">Horário de silêncio</div>
           <div class="silence-times">
             <div class="silence-time"><div class="silence-time-label" data-i18n="rules_silence_from">Das</div><div class="silence-time-value">22h</div></div>
             <div class="silence-time"><div class="silence-time-label" data-i18n="rules_silence_to">Às</div><div class="silence-time-value">08h</div></div>
           </div>
-          <div class="silence-note" data-i18n="rules_silence_note">Respeite os vizinhos e outros hóspedes.</div>
+          <div class="silence-note" data-i18n="rules_silence_note">Som alto não é permitido em nenhum horário durante toda a hospedagem.</div>
         </div>
       </div>
 
-      <!-- Check-in / Check-out -->
+      <!-- Regras detalhadas -->
       <div class="section">
-        <div class="section-title" data-i18n="rules_checkin_title">Check-in e Check-out</div>
+        <div class="section-title" data-i18n="rules_section">Regras detalhadas</div>
       </div>
-      <div class="card" style="margin:0 16px 12px">
-        <table class="data-table">
-          <tr><th data-i18n="rules_table_item">Item</th><th data-i18n="rules_table_time">Horário</th></tr>
-          <tr><td data-i18n="rules_checkin">Check-in</td><td>15h</td></tr>
-          <tr><td data-i18n="rules_checkout">Check-out</td><td>11h</td></tr>
-          <tr><td data-i18n="rules_early_checkin">Early check-in</td><td data-i18n="rules_early_checkin_val">Consultar disponibilidade</td></tr>
-          <tr><td data-i18n="rules_late_checkout">Late check-out</td><td data-i18n="rules_late_checkout_val">Consultar disponibilidade</td></tr>
-        </table>
-      </div>
-      <div class="alert alert-warning">
+
+      <!-- Atenção -->
+      <div class="alert alert-warning" style="margin:0 16px 12px">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <div><div class="alert-body" data-i18n="rules_checkout_warning">Saídas após 11h sem autorização prévia serão cobradas como diária adicional.</div></div>
-      </div>
-
-      <!-- Capacidade -->
-      <div class="section">
-        <div class="section-title" data-i18n="rules_capacity_title">Capacidade e hóspedes</div>
-      </div>
-      <div class="card" style="margin:0 16px 12px">
-        <ul class="accordion-list">
-          <li data-i18n="rules_capacity_1">Capacidade máxima: 2 hóspedes adultos + 1 criança de colo (até 2 anos).</li>
-          <li data-i18n="rules_capacity_2">Não é permitido receber visitas externas na acomodação.</li>
-          <li data-i18n="rules_capacity_3">Todos os hóspedes maiores de 18 anos devem ter CPF cadastrado antecipadamente.</li>
-          <li data-i18n="rules_capacity_4">Crianças acima de 2 anos são contabilizadas como hóspede adulto para fins de capacidade.</li>
-        </ul>
-      </div>
-
-      <!-- Pets -->
-      <div class="section">
-        <div class="section-title" data-i18n="rules_pets_title">Animais de estimação</div>
-      </div>
-      <div class="card" style="margin:0 16px 12px">
-        <ul class="accordion-list">
-          <li data-i18n="rules_pets_1">Pets são bem-vindos mediante taxa adicional de R$50 por animal.</li>
-          <li data-i18n="rules_pets_2">Informe com antecedência a presença de animais para liberação do acesso.</li>
-          <li data-i18n="rules_pets_3">Não é permitido que os animais subam nos móveis ou na cama.</li>
-          <li data-i18n="rules_pets_4">Danos causados por animais serão cobrados do hóspede responsável.</li>
-        </ul>
-      </div>
-
-      <!-- Fumo / Festas -->
-      <div class="section">
-        <div class="section-title" data-i18n="rules_smoking_title">Fumo e festas</div>
-      </div>
-      <div class="card" style="margin:0 16px 12px">
-        <div class="rule-item">
-          <div class="rule-title" data-i18n="rules_no_smoking_title">🚭 Proibido fumar no interior</div>
-          <div class="rule-desc" data-i18n="rules_no_smoking_desc">É terminantemente proibido fumar dentro da acomodação. Fumar é permitido apenas em áreas externas abertas. Multa de R$500 em caso de descumprimento.</div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-title" data-i18n="rules_no_party_title">🎉 Festas e eventos</div>
-          <div class="rule-desc" data-i18n="rules_no_party_desc">Festas, eventos e reuniões com pessoas externas não são permitidos. O espaço é destinado exclusivamente aos hóspedes cadastrados.</div>
+        <div>
+          <div class="alert-title" data-i18n="rules_warning_title">Atenção</div>
+          <div class="alert-body" data-i18n="rules_warning_body">Itens da acomodação são conferidos e entregues em excelente estado. Itens quebrados por mau uso serão cobrados conforme a tabela de reposição.</div>
         </div>
       </div>
 
-      <!-- Limpeza e conservação -->
-      <div class="section">
-        <div class="section-title" data-i18n="rules_cleaning_title">Limpeza e conservação</div>
-      </div>
+      <!-- Regras da casa (lista exata do app) -->
       <div class="card" style="margin:0 16px 12px">
         <ul class="accordion-list">
-          <li data-i18n="rules_cleaning_1">Deixe a acomodação nas mesmas condições em que a encontrou.</li>
-          <li data-i18n="rules_cleaning_2">Descarte o lixo nos locais indicados antes de sair.</li>
-          <li data-i18n="rules_cleaning_3">Danos ao patrimônio serão cobrados do hóspede responsável.</li>
-          <li data-i18n="rules_cleaning_4">Não remova toalhas, roupas de cama ou itens da acomodação.</li>
-          <li data-i18n="rules_cleaning_5">Reporte qualquer avaria ou problema ao anfitrião imediatamente.</li>
-        </ul>
-      </div>
-
-      <!-- Segurança -->
-      <div class="section">
-        <div class="section-title" data-i18n="rules_security_title">Segurança</div>
-      </div>
-      <div class="card" style="margin:0 16px 12px">
-        <ul class="accordion-list">
-          <li data-i18n="rules_security_1">Feche sempre a porta e o portão ao sair, mesmo que por poucos minutos.</li>
-          <li data-i18n="rules_security_2">Não compartilhe a senha da fechadura com terceiros.</li>
-          <li data-i18n="rules_security_3">Em caso de emergência, acione o anfitrião imediatamente pelo WhatsApp.</li>
-          <li data-i18n="rules_security_4">Não utilize a lareira sem orientação prévia do anfitrião.</li>
-        </ul>
-      </div>
-
-      <!-- Estacionamento -->
-      <div class="section">
-        <div class="section-title" data-i18n="rules_parking_title">Estacionamento</div>
-      </div>
-      <div class="card" style="margin:0 16px 12px">
-        <ul class="accordion-list">
-          <li data-i18n="rules_parking_1">Há 1 vaga privativa disponível para os hóspedes da Safira.</li>
-          <li data-i18n="rules_parking_2">Informe a placa e modelo do veículo com antecedência.</li>
-          <li data-i18n="rules_parking_3">Não ocupe vagas de outros hóspedes ou moradores.</li>
-          <li data-i18n="rules_parking_4">Assista ao vídeo de chegada para localizar corretamente a vaga.</li>
+          <li>Apenas hóspedes cadastrados na reserva. Não é permitida a entrada de visitas.</li>
+          <li>Sempre que sair da cabana, desligue o ar-condicionado, TV e SPA.</li>
+          <li>Evite usar muitos equipamentos ao mesmo tempo (ar-condicionado, SPA e chuveiro juntos) para evitar sobrecarga elétrica.</li>
+          <li>Desligue a SPA quando não estiver em uso. Após atingir a temperatura desejada, você pode desligar e ligar novamente quando desejar utilizar.</li>
+          <li>Esvazie a SPA da suíte antes do check-out. Após sua saída, ela passa por higienização e abastecimento pela nossa equipe.</li>
+          <li>A reposição de toalhas é disponibilizada gratuitamente a partir do 5º dia de hospedagem. Solicitações antes desse período têm custo adicional de R$ 25,00 por peça.</li>
+          <li>Não é permitido o uso de velas convencionais em nenhum ambiente, por segurança, já que os espaços possuem estrutura em madeira.</li>
+          <li>Não é permitido fumar dentro da suíte. Nas áreas externas o uso é livre.</li>
+          <li>Não aceitamos pets. O espaço possui áreas elevadas, vidros e muito contato com a natureza, o que pode não ser seguro para os animais.</li>
+          <li>Sempre que sair da pousada, mantenha sua suíte trancada e leve a chave com você.</li>
+          <li>Mantenha a cozinha organizada, com louças lavadas, utensílios guardados e lixo devidamente armazenado.</li>
+          <li>Por estarmos em meio à natureza, recomendamos manter portas encostadas ao final da tarde e trazer repelente.</li>
+          <li>Não deixe lixo espalhado na cabana ou em áreas comuns. Há uma lixeira grande na entrada da garagem para descarte adequado.</li>
+          <li>Respeitar silêncio das 22h às 08h.</li>
+          <li>Não é permitido som em volume alto em nenhum horário, respeitando o conforto dos hóspedes das cabanas vizinhas.</li>
+          <li>Pedimos a gentileza de não descartar papel higiênico no vaso sanitário.</li>
+          <li>Os itens da acomodação são conferidos e entregues em excelente estado. Em caso de taças ou copos quebrados, será cobrada a reposição conforme a tabela abaixo, com pagamento via PIX.</li>
         </ul>
       </div>
 
@@ -485,25 +423,79 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
       </div>
       <div class="alert alert-info" style="margin:0 16px 12px">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <div><div class="alert-body" data-i18n="rules_accessibility_body">O acesso à acomodação envolve escadas e terreno irregular. Não é recomendado para pessoas com mobilidade reduzida ou dificuldade de locomoção. Recomendamos bagagens leves e bem distribuídas.</div></div>
+        <div><div class="alert-body" data-i18n="rules_accessibility_body">O acesso inclui escadas e subida. Não recomendado para pessoas com mobilidade reduzida. Recomendamos bagagens leves e bem distribuídas.</div></div>
       </div>
 
       <!-- Fauna local -->
       <div class="section">
-        <div class="section-title" data-i18n="rules_fauna_title">Fauna local</div>
+        <div class="section-title" data-i18n="rules_fauna_title">Animais locais</div>
       </div>
       <div class="card" style="margin:0 16px 12px">
         <div class="rule-item">
-          <div class="rule-title" data-i18n="rules_fauna_1_title">🦎 Lagartixas e insetos</div>
-          <div class="rule-desc" data-i18n="rules_fauna_1_desc">São comuns na região e fazem parte do ecossistema local. São inofensivos e ajudam a controlar insetos.</div>
+          <div class="rule-desc" data-i18n="rules_fauna_body">Presença de saguis, lagartos e outros animais da região. Evite contato e não permita a entrada na acomodação.</div>
         </div>
-        <div class="rule-item">
-          <div class="rule-title" data-i18n="rules_fauna_2_title">🐝 Abelhas e vespas</div>
-          <div class="rule-desc" data-i18n="rules_fauna_2_desc">Podem aparecer eventualmente. Mantenha janelas fechadas ao anoitecer e não deixe alimentos expostos.</div>
+      </div>
+
+      <!-- Itens de cortesia -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_courtesy_title">Itens de cortesia</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <div class="card-body">
+          <p class="card-text" style="margin-bottom:10px" data-i18n="rules_courtesy_body">Como gentileza para sua chegada, deixamos os itens abaixo à disposição:</p>
+          <ul class="accordion-list">
+            <li>Papel higiênico para início da hospedagem</li>
+            <li>Sabonete e espuma de banho</li>
+            <li>Café, açúcar, sal e óleo</li>
+            <li>Detergente e bucha de pia</li>
+            <li>Jogos de cama, cobertas, travesseiros e toalhas</li>
+            <li>Observação: reservas longas não incluem reposição de itens de cortesia.</li>
+          </ul>
         </div>
-        <div class="rule-item">
-          <div class="rule-title" data-i18n="rules_fauna_3_title">🌿 Natureza preservada</div>
-          <div class="rule-desc" data-i18n="rules_fauna_3_desc">Estamos em área de Mata Atlântica. Não alimente, capture ou prejudique animais silvestres.</div>
+      </div>
+
+      <!-- Tabela de reposição -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_replacement_title">Tabela de reposição</div>
+      </div>
+      <div class="card" style="margin:0 16px 12px">
+        <div class="card-body">
+          <p class="card-text" style="margin-bottom:10px" data-i18n="rules_replacement_body">Caso ocorra um acidente, pedimos apenas que nos avise para organizarmos a reposição. Os valores abaixo servem como referência.</p>
+          <table class="data-table">
+            <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+            <tbody>
+              <tr><td>Taça ou copo</td><td>R$ 20</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pagamento via PIX -->
+      <div class="section">
+        <div class="section-title" data-i18n="rules_pix_title">Pagamento via PIX</div>
+      </div>
+      <div class="pix-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text" style="margin-bottom:12px" data-i18n="rules_pix_body">Caso ocorra a necessidade de reposição, o pagamento pode ser feito via PIX para a chave abaixo.</p>
+            <div class="pix-key-box">
+              <div>
+                <div class="pix-key-label" data-i18n="rules_pix_keytype_phone">Chave PIX (telefone)</div>
+                <div class="pix-key-value">48988381007</div>
+              </div>
+              <button class="copy-btn" id="pix-copy-btn" onclick="copyText('48988381007','pix-copy-btn','rules_pix_copied')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span data-i18n="rules_pix_copy">Copiar chave PIX</span>
+              </button>
+            </div>
+            <div style="font-size:12px;color:var(--text2);margin-top:6px">
+              <span data-i18n="rules_pix_holder">Titular</span>: <strong>Daniel Granja</strong>
+            </div>
+            <div class="alert alert-info" style="margin-top:12px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div><div class="alert-body" data-i18n="rules_pix_note">Após o pagamento, envie o comprovante pelo WhatsApp do anfitrião para confirmarmos. Obrigado pela compreensão.</div></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -517,7 +509,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
       </div>
     </div>
 
-    <!-- ═══ TAB: ARREDORES ═══ -->
+        <!-- ═══ TAB: ARREDORES ═══ -->
     <div class="tab-panel" id="tab-around">
       <div class="page-header">
         <div class="page-title" data-i18n="around_title">Arredores</div>
@@ -1251,16 +1243,14 @@ const i18n = {
     rules_capacity_title: "Capacidade e hóspedes",
     rules_capacity_1: "Capacidade máxima: 2 hóspedes adultos + 1 criança de colo (até 2 anos).",
     rules_capacity_2: "Não é permitido receber visitas externas na acomodação.",
-    rules_capacity_3: "Todos os hóspedes maiores de 18 anos devem ter CPF cadastrado antecipadamente.",
-    rules_capacity_4: "Crianças acima de 2 anos são contabilizadas como hóspede adulto para fins de capacidade.",
     rules_pets_title: "Animais de estimação",
-    rules_pets_1: "Pets são bem-vindos mediante taxa adicional de R$50 por animal.",
-    rules_pets_2: "Informe com antecedência a presença de animais para liberação do acesso.",
+    rules_pets_1: "Não aceitamos pets. O espaço possui áreas elevadas, vidros e muito contato com a natureza, o que pode não ser seguro para os animais.",
+    rules_pets_2: "Não aceitamos pets de nenhum porte.",
     rules_pets_3: "Não é permitido que os animais subam nos móveis ou na cama.",
     rules_pets_4: "Danos causados por animais serão cobrados do hóspede responsável.",
     rules_smoking_title: "Fumo e festas",
     rules_no_smoking_title: "🚭 Proibido fumar no interior",
-    rules_no_smoking_desc: "É terminantemente proibido fumar dentro da acomodação. Fumar é permitido apenas em áreas externas abertas. Multa de R$500 em caso de descumprimento.",
+    rules_no_smoking_desc: "Não é permitido fumar dentro da suíte. Nas áreas externas o uso é livre.",
     rules_no_party_title: "🎉 Festas e eventos",
     rules_no_party_desc: "Festas, eventos e reuniões com pessoas externas não são permitidos. O espaço é destinado exclusivamente aos hóspedes cadastrados.",
     rules_cleaning_title: "Limpeza e conservação",
@@ -1273,10 +1263,8 @@ const i18n = {
     rules_security_1: "Feche sempre a porta e o portão ao sair, mesmo que por poucos minutos.",
     rules_security_2: "Não compartilhe a senha da fechadura com terceiros.",
     rules_security_3: "Em caso de emergência, acione o anfitrião imediatamente pelo WhatsApp.",
-    rules_security_4: "Não utilize a lareira sem orientação prévia do anfitrião.",
     rules_parking_title: "Estacionamento",
     rules_parking_1: "Há 1 vaga privativa disponível para os hóspedes da Safira.",
-    rules_parking_2: "Informe a placa e modelo do veículo com antecedência.",
     rules_parking_3: "Não ocupe vagas de outros hóspedes ou moradores.",
     rules_parking_4: "Assista ao vídeo de chegada para localizar corretamente a vaga.",
     rules_accessibility_title: "Acessibilidade",
@@ -1464,13 +1452,13 @@ const i18n = {
     rules_capacity_3: "All guests over 18 must have their ID registered in advance.",
     rules_capacity_4: "Children over 2 years old count as adult guests for capacity purposes.",
     rules_pets_title: "Pets",
-    rules_pets_1: "Pets are welcome with an additional fee of R$50 per animal.",
+    rules_pets_1: "We do not accept pets. The space has elevated areas, glass and much contact with nature, which may not be safe for animals.",
     rules_pets_2: "Please inform us in advance about the presence of animals.",
     rules_pets_3: "Animals are not allowed on furniture or the bed.",
     rules_pets_4: "Damage caused by animals will be charged to the responsible guest.",
     rules_smoking_title: "Smoking & parties",
     rules_no_smoking_title: "🚭 No smoking indoors",
-    rules_no_smoking_desc: "Smoking is strictly prohibited inside the accommodation. Smoking is only allowed in open outdoor areas. Fine of R$500 for non-compliance.",
+    rules_no_smoking_desc: "Smoking is not allowed inside the suite. In outdoor areas it is free.",
     rules_no_party_title: "🎉 Parties & events",
     rules_no_party_desc: "Parties, events and gatherings with external people are not allowed. The space is exclusively for registered guests.",
     rules_cleaning_title: "Cleaning & conservation",
@@ -1669,13 +1657,13 @@ const i18n = {
     rules_capacity_3: "Todos los huéspedes mayores de 18 años deben tener su documento registrado con anticipación.",
     rules_capacity_4: "Los niños mayores de 2 años se contabilizan como huéspedes adultos para fines de capacidad.",
     rules_pets_title: "Mascotas",
-    rules_pets_1: "Las mascotas son bienvenidas con una tarifa adicional de R$50 por animal.",
+    rules_pets_1: "No aceptamos mascotas. El espacio tiene áreas elevadas, vidrios y mucho contacto con la naturaleza, lo que puede no ser seguro para los animales.",
     rules_pets_2: "Informe con anticipación la presencia de animales para la liberación del acceso.",
     rules_pets_3: "No está permitido que los animales suban a los muebles o a la cama.",
     rules_pets_4: "Los daños causados por animales serán cobrados al huésped responsable.",
     rules_smoking_title: "Fumar y fiestas",
     rules_no_smoking_title: "🚭 Prohibido fumar en el interior",
-    rules_no_smoking_desc: "Está terminantemente prohibido fumar dentro del alojamiento. Solo se permite fumar en áreas exteriores abiertas. Multa de R$500 en caso de incumplimiento.",
+    rules_no_smoking_desc: "No se permite fumar dentro de la suite. En las áreas exteriores el uso es libre.",
     rules_no_party_title: "🎉 Fiestas y eventos",
     rules_no_party_desc: "No están permitidas fiestas, eventos ni reuniones con personas externas. El espacio es exclusivo para los huéspedes registrados.",
     rules_cleaning_title: "Limpieza y conservación",
